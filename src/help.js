@@ -49,35 +49,35 @@ nota : Este comando só pode ser usado pelo proprietário do bot\n
 comando : *${prefix}add*
 desc : adicionar membro ao grupo
 usar : *${prefix}add 62813xxxxx*\n
-note : só pode ser usado quando o bot se torna admin, e quem envia o comando é admin!\n
+nota : só pode ser usado quando o bot se torna admin, e quem envia o comando é admin!\n
 comando : *${prefix}kick*
 desc : chutar membros do grupo
 usar : *${prefix}kick @tagmember*\n
-note : só pode ser usado quando o bot se torna admin, e quem envia o comando é admin!\n
-command : *${prefix}promote*
-desc : make the group member as group admin
-usage : *${prefix}promote @tagmember*\n
-note : can only be used when the bot becomes admin, and the one who sends the command is admin!\n
-command : *${prefix}demote*
-desc : make the group admin as group member
-usage : *${prefix}demote @tagmember*\n
-note : can only be used when the bot becomes admin, and the one who sends the command is admin!\n
-command : *${prefix}linkgroup*
-desc : take the group link
-usage : just send the command
-note : can only be used when the bot becomes admin, and the one who sends the command is admin!\n
-command : *${prefix}leave*
-desc : Make bot leave the group
-usage : just send the command
-note : Can only be used by Group admins and Bot owner\n
-command : *${prefix}tagall*
-desc : tags all group members including admins too
-usage : just send the command
-note : This command can be used if you are a group admin\n
-command : *${prefix}simih*
-desc : activate simi mode in the group
-usage : *${prefix}simih 1* to activate simi mode and *${prefix}simih 0* to deactivate simi mode
-note : This command can be used if you are a group admin\n`
+nota : só pode ser usado quando o bot se torna admin, e quem envia o comando é admin!\n
+comando : *${prefix}promote*
+desc : tornar o membro do grupo como administrador do grupo
+usar : *${prefix}promote @tagmember*\n
+nota : só pode ser usado quando o bot se torna admin, e quem envia o comando é admin!\n
+comando : *${prefix}demote*
+desc : tornar o administrador do grupo como membro do grupo
+usar : *${prefix}demote @tagmember*\n
+nota : só pode ser usado quando o bot se torna admin, e quem envia o comando é admin!\n
+comando : *${prefix}linkgroup*
+desc : pegue o link do grupo
+usar : apenas envie o comando
+nota : só pode ser usado quando o bot se torna admin, e quem envia o comando é admin!\n
+comando : *${prefix}leave*
+desc : Faça o bot sair do grupo
+usar : apenas envie o comando
+nota : Só pode ser usado por administradores de grupo e proprietário do bot\n
+comando : *${prefix}tagall*
+desc : marca todos os membros do grupo, incluindo administradores também
+usar : apenas envie o comando
+nota : Este comando pode ser usado se você for um administrador de grupo\n
+comando : *${prefix}simih*
+desc : ative o modo simi no grupo
+usar : *${prefix}simih 1* para ativar o modo simi e *${prefix}simih 0* para desativar o modo simi
+nota : Este comando pode ser usado se você for um administrador de grupo\n`
 }
 
 exports.help = help
