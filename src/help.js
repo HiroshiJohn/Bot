@@ -1,59 +1,59 @@
 const help = (prefix) => {
-	return `> *Sticker Commands* <
-command : *${prefix}sticker* or *${prefix}stiker*
-desc : convert image/gif/video to sticker
-usage : reply image/gif/video, or send image/gif/video with caption\n
-command : *${prefix}sticker nobg* or *${prefix}stiker nobg*
-desc : convert image to sticker while removing the background
-usage : reply image, or send image with caption\n
-command : *${prefix}toimg*
+	return `> *Sticker Comandos* <
+comando : *${prefix}sticker* ou *${prefix}stiker*
+desc : converte image/gif/video em sticker
+usar : responda image/gif/video, ou envie image/gif/video com legenda\n
+comndo : *${prefix}sticker nobg* ou *${prefix}stiker nobg*
+desc : converte image para sticker e remove o fundo
+usar : responda image, ou envie image com legenda\n
+comaando : *${prefix}toimg*
 desc : convert sticker to image
-usage : reply sticker\n
-command : *${prefix}tsticker* or *${prefix}tstiker*
-desc : convert text to sticker
-usage : *${prefix}tsticker text in here*\n
-> *Meme Commands* <
-command : *${prefix}meme*
-desc : random meme images [english]
-usage : just send the command\n
-command : *${prefix}memeindo*
-desc : random meme images [indo]
-usage : just send the command\n
-> *Others Commands* <
-command : *${prefix}gtts*
-desc : convert text to speech/audio
-usage : *${prefix}gtts [cc] [text]*\nexample : *${prefix}gtts ja On2-chan*\n
-command : *${prefix}loli*
-desc : random loli images
-usage : just send the command\n
-command : *${prefix}nsfwloli*
-desc : random nsfw loli images
-usage : just send the command\n
-command : *${prefix}url2img*
-desc : take web screenshots
-usage : *${prefix}url2img [tipe] [url]*\n
-command : *${prefix}simi*
-desc : your message will be replied to by simi
-usage : *${prefix}simi yourmessage*\n
-command : *${prefix}ocr*
-desc : take the text in the picture
-usage : reply image, or send image with caption\n
-command : *${prefix}wait*
-desc : search anime with image [ What Anime Is This/That ]
-usage : reply image, or send image with caption\n
-command : *${prefix}setprefix*
-desc : replace prefix
-usage : *${prefix}setprefix [text|optional]*\nexample : *${prefix}setprefix ?*
-note : This command can only be used by the bot owner\n
-> *Group Comands* <
-command : *${prefix}add*
-desc : add member into group
-usage : *${prefix}add 62813xxxxx*\n
-note : can only be used when the bot becomes admin, and the one who sends the command is admin!\n
-command : *${prefix}kick*
-desc : kick members from group
-usage : *${prefix}kick @tagmember*\n
-note : can only be used when the bot becomes admin, and the one who sends the command is admin!\n
+usar : responda um sticker\n
+comando : *${prefix}tsticker* ou *${prefix}tstiker*
+desc : converte texto para sticker
+usar : *${prefix}tsticker texto aqui*\n
+> *Meme Comandos* <
+comando : *${prefix}meme*
+desc : meme aleatório [english]
+usar : apenas envie o comando\n
+comando : *${prefix}memeindo*
+desc : meme aleatório [indo]
+usar : apenas envie o comando\n
+> *Outros Comandos* <
+comandos : *${prefix}gtts*
+desc : converte texto para áudio
+usar : *${prefix}gtts [cc] [texto]*\nexample : *${prefix}gtts pt teste*\n
+comando : *${prefix}loli*
+desc : imagem de loli aleatória
+usar : apenas envie o comando\n
+comando : *${prefix}nsfwloli*
+desc : imagem nsfw loli aleatória
+usar : apenas envie o comando\n
+comando : *${prefix}url2img*
+desc : tirar screenshots da web
+usar : *${prefix}url2img [tipo] [url]*\n
+comando : *${prefix}simi*
+desc : sua mensagem será respondida por simi
+usar : *${prefix}simi suamensagem*\n
+comando : *${prefix}ocr*
+desc : pega o texto da foto
+usar : responder imagem ou enviar imagem com legenda\n
+comando : *${prefix}wait*
+desc : procure anime com imagem [ Qual anime é este ]
+usar : responder imagem ou enviar imagem com legenda\n
+comando : *${prefix}setprefix*
+desc : substituir prefixo
+usar : *${prefix}setprefix [text|optional]*\nexample : *${prefix}setprefix ?*
+nota : Este comando só pode ser usado pelo proprietário do bot\n
+> *Grupo Comandos* <
+comando : *${prefix}add*
+desc : adicionar membro ao grupo
+usar : *${prefix}add 62813xxxxx*\n
+note : só pode ser usado quando o bot se torna admin, e quem envia o comando é admin!\n
+comando : *${prefix}kick*
+desc : chutar membros do grupo
+usar : *${prefix}kick @tagmember*\n
+note : só pode ser usado quando o bot se torna admin, e quem envia o comando é admin!\n
 command : *${prefix}promote*
 desc : make the group member as group admin
 usage : *${prefix}promote @tagmember*\n
