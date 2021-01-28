@@ -175,12 +175,12 @@ async function starts() {
 				case 'info':
 					me = client.user
 					uptime = process.uptime()
-					teks = `*Nama bot* : ${me.name}\n*Nomor Bot* : @${me.jid.split('@')[0]}\n*Prefix* : ${prefix}\n*Total Block Contact* : ${blocked.length}\n*The bot is active on* : ${kyun(uptime)}`
+					teks = `*Bot Nome* : ${me.name}\n*Bot Tag* : @${me.jid.split('@')[0]}\n*Prefix* : ${prefix}\n*Contatos Bloqueados* : ${blocked.length}\n*O bot foi ativado em* : ${kyun(uptime)}`
 					buffer = await getBuffer(me.imgUrl)
 					client.sendMessage(from, buffer, image, {caption: teks, contextInfo:{mentionedJid: [me.jid]}})
 					break
 				case 'blocklist':
-					teks = 'This is list of blocked number :\n'
+					teks = 'Esta é a lista de números bloqueados :\n'
 					for (let block of blocked) {
 						teks += `~> @${block.split('@')[0]}\n`
 					}
@@ -202,7 +202,7 @@ async function starts() {
 								fs.unlinkSync(media)
 							})
 					} else {
-						reply('Foto aja mas')
+						reply('Marque a foto')
 					}
 					break
 				case 'stiker':
@@ -305,7 +305,7 @@ async function starts() {
 					if (args.length < 2) return client.sendMessage(from, 'Cadê o texto tio', text, {quoted: mek})
 					dtt = body.slice(9)
 					ranm = getRandom('.mp3')
-					dtt.length > 2000
+					dtt.length > 600
 					? reply('Texto muito grande, que nem meu pinto')
 					: gtts.save(ranm, dtt, function() {
 						client.sendMessage(from, fs.readFileSync(ranm), audio, {quoted: mek, mimetype: 'audio/mp4', ptt:true})
@@ -326,7 +326,7 @@ async function starts() {
 					if (args.length < 1) return
 					if (!isOwner) return reply(mess.only.ownerB)
 					prefix = args[0]
-					reply(`Prefix berhasil di ubah menjadi : ${prefix}`)
+					reply(`O prefixo foi alterado com sucesso para : ${prefix}`)
 					break
 				/*case 'loli':
 					loli.getSFWLoli(async (err, res) => {
