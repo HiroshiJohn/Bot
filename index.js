@@ -637,7 +637,7 @@ async function starts() {
                                       break
                                 case 'say':
 					if (args.length < 1) return reply('Onde está o texto?')
-					reply('${body.slice(4)}' args.length)
+					reply('${body.slice(4)}')
 					break
 				case 'clone':
 					if (!isGroup) return reply(mess.only.group)
