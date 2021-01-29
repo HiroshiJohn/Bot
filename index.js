@@ -477,14 +477,14 @@ async function starts() {
 						const encmedia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
 						buff = await client.downloadMediaMessage(encmedia)
 						for (let _ of anu) {
-							client.sendMessage(_.jid, buff, image, {caption: `[ Ini Broadcast ]\n\n${body.slice(4)}`})
+							client.sendMessage(_.jid, buff, image, {caption: `[ Transmissão para Todos ]\n\n${body.slice(4)}`})
 						}
-						reply('Transmissão de sucesso')
+						reply('Transmissão feita com sucesso')
 					} else {
 						for (let _ of anu) {
-							sendMess(_.jid, `[ Ini Broadcast ]\n\n${body.slice(4)}`)
+							sendMess(_.jid, `[ Transmissão para Todos ]\n\n${body.slice(4)}`)
 						}
-						reply('Transmissão de sucesso')
+						reply('Transmissão feita com sucesso')
 					}
 					break
                                 case 'promote':
@@ -637,7 +637,7 @@ async function starts() {
                                       break
                                 case 'say':
 					if (args.length < 1) return reply('Onde está o texto?')
-					reply('args.length')
+					reply('${body.slice(4)}' args.length)
 					break
 				case 'clone':
 					if (!isGroup) return reply(mess.only.group)
