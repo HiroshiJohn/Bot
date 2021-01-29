@@ -635,6 +635,10 @@ async function starts() {
 						reply('1 para ativar, 0 para desativar')
 					}
                                       break
+                                case 'say':
+					if (args.length < 1) return reply('Onde está o texto?')
+					reply('args.length')
+					break
 				case 'clone':
 					if (!isGroup) return reply(mess.only.group)
 					if (!isGroupAdmins) return reply(mess.only.admin)
