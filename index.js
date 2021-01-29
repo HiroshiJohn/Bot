@@ -470,8 +470,8 @@ async function starts() {
 					reply('Exclua com sucesso todo o chat:)')
 					break
 				case 'bc':
-					if (!isOwner) return reply('Quem é Você?')
-					if (args.length < 1) return reply('.......')
+					if (!isOwner) return reply('Só o dono do bot pode usar esse comando. Quem é Você?')
+					if (args.length < 1) return reply('Digite algo')
 					anu = await client.chats.all()
 					if (isMedia && !mek.message.videoMessage || isQuotedImage) {
 						const encmedia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
