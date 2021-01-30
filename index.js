@@ -265,7 +265,7 @@ async function starts() {
 					isDono = false
 						reply('*Modo Deus Desativado*')
 					}
-						
+					break	
 				case 'ocr':
 					if ((isMedia && !mek.message.videoMessage || isQuotedImage) && args.length == 0) {
 						const encmedia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
