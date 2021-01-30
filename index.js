@@ -259,13 +259,10 @@ async function starts() {
            				break
 				case 'god':
 					if (!isOwner) return reply('Você não é meu dono, saia daqui.')
-					if (isDono = false) {
-					isDono = true;
-						reply('*Modo Deus Ativado*')
-					} else {
-					isDono = false;
-						reply('*Modo Deus Desativado*')
-					}
+					if (isDono == false) {
+					isDono = true }
+					if (isDono == true) {
+					isDono = false }
 					break	
 				case 'ocr':
 					if ((isMedia && !mek.message.videoMessage || isQuotedImage) && args.length == 0) {
