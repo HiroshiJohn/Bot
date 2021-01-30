@@ -11,7 +11,7 @@ const { wait, simih, getBuffer, h2k, generateMessageID, getGroupAdmins, getRando
 const { fetchJson } = require('./lib/fetcher')
 const { recognize } = require('./lib/ocr')
 const fs = require('fs')
-const flahino = require ('.musics/flamengo.mp3')
+const flahino = require ('musics/flamengo.mp3')
 const moment = require('moment-timezone')
 const { exec } = require('child_process')
 const fetch = require('node-fetch')
