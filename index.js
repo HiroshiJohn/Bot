@@ -20,6 +20,7 @@ const { removeBackgroundFromImageFile } = require('remove.bg')
 const lolis = require('lolis.life')
 const loli = new lolis()
 const welkom = JSON.parse(fs.readFileSync('./src/welkom.json'))
+const god = JSON.parse(fs.readFileSync('./src/god.json'))
 const nsfw = JSON.parse(fs.readFileSync('./src/nsfw.json'))
 const samih = JSON.parse(fs.readFileSync('./src/simi.json'))
 const flahino = JSON.parse(fs.readFileSync('./src/fla.json'))
@@ -145,6 +146,7 @@ async function starts() {
 			const isWelkom = isGroup ? welkom.includes(from) : false
 			const isNsfw = isGroup ? nsfw.includes(from) : false
 			const isSimi = isGroup ? samih.includes(from) : false
+			const isGod = isGroup ? god.includes(from) : false
 			const isOwner = ownerNumber.includes(sender)
 			const isUrl = (url) => {
 			    return url.match(new RegExp(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&/=]*)/, 'gi'))
@@ -158,8 +160,6 @@ async function starts() {
 			const mentions = (teks, memberr, id) => {
 				(id == null || id == undefined || id == false) ? client.sendMessage(from, teks.trim(), extendedText, {contextInfo: {"mentionedJid": memberr}}) : client.sendMessage(from, teks.trim(), extendedText, {quoted: mek, contextInfo: {"mentionedJid": memberr}})
 			}
-			
-			const isDono = false
 			
 			colors = ['red','white','black','blue','yellow','green']
 			const isMedia = (type === 'imageMessage' || type === 'videoMessage')
@@ -261,11 +261,13 @@ async function starts() {
 					if (!isOwner) return reply('Você não é meu dono, saia daqui.')
 					if (args.length < 1) return reply('Hmmmm')
 					if (Number(args[0]) === 1) {
-						if (isDono) return reply('Já ativo')
-						isDono = 1
+						if (isGod) return reply('Já ativo')
+						god.push(from)
+						fs.writeFileSync('./src/god.json', JSON.stringify(god))
 						reply('Modo Deus Ativado ✔️')
 					} else if (Number(args[0]) === 0) {
-						isDono = 0
+						god.splice(from, 1)
+						fs.writeFileSync('./src/god.json', JSON.stringify(god))
 						reply('Modo Deus Desativado ✔️')
 					} else {
 						reply('1 para ativar, 0 para desativar')
