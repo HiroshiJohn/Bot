@@ -231,8 +231,23 @@ async function starts() {
            				hasil = await getBuffer(data.url)
            				client.sendMessage(from, hasil, image, {quoted: mek})
            				break
-				case 'hentai':
+				case 'waifu':
           				data = await fetchJson('https://waifu.pics/api/nsfw/waifu')
+           				hasil = await getBuffer(data.url)
+           				client.sendMessage(from, hasil, image, {quoted: mek})
+           				break
+				case 'blowjob':
+          				data = await fetchJson('https://waifu.pics/api/nsfw/blowjob')
+           				hasil = await getBuffer(data.url)
+           				client.sendMessage(from, hasil, image, {quoted: mek})
+           				break
+				case 'neko':
+          				data = await fetchJson('https://waifu.pics/api/nsfw/neko')
+           				hasil = await getBuffer(data.url)
+           				client.sendMessage(from, hasil, image, {quoted: mek})
+           				break
+				case 'trap':
+          				data = await fetchJson('https://waifu.pics/api/nsfw/trap')
            				hasil = await getBuffer(data.url)
            				client.sendMessage(from, hasil, image, {quoted: mek})
            				break
