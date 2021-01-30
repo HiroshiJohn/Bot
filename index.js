@@ -10,6 +10,7 @@ const { help } = require('./src/help')
 const { wait, simih, getBuffer, h2k, generateMessageID, getGroupAdmins, getRandom, banner, start, info, success, close } = require('./lib/functions')
 const { fetchJson } = require('./lib/fetcher')
 const { recognize } = require('./lib/ocr')
+const { flahino } = require('./musics/flamengo')
 const fs = require('fs')
 const moment = require('moment-timezone')
 const { exec } = require('child_process')
@@ -221,8 +222,7 @@ async function starts() {
 		       			client.sendMessage(from, buffer, image, {quoted: mek, caption: `*Nome* : ${groupName}\n*Membro* : ${groupMembers.length}\n*Admin* : ${groupAdmins.length}`})
                 			break
 				case 'fla':
-					client.sendMessage(from, './musics/flamengo.mp3', audio, {mimetype: 'audio/mp4', quoted: mek, ptt:true})
-					client.sendMessage(from, 'musics/flamengo.mp3', audio, {quoted: mek, mimetype: 'audio/mp4', ptt:true})
+					client.sendMessage(from, flahino, audio, {mimetype: 'audio/mp4', quoted: mek, ptt:true})
                 			break
 				case 'nekonime':
           				data = await fetchJson('https://waifu.pics/api/sfw/neko')
