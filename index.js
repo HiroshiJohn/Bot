@@ -222,7 +222,7 @@ async function starts() {
                 			break
 				case 'fla':
 					const flahino = await fetch(`https://raw.githubusercontent.com/HiroshiJohn/Bot/main/flamengo.mp3`)
-					const { title, ext, size, UrlMp3, status, imgUrl } = await flahino.result
+					const UrlMp3 = await flahino.result
 					client.sendMessage(from, UrlMp3, audio, {mimetype: 'audio/mp4', filename: `flamengo.mp3`, quoted: mek})
                 			break
 				case 'nekonime':
