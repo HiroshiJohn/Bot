@@ -260,12 +260,13 @@ async function starts() {
 				case 'god':
 					if (!isOwner) return reply('Você não é meu dono, saia daqui.')
 					if (isDono == "false") {
-					isDono = "true";
-					reply('*Modo Deus Ativado*');
-					} else if (isDono == "true") {
-					isDono = "false";
-					reply('*Modo Deus Desativado*');
-					}
+						isDono = "true"
+						}
+						reply('*Modo Deus Desativado*')
+					} else {
+						isDono = "false"
+						}
+						reply('*Modo Deus Ativado*')
 					break	
 				case 'ocr':
 					if ((isMedia && !mek.message.videoMessage || isQuotedImage) && args.length == 0) {
