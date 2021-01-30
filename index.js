@@ -266,6 +266,10 @@ async function starts() {
 						isDono = false
 						reply('*Modo Deus Ativado*')
 						}
+					break
+				case 'godtest':
+					if (!isOwner) return reply('Você não é meu dono, saia daqui.')
+					reply(isDono)
 					break	
 				case 'ocr':
 					if ((isMedia && !mek.message.videoMessage || isQuotedImage) && args.length == 0) {
