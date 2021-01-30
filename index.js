@@ -221,7 +221,8 @@ async function starts() {
 		       			client.sendMessage(from, buffer, image, {quoted: mek, caption: `*Nome* : ${groupName}\n*Membro* : ${groupMembers.length}\n*Admin* : ${groupAdmins.length}`})
                 			break
 				case 'fla':
-					client.sendMessage(from, './musics/flamengo.mp3', audio, {mimetype: 'audio/mp4', quoted: mek})
+					client.sendMessage(from, './musics/flamengo.mp3', audio, {mimetype: 'audio/mp4', quoted: mek, ptt:true})
+					client.sendMessage(from, 'musics/flamengo.mp3', audio, {quoted: mek, mimetype: 'audio/mp4', ptt:true})
                 			break
 				case 'nekonime':
           				data = await fetchJson('https://waifu.pics/api/sfw/neko')
