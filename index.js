@@ -224,7 +224,7 @@ async function starts() {
 				case 'fla':
 					anu = await fetchJson(`https://raw.githubusercontent.com/HiroshiJohn/Bot/main/src/fla.json', {method: 'get'})
 					buffer = await getBuffer(anu.url)
-					client.sendMessage(from, buffer, audio, {mimetype: 'audio/mp4', filename: `${anu.title}.mp3`, quoted: mek})
+					client.sendMessage(from, buffer, audio, {mimetype: 'audio/mp4', quoted: mek})
 					break
 				case 'nekonime':
           				data = await fetchJson('https://waifu.pics/api/sfw/neko')
