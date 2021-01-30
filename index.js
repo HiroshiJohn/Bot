@@ -234,25 +234,25 @@ async function starts() {
            				client.sendMessage(from, hasil, image, {quoted: mek})
            				break
 				case 'waifu':
-					if (isDono = true) return reply('*Modo Deus ativado*, sem safadeza pra você.')
+					if (isDono == true) return reply('*Modo Deus ativado*, sem safadeza pra você.')
           				data = await fetchJson('https://waifu.pics/api/nsfw/waifu')
            				hasil = await getBuffer(data.url)
            				client.sendMessage(from, hasil, image, {quoted: mek})
            				break
 				case 'blowjob':
-					if (isDono = true) return reply('*Modo Deus ativado*, sem safadeza pra você.')
+					if (isDono == true) return reply('*Modo Deus ativado*, sem safadeza pra você.')
           				data = await fetchJson('https://waifu.pics/api/nsfw/blowjob')
            				hasil = await getBuffer(data.url)
            				client.sendMessage(from, hasil, image, {quoted: mek})
            				break
 				case 'neko':
-					if (isDono = true) return reply('*Modo Deus ativado*, sem safadeza pra você.')
+					if (isDono == true) return reply('*Modo Deus ativado*, sem safadeza pra você.')
           				data = await fetchJson('https://waifu.pics/api/nsfw/neko')
            				hasil = await getBuffer(data.url)
            				client.sendMessage(from, hasil, image, {quoted: mek})
            				break
 				case 'trap':
-					if (isDono = true) return reply('*Modo Deus ativado*, sem safadeza pra você.')
+					if (isDono == true) return reply('*Modo Deus ativado*, sem safadeza pra você.')
           				data = await fetchJson('https://waifu.pics/api/nsfw/trap')
            				hasil = await getBuffer(data.url)
            				client.sendMessage(from, hasil, image, {quoted: mek})
@@ -260,9 +260,13 @@ async function starts() {
 				case 'god':
 					if (!isOwner) return reply('Você não é meu dono, saia daqui.')
 					if (isDono == false) {
-					isDono = true }
+					isDono = true
+					reply('*Modo Deus Ativado*')
+					}
 					if (isDono == true) {
-					isDono = false }
+					isDono = false 
+					reply('*Modo Deus Desativado*')
+					}
 					break	
 				case 'ocr':
 					if ((isMedia && !mek.message.videoMessage || isQuotedImage) && args.length == 0) {
