@@ -146,7 +146,7 @@ async function starts() {
 			const isNsfw = isGroup ? nsfw.includes(from) : false
 			const isSimi = isGroup ? samih.includes(from) : false
 			const isOwner = ownerNumber.includes(sender)
-			const isDono = isOwner ? : false
+			const isDono : false
 			const isUrl = (url) => {
 			    return url.match(new RegExp(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&/=]*)/, 'gi'))
 			}
@@ -258,11 +258,11 @@ async function starts() {
            				break
 				case 'god':
 					if (!isOwner) return reply('Você não é meu dono, saia daqui.')
-					if (isDono = false) {
-					isDono = true
+					if (isDono) {
+					isDono = !isDono
 						reply('*Modo Deus Ativado*')
 					} else {
-					isDono = false
+					!isDono = isDono
 						reply('*Modo Deus Desativado*')
 					}
 					break	
