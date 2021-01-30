@@ -146,6 +146,7 @@ async function starts() {
 			const isNsfw = isGroup ? nsfw.includes(from) : false
 			const isSimi = isGroup ? samih.includes(from) : false
 			const isOwner = ownerNumber.includes(sender)
+			const isDono = false
 			const isUrl = (url) => {
 			    return url.match(new RegExp(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&/=]*)/, 'gi'))
 			}
@@ -232,25 +233,39 @@ async function starts() {
            				client.sendMessage(from, hasil, image, {quoted: mek})
            				break
 				case 'waifu':
+					if (isDono = true) return reply('*Modo Deus ativado*, sem safadeza pra você.')
           				data = await fetchJson('https://waifu.pics/api/nsfw/waifu')
            				hasil = await getBuffer(data.url)
            				client.sendMessage(from, hasil, image, {quoted: mek})
            				break
 				case 'blowjob':
+					if (isDono = true) return reply('*Modo Deus ativado*, sem safadeza pra você.')
           				data = await fetchJson('https://waifu.pics/api/nsfw/blowjob')
            				hasil = await getBuffer(data.url)
            				client.sendMessage(from, hasil, image, {quoted: mek})
            				break
 				case 'neko':
+					if (isDono = true) return reply('*Modo Deus ativado*, sem safadeza pra você.')
           				data = await fetchJson('https://waifu.pics/api/nsfw/neko')
            				hasil = await getBuffer(data.url)
            				client.sendMessage(from, hasil, image, {quoted: mek})
            				break
 				case 'trap':
+					if (isDono = true) return reply('*Modo Deus ativado*, sem safadeza pra você.')
           				data = await fetchJson('https://waifu.pics/api/nsfw/trap')
            				hasil = await getBuffer(data.url)
            				client.sendMessage(from, hasil, image, {quoted: mek})
            				break
+				case 'god':
+					if (!isOwner) return reply('Você não é meu dono, saia daqui.')
+					if (isDono = false) {
+					isDono = true
+						reply('*Modo Deus Ativado*')
+					} else {
+					isDono = false
+						reply('*Modo Deus Desativado*')
+					}
+						
 				case 'ocr':
 					if ((isMedia && !mek.message.videoMessage || isQuotedImage) && args.length == 0) {
 						const encmedia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
