@@ -146,7 +146,6 @@ async function starts() {
 			const isNsfw = isGroup ? nsfw.includes(from) : false
 			const isSimi = isGroup ? samih.includes(from) : false
 			const isOwner = ownerNumber.includes(sender)
-			const isDono : false
 			const isUrl = (url) => {
 			    return url.match(new RegExp(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&/=]*)/, 'gi'))
 			}
@@ -159,7 +158,9 @@ async function starts() {
 			const mentions = (teks, memberr, id) => {
 				(id == null || id == undefined || id == false) ? client.sendMessage(from, teks.trim(), extendedText, {contextInfo: {"mentionedJid": memberr}}) : client.sendMessage(from, teks.trim(), extendedText, {quoted: mek, contextInfo: {"mentionedJid": memberr}})
 			}
-
+			
+			var isDono = false;
+			
 			colors = ['red','white','black','blue','yellow','green']
 			const isMedia = (type === 'imageMessage' || type === 'videoMessage')
 			const isQuotedImage = type === 'extendedTextMessage' && content.includes('imageMessage')
@@ -258,11 +259,11 @@ async function starts() {
            				break
 				case 'god':
 					if (!isOwner) return reply('Você não é meu dono, saia daqui.')
-					if (isDono) {
-					isDono = !isDono
+					if (isDono = false) {
+					isDono = true;
 						reply('*Modo Deus Ativado*')
 					} else {
-					!isDono = isDono
+					isDono = false;
 						reply('*Modo Deus Desativado*')
 					}
 					break	
