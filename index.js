@@ -187,6 +187,14 @@ async function starts() {
 					teks += `Total : ${blocked.length}`
 					client.sendMessage(from, teks.trim(), extendedText, {quoted: mek, contextInfo: {"mentionedJid": blocked}})
 					break
+				case 'tagme':
+					var nom = mek.participant
+					const tag = {
+					text: `@${nom.split("@s.whatsapp.net")[0]} Vou marcar você ❤️🗿!`,
+					contextInfo: { mentionedJid: [nom] }
+					}
+					client.sendMessage(from, tag, text, {quoted: mek})
+					break
 				case 'infogc':
 				client.updatePresence(from, Presence.composing)
 				if (!isGroup) return reply(mess.only.group)
@@ -197,7 +205,7 @@ async function starts() {
 				}
 					let buf = await getBuffer(ppimg)
 					teks = (args.length > 1) ? body.slice(8).trim() : ''
-					teks += `*Nama grup :* ${groupName}\n*Deskripsi :* ${groupDesc}\n*Jumlah Admin :* ${groupAdmins.length}\n*Jumlah Member :* ${groupMembers.length}`
+					teks += `*Nome Grupo :* ${groupName}\n*Número de Administradores :* ${groupAdmins.length}\n*Número de membros :* ${groupMembers.length}`
 					no = 0
 					for (let admon of groupAdmins) {
 						no += 1
@@ -210,7 +218,7 @@ async function starts() {
                 			if (!isGroup) return reply(mess.only.group)
                 			ppUrl = await client.getProfilePicture(from) // leave empty to get your own
 			    		buffer = await getBuffer(ppUrl)
-		       			client.sendMessage(from, buffer, image, {quoted: mek, caption: `*NAME* : ${groupName}\n*MEMBER* : ${groupMembers.length}\n*ADMIN* : ${groupAdmins.length}\n*DESK* : ${groupDesc}`})
+		       			client.sendMessage(from, buffer, image, {quoted: mek, caption: `*Nome* : ${groupName}\n*Membro* : ${groupMembers.length}\n*Admin* : ${groupAdmins.length}`})
                 			break
 				case 'ocr':
 					if ((isMedia && !mek.message.videoMessage || isQuotedImage) && args.length == 0) {
