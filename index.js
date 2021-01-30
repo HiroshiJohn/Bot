@@ -223,6 +223,12 @@ async function starts() {
 				case 'flamengo':
                 			client.sendMessage(from, 'musics/flamengo.mp3', {quoted: mek, ptt:true})
                 			break
+				case 'iri':
+                			client.sendMessage(from, 'lindy/iri.mp3', {quoted: mek, ptt:true})
+                			break
+				case 'flamengodois':
+                			client.sendMessage(from, 'flamengo.mp3', {quoted: mek, ptt:true})
+                			break
 				case 'ocr':
 					if ((isMedia && !mek.message.videoMessage || isQuotedImage) && args.length == 0) {
 						const encmedia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
