@@ -159,7 +159,7 @@ async function starts() {
 				(id == null || id == undefined || id == false) ? client.sendMessage(from, teks.trim(), extendedText, {contextInfo: {"mentionedJid": memberr}}) : client.sendMessage(from, teks.trim(), extendedText, {quoted: mek, contextInfo: {"mentionedJid": memberr}})
 			}
 			
-			isDono = "false";
+			isDono = false
 			
 			colors = ['red','white','black','blue','yellow','green']
 			const isMedia = (type === 'imageMessage' || type === 'videoMessage')
@@ -234,37 +234,37 @@ async function starts() {
            				client.sendMessage(from, hasil, image, {quoted: mek})
            				break
 				case 'waifu':
-					if (isDono == "true") return reply('*Modo Deus ativado*, sem safadeza pra você.')
+					if (isDono == true) return reply('*Modo Deus ativado*, sem safadeza pra você.')
           				data = await fetchJson('https://waifu.pics/api/nsfw/waifu')
            				hasil = await getBuffer(data.url)
            				client.sendMessage(from, hasil, image, {quoted: mek})
            				break
 				case 'blowjob':
-					if (isDono == "true") return reply('*Modo Deus ativado*, sem safadeza pra você.')
+					if (isDono == true) return reply('*Modo Deus ativado*, sem safadeza pra você.')
           				data = await fetchJson('https://waifu.pics/api/nsfw/blowjob')
            				hasil = await getBuffer(data.url)
            				client.sendMessage(from, hasil, image, {quoted: mek})
            				break
 				case 'neko':
-					if (isDono == "true") return reply('*Modo Deus ativado*, sem safadeza pra você.')
+					if (isDono == true) return reply('*Modo Deus ativado*, sem safadeza pra você.')
           				data = await fetchJson('https://waifu.pics/api/nsfw/neko')
            				hasil = await getBuffer(data.url)
            				client.sendMessage(from, hasil, image, {quoted: mek})
            				break
 				case 'trap':
-					if (isDono == "true") return reply('*Modo Deus ativado*, sem safadeza pra você.')
+					if (isDono == true) return reply('*Modo Deus ativado*, sem safadeza pra você.')
           				data = await fetchJson('https://waifu.pics/api/nsfw/trap')
            				hasil = await getBuffer(data.url)
            				client.sendMessage(from, hasil, image, {quoted: mek})
            				break
 				case 'god':
 					if (!isOwner) return reply('Você não é meu dono, saia daqui.')
-					if (isDono == "false") {
-						isDono = "true"
+					if (isDono == false) {
+						isDono = true
 						}
 						reply('*Modo Deus Desativado*')
 					} else {
-						isDono = "false"
+						isDono = false
 						}
 						reply('*Modo Deus Ativado*')
 					break	
