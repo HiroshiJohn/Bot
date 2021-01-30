@@ -160,6 +160,7 @@ async function starts() {
 			}
 			
 			var isDono = 0;
+			var isGod = 0;
 			
 			colors = ['red','white','black','blue','yellow','green']
 			const isMedia = (type === 'imageMessage' || type === 'videoMessage')
@@ -234,46 +235,44 @@ async function starts() {
            				client.sendMessage(from, hasil, image, {quoted: mek})
            				break
 				case 'waifu':
-					if (isDono === 1) return reply('*Modo Deus ativado*, sem safadeza pra você.')
+					if (isGod === 1) return reply('*Modo Deus ativado*, sem safadeza pra você.')
           				data = await fetchJson('https://waifu.pics/api/nsfw/waifu')
            				hasil = await getBuffer(data.url)
            				client.sendMessage(from, hasil, image, {quoted: mek})
            				break
 				case 'blowjob':
-					if (isDono === 1) return reply('*Modo Deus ativado*, sem safadeza pra você.')
+					if (isGod === 1) return reply('*Modo Deus ativado*, sem safadeza pra você.')
           				data = await fetchJson('https://waifu.pics/api/nsfw/blowjob')
            				hasil = await getBuffer(data.url)
            				client.sendMessage(from, hasil, image, {quoted: mek})
            				break
 				case 'neko':
-					if (isDono === 1) return reply('*Modo Deus ativado*, sem safadeza pra você.')
+					if (isGod === 1) return reply('*Modo Deus ativado*, sem safadeza pra você.')
           				data = await fetchJson('https://waifu.pics/api/nsfw/neko')
            				hasil = await getBuffer(data.url)
            				client.sendMessage(from, hasil, image, {quoted: mek})
            				break
 				case 'trap':
-					if (isDono === 1) return reply('*Modo Deus ativado*, sem safadeza pra você.')
+					if (isGod === 1) return reply('*Modo Deus ativado*, sem safadeza pra você.')
           				data = await fetchJson('https://waifu.pics/api/nsfw/trap')
            				hasil = await getBuffer(data.url)
            				client.sendMessage(from, hasil, image, {quoted: mek})
            				break
-				case 'godon':
+				case 'god':
 					if (!isOwner) return reply('Você não é meu dono, saia daqui.')
-					if (isDono === 0) {
-					isDono = 1;
-					} 
-					break
-				case 'godoff':
-					if (!isOwner) return reply('Você não é meu dono, saia daqui.')
-					if (isDono === 1) {
-					isDono = 0;
-					} 
+					if (isDono == 0) {
+					isGod = 1;
+					} else if (isDono == 1) {
+					isGod = 0;
+					} else {
+					reply('indefinido')	
+					}
 					break
 				case 'godtest':
 					if (!isOwner) return reply('Você não é meu dono, saia daqui.')
-					if (isDono === 1) {
+					if (isGod == 1) {
 					reply('on')
-					} else if (isDono === 0) { 
+					} else if (isGod == 0) { 
 					reply('off')
 					} else {
 					reply('indefinido')	
