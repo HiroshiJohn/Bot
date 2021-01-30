@@ -262,13 +262,11 @@ async function starts() {
 					if (!isOwner) return reply('Você não é meu dono, saia daqui.')
 					isDono = true
 					reply('*Modo Deus Ativado*')
-					}
 					break
-				case 'godon':
+				case 'godoff':
 					if (!isOwner) return reply('Você não é meu dono, saia daqui.')
 					isDono = false
 					reply('*Modo Deus Desativado*')
-					}
 					break
 				case 'godtest':
 					if (!isOwner) return reply('Você não é meu dono, saia daqui.')
