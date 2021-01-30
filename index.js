@@ -187,6 +187,24 @@ async function starts() {
 					teks += `Total : ${blocked.length}`
 					client.sendMessage(from, teks.trim(), extendedText, {quoted: mek, contextInfo: {"mentionedJid": blocked}})
 					break
+				case 'infogc':
+				client.updatePresence(from, Presence.composing)
+				if (!isGroup) return reply(mess.only.group)
+					try {
+					ppimg = await client.getProfilePicture(from)
+				} catch {
+					ppimg = 'https://i.ibb.co/NthF8ds/IMG-20201223-WA0740.jpg'
+				}
+					let buf = await getBuffer(ppimg)
+					teks = (args.length > 1) ? body.slice(8).trim() : ''
+					teks += `*Nama grup :* ${groupName}\n*Deskripsi :* ${groupDesc}\n*Jumlah Admin :* ${groupAdmins.length}\n*Jumlah Member :* ${groupMembers.length}`
+					no = 0
+					for (let admon of groupAdmins) {
+						no += 1
+						teks += `[${no.toString()}]`
+					}
+					client.sendMessage(from, buf, image, {quoted: mek, caption: teks})
+					break
 				case 'groupinfo':
               				client.updatePresence(from, Presence.composing)
                 			if (!isGroup) return reply(mess.only.group)
