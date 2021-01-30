@@ -160,6 +160,7 @@ async function starts() {
 			}
 			
 			isDono = false
+			isGod = false
 			
 			colors = ['red','white','black','blue','yellow','green']
 			const isMedia = (type === 'imageMessage' || type === 'videoMessage')
@@ -257,19 +258,25 @@ async function starts() {
            				hasil = await getBuffer(data.url)
            				client.sendMessage(from, hasil, image, {quoted: mek})
            				break
-				case 'god':
+				case 'godon':
 					if (!isOwner) return reply('Você não é meu dono, saia daqui.')
-					if (isDono == false) {
-						isDono = true
-						reply('*Modo Deus Desativado*')
-					} else {
-						isDono = false
-						reply('*Modo Deus Ativado*')
-						}
+					isDono = true
+					reply('*Modo Deus Ativado*')
+					}
+					break
+				case 'godon':
+					if (!isOwner) return reply('Você não é meu dono, saia daqui.')
+					isDono = false
+					reply('*Modo Deus Desativado*')
+					}
 					break
 				case 'godtest':
 					if (!isOwner) return reply('Você não é meu dono, saia daqui.')
-					reply(isDono)
+					if (isDono == true) {
+					reply('on')
+					} else { 
+					reply('off')
+					}
 					break	
 				case 'ocr':
 					if ((isMedia && !mek.message.videoMessage || isQuotedImage) && args.length == 0) {
