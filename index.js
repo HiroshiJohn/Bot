@@ -234,25 +234,25 @@ async function starts() {
            				client.sendMessage(from, hasil, image, {quoted: mek})
            				break
 				case 'waifu':
-					if (isDono === 1) return reply('*Modo Deus ativado*, sem safadeza pra você.')
+					if (!isGod) return reply('*Modo Deus ativado*, sem safadeza pra você.')
           				data = await fetchJson('https://waifu.pics/api/nsfw/waifu')
            				hasil = await getBuffer(data.url)
            				client.sendMessage(from, hasil, image, {quoted: mek})
            				break
 				case 'blowjob':
-					if (isDono === 1) return reply('*Modo Deus ativado*, sem safadeza pra você.')
+					if (!isGod) return reply('*Modo Deus ativado*, sem safadeza pra você.')
           				data = await fetchJson('https://waifu.pics/api/nsfw/blowjob')
            				hasil = await getBuffer(data.url)
            				client.sendMessage(from, hasil, image, {quoted: mek})
            				break
 				case 'neko':
-					if (isDono === 1) return reply('*Modo Deus ativado*, sem safadeza pra você.')
+					if (!isGod) return reply('*Modo Deus ativado*, sem safadeza pra você.')
           				data = await fetchJson('https://waifu.pics/api/nsfw/neko')
            				hasil = await getBuffer(data.url)
            				client.sendMessage(from, hasil, image, {quoted: mek})
            				break
 				case 'trap':
-					if (isDono === 1) return reply('*Modo Deus ativado*, sem safadeza pra você.')
+					if (!isGod) return reply('*Modo Deus ativado*, sem safadeza pra você.')
           				data = await fetchJson('https://waifu.pics/api/nsfw/trap')
            				hasil = await getBuffer(data.url)
            				client.sendMessage(from, hasil, image, {quoted: mek})
