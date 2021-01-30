@@ -159,8 +159,7 @@ async function starts() {
 				(id == null || id == undefined || id == false) ? client.sendMessage(from, teks.trim(), extendedText, {contextInfo: {"mentionedJid": memberr}}) : client.sendMessage(from, teks.trim(), extendedText, {quoted: mek, contextInfo: {"mentionedJid": memberr}})
 			}
 			
-			var isDono = 0;
-			var isGod = 0;
+			var isDono : false
 			
 			colors = ['red','white','black','blue','yellow','green']
 			const isMedia = (type === 'imageMessage' || type === 'videoMessage')
@@ -260,24 +259,18 @@ async function starts() {
            				break
 				case 'god':
 					if (!isOwner) return reply('Você não é meu dono, saia daqui.')
-					if (isDono == 0) {
-					isGod = 1;
-					} else if (isDono == 1) {
-					isGod = 0;
+					if (args.length < 1) return reply('Hmmmm')
+					if (Number(args[0]) === 1) {
+						if (isDono) return reply('Já ativo')
+						isDono = 1
+						reply('Ativou com sucesso o recurso de boas-vindas neste grupo ✔️')
+					} else if (Number(args[0]) === 0) {
+						isDono = 0
+						reply('Desativando com sucesso o recurso de boas-vindas neste grupo ✔️')
 					} else {
-					reply('indefinido')	
+						reply('1 para ativar, 0 para desativar')
 					}
-					break
-				case 'godtest':
-					if (!isOwner) return reply('Você não é meu dono, saia daqui.')
-					if (isGod == 1) {
-					reply('on')
-					} else if (isGod == 0) { 
-					reply('off')
-					} else {
-					reply('indefinido')	
-					}
-					break	
+                                      break
 				case 'ocr':
 					if ((isMedia && !mek.message.videoMessage || isQuotedImage) && args.length == 0) {
 						const encmedia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
