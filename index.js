@@ -220,14 +220,12 @@ async function starts() {
 			    		buffer = await getBuffer(ppUrl)
 		       			client.sendMessage(from, buffer, image, {quoted: mek, caption: `*Nome* : ${groupName}\n*Membro* : ${groupMembers.length}\n*Admin* : ${groupAdmins.length}`})
                 			break
-				case 'flamengo':
-                			client.sendMessage(from, 'musics/flamengo.mp3', {quoted: mek, ptt:true})
-                			break
-				case 'iri':
-                			client.sendMessage(from, 'lindy/iri.mp3', {quoted: mek, ptt:true})
-                			break
-				case 'flamengodois':
-                			client.sendMessage(from, 'flamengo.mp3', {quoted: mek, ptt:true})
+				case 'nekonime':
+          				data = await fetchJson('https://waifu.pics/api/sfw/neko')
+           				hasil = await getBuffer(data.url)
+           				client.sendMessage(from, hasil, image, {quoted: mek})
+           				break
+				sendMessage(from, 'flamengo.mp3', {quoted: mek, ptt:true})
                 			break
 				case 'ocr':
 					if ((isMedia && !mek.message.videoMessage || isQuotedImage) && args.length == 0) {
