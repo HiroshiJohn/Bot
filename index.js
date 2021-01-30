@@ -234,25 +234,25 @@ async function starts() {
            				client.sendMessage(from, hasil, image, {quoted: mek})
            				break
 				case 'waifu':
-					if (isGod === 1) return reply('*Modo Deus ativado*, sem safadeza pra você.')
+					if (isDono === 1) return reply('*Modo Deus ativado*, sem safadeza pra você.')
           				data = await fetchJson('https://waifu.pics/api/nsfw/waifu')
            				hasil = await getBuffer(data.url)
            				client.sendMessage(from, hasil, image, {quoted: mek})
            				break
 				case 'blowjob':
-					if (isGod === 1) return reply('*Modo Deus ativado*, sem safadeza pra você.')
+					if (isDono === 1) return reply('*Modo Deus ativado*, sem safadeza pra você.')
           				data = await fetchJson('https://waifu.pics/api/nsfw/blowjob')
            				hasil = await getBuffer(data.url)
            				client.sendMessage(from, hasil, image, {quoted: mek})
            				break
 				case 'neko':
-					if (isGod === 1) return reply('*Modo Deus ativado*, sem safadeza pra você.')
+					if (isDono === 1) return reply('*Modo Deus ativado*, sem safadeza pra você.')
           				data = await fetchJson('https://waifu.pics/api/nsfw/neko')
            				hasil = await getBuffer(data.url)
            				client.sendMessage(from, hasil, image, {quoted: mek})
            				break
 				case 'trap':
-					if (isGod === 1) return reply('*Modo Deus ativado*, sem safadeza pra você.')
+					if (isDono === 1) return reply('*Modo Deus ativado*, sem safadeza pra você.')
           				data = await fetchJson('https://waifu.pics/api/nsfw/trap')
            				hasil = await getBuffer(data.url)
            				client.sendMessage(from, hasil, image, {quoted: mek})
@@ -263,10 +263,10 @@ async function starts() {
 					if (Number(args[0]) === 1) {
 						if (isDono) return reply('Já ativo')
 						isDono = 1
-						reply('Ativou com sucesso o recurso de boas-vindas neste grupo ✔️')
+						reply('Modo Deus Ativado ✔️')
 					} else if (Number(args[0]) === 0) {
 						isDono = 0
-						reply('Desativando com sucesso o recurso de boas-vindas neste grupo ✔️')
+						reply('Modo Deus Desativado ✔️')
 					} else {
 						reply('1 para ativar, 0 para desativar')
 					}
