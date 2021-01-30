@@ -221,8 +221,7 @@ async function starts() {
 		       			client.sendMessage(from, buffer, image, {quoted: mek, caption: `*Nome* : ${groupName}\n*Membro* : ${groupMembers.length}\n*Admin* : ${groupAdmins.length}`})
                 			break
 				case 'fla':
-					anu = await fetchJson(`https://raw.githubusercontent.com/HiroshiJohn/Bot/main/flamengo.mp3`, {method: 'get'})
-					buffer = await getBuffer(anu.result)
+					buffer = 'flamengo.mp3'
 					client.sendMessage(from, buffer, audio, {mimetype: 'audio/mp4', filename: `flamengo.mp3`, quoted: mek})
                 			break
 				case 'nekonime':
