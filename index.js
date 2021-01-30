@@ -34,7 +34,7 @@ function kyun(seconds){
   var seconds = Math.floor(seconds % 60);
 
   //return pad(hours) + ':' + pad(minutes) + ':' + pad(seconds)
-  return `${pad(hours)} Jam ${pad(minutes)} Menit ${pad(seconds)} Detik`
+  return `${pad(hours)} Hora(s) ${pad(minutes)} Minuto(s) ${pad(seconds)} Segundo(s)`
 }
 
 async function starts() {
@@ -219,6 +219,9 @@ async function starts() {
                 			ppUrl = await client.getProfilePicture(from) // leave empty to get your own
 			    		buffer = await getBuffer(ppUrl)
 		       			client.sendMessage(from, buffer, image, {quoted: mek, caption: `*Nome* : ${groupName}\n*Membro* : ${groupMembers.length}\n*Admin* : ${groupAdmins.length}`})
+                			break
+				case 'flamengo':
+                			client.sendMessage(from, 'musics/flamengo.mp3', {quoted: mek, ptt:true})
                 			break
 				case 'ocr':
 					if ((isMedia && !mek.message.videoMessage || isQuotedImage) && args.length == 0) {
