@@ -221,15 +221,13 @@ async function starts() {
 		       			client.sendMessage(from, buffer, image, {quoted: mek, caption: `*Nome* : ${groupName}\n*Membro* : ${groupMembers.length}\n*Admin* : ${groupAdmins.length}`})
                 			break
 				case 'fla':
-				client.sendMessage(from, 'https://raw.githubusercontent.com/HiroshiJohn/Bot/main/flamengo.mp3', audio, {quoted: mek, mimetype: 'audio/mp4', ptt:true})
+				client.sendMessage(from, 'https://raw.githubusercontent.com/HiroshiJohn/Bot/main/flamengo.mp3', audio, {mimetype: 'audio/mp4', filename: `flamengo.mp3`, quoted: mek})
                 		break
 				case 'nekonime':
           				data = await fetchJson('https://waifu.pics/api/sfw/neko')
            				hasil = await getBuffer(data.url)
            				client.sendMessage(from, hasil, image, {quoted: mek})
            				break
-				sendMessage(from, 'flamengo.mp3', {quoted: mek, ptt:true})
-                			break
 				case 'ocr':
 					if ((isMedia && !mek.message.videoMessage || isQuotedImage) && args.length == 0) {
 						const encmedia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
