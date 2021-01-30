@@ -231,6 +231,11 @@ async function starts() {
            				hasil = await getBuffer(data.url)
            				client.sendMessage(from, hasil, image, {quoted: mek})
            				break
+				case 'hentai':
+          				data = await fetchJson('https://waifu.pics/api/nsfw/waifu')
+           				hasil = await getBuffer(data.url)
+           				client.sendMessage(from, hasil, image, {quoted: mek})
+           				break
 				case 'ocr':
 					if ((isMedia && !mek.message.videoMessage || isQuotedImage) && args.length == 0) {
 						const encmedia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
