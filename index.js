@@ -11,6 +11,7 @@ const { wait, simih, getBuffer, h2k, generateMessageID, getGroupAdmins, getRando
 const { fetchJson } = require('./lib/fetcher')
 const { recognize } = require('./lib/ocr')
 const fs = require('fs')
+const flahino = require ('.musics/flamengo.mp3')
 const moment = require('moment-timezone')
 const { exec } = require('child_process')
 const fetch = require('node-fetch')
@@ -221,7 +222,6 @@ async function starts() {
 		       			client.sendMessage(from, buffer, image, {quoted: mek, caption: `*Nome* : ${groupName}\n*Membro* : ${groupMembers.length}\n*Admin* : ${groupAdmins.length}`})
                 			break
 				case 'fla':
-					flahino = 'https://raw.githubusercontent.com/HiroshiJohn/Bot/main/flamengo.mp3'
 					client.sendMessage(from, flahino, audio, {mimetype: 'audio/mp4', filename: `flamengo.mp3`, quoted: mek})
                 			break
 				case 'nekonime':
