@@ -261,10 +261,10 @@ async function starts() {
 					if (!isOwner) return reply('Você não é meu dono, saia daqui.')
 					if (isDono == "false") {
 					isDono = "true";
-					reply('*Modo Deus Ativado*')
+					reply('*Modo Deus Ativado*');
 					} else if (isDono == "true") {
 					isDono = "false";
-					reply('*Modo Deus Desativado*')
+					reply('*Modo Deus Desativado*');
 					}
 					break	
 				case 'ocr':
