@@ -559,6 +559,8 @@ async function starts() {
 					mentions(teks, members_id, true)
 					break
                                 case 'tagall2':
+					if (!isGroup) return reply(mess.only.group)
+					if (!isGroupAdmins) return reply(mess.only.admin)
 					members_id = []
 					teks = (args.length > 1) ? body.slice(8).trim() : ''
 					teks += '\n\n'
@@ -569,6 +571,8 @@ async function starts() {
 					reply(teks)
 					break
                                 case 'tagall3':
+					if (!isGroup) return reply(mess.only.group)
+					if (!isGroupAdmins) return reply(mess.only.admin)
 					members_id = []
 					teks = (args.length > 1) ? body.slice(8).trim() : ''
 					teks += '\n\n'
