@@ -1,16 +1,16 @@
 const help = (prefix) => {
 	return 
 
-       ==============
+       ═══════════════
         🤖𝕵𝖔𝖍𝖓 𝕭𝖔𝖙🤖 
-       ==============
+       ═══════════════
 
 ➸ Prefix:  *「${prefix}」*
 ➸ Status: *「 Online 」*
 
-       °==============°
+       °════════°════════°
        *FIGURINHAS* [^_^]
-       °==============°
+       °════════°════════°
       
 ➸ Comando : *${prefix}sticker*
 ➸ útil em : converter imagem/gif/vídeo em adesivo
@@ -19,9 +19,9 @@ const help = (prefix) => {
 ➸ útil em : converter adesivo em imagem
 ➸ uso : responder adesivo com ${prefix}toimg\n
 		     
-       °==============°
+       °═══════°═══════°
        *YouTube* [^_^]
-       °==============°
+       °═══════°═══════°
        
 ➸ Comando : *${prefix}ytmp3*
 ➸ útil em : Baixar mp3 do youtube
@@ -30,9 +30,9 @@ const help = (prefix) => {
 ➸ útil em : Baixar mp4 do youtube
 ➸ uso : Enviar ${prefix}ytmp4 + link\n
 
-       °==============°
+       °═══════°═══════°
        *OUTROS...* [^_^]
-       °==============°
+       °═══════°═══════°
 		    
 ➸ Comando : *${prefix}help ou ${prefix}menu*
 ➸ útil em : Abrir painel de comandos
@@ -65,9 +65,9 @@ const help = (prefix) => {
 ➸ útil em : Bot fala o que você manda
 ➸ uso : ${prefix}say + texto\n
 
-       °==============°
+       °═══════°═══════°
        *GRUPO* [^_^]
-       °==============°
+       °═══════°═══════°
 
 ➸ Comando : *${prefix}groupinfo*
 ➸ útil em : Informações do grupo
