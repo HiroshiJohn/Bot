@@ -483,7 +483,7 @@ async function starts() {
 					if (anu.error) return reply(anu.error)
 					teks = '=================\n'
 					for (let i in anu.result) {
-						teks += `*Title* : ${i.title}\n*Id* : ${i.id}\n*Published* : ${i.publishTime}\n*Duration* : ${i.duration}\n*Views* : ${h2k(i.views)}\n=================\n`
+						teks += `*Title* : ${i.result.title}\n*Id* : ${i.result.id}\n*Published* : ${i.result.publishTime}\n*Duration* : ${i.result.duration}\n=================\n`
 					}
 					reply(teks.trim())
 					break
