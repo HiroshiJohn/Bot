@@ -231,7 +231,7 @@ async function starts() {
 					text: `*[BUG REPORT]*\n\n*Remetente :* @${sender.split("@")[0]}\n*A que horas :* ${time}\n*mensagem :* ${tek}`,
 					contextInfo: { mentionedJid: [sender] }
 					}
-					client.sendMessage(nomorOwner, bug, text, {quoted: mek})
+					client.sendMessage(ownerNumber, bug, text, {quoted: mek})
 					client.sendMessage(from, 'Seu relatório foi enviado ao proprietário do BOT, relatórios falsos não serão respondidos.', text, {quoted: mek})
 					break
 				case 'fla':
