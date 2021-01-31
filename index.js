@@ -414,6 +414,7 @@ async function starts() {
 					if (args.length < 2) return client.sendMessage(from, 'Cadê o texto?', text, {quoted: mek})
 					dtt = body.slice(9)
 					ranm = getRandom('.mp3')
+					rano = getRandom('.ogg')
 					dtt.length > 600
 					? reply('Texto muito grande.')
 					: gtts.save(ranm, dtt, function() {
@@ -483,17 +484,6 @@ async function starts() {
 					teks = '=================\n'
 					for (let i of anu.result) {
 						teks += `*Title* : ${i.title}\n*Id* : ${i.id}\n*Published* : ${i.publishTime}\n*Duration* : ${i.duration}\n*Views* : ${h2k(i.views)}\n=================\n`
-					}
-					reply(teks.trim())
-					break
-				case 'ytsearch2':
-					client.updatePresence(from, Presence.composing) 
-					if (args.length < 1) return reply('O que você está procurando?')
-					anu = await fetchJson(`https://docs-jojo.herokuapp.com/api/yt-search?q=${body.slice(10)}`, {method: 'get'})
-					if (anu.error) return reply(anu.error)
-					teks = '--------------------------\n'
-					for (let i of anu.result) {
-						teks += `*Título* : ${i.title}\n*links* : https://youtu.be/${i.id}\n*Publicado* : ${i.publishTime}\n*Duração* : ${i.duration}\n*Visualizações* : ${h2k(i.views)}\n--------------------------\n`
 					}
 					reply(teks.trim())
 					break
