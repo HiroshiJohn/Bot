@@ -228,25 +228,11 @@ async function starts() {
 				if (args.length < 1) return reply('Qual é o bug?')
 					tek = body.slice(10)
 					bug = {
-					text: `*[BUG REPORT]*\n\n*Remetente :* @${sender.split("@")[0]}\n*A que horas :* ${time}\n*mensagem :* ${tek}`,
-					contextInfo: { mentionedJid: [sender] }
+					text: `*[BUG REPORT]*\n\n*Remetente :* @${sender.split("@")[0]}\n*A que horas :* ${time}\n*mensagem :* ${tek}`
 					}
 					client.sendMessage(ownerNumber, bug, text, {quoted: mek})
 					client.sendMessage(from, 'Seu relatório foi enviado ao proprietário do BOT, relatórios falsos não serão respondidos.', text, {quoted: mek})
 					break
-				  case 'report':
-                     			const pesan = body.slice(8)
-                      			if (pesan.length > 300) return client.sendMessage(from, 'Desculpe, o texto é muito longo, máximo de 300 textos', msgType.text, {quoted: mek})
-                        		var nomor = mek.participant
-                       			const teks1 = `*[REPORT]*\nNome : @${nomor.split("@s.whatsapp.net")[0]}\nMensagem : ${pesan}`
-
-                     			var options = {
-                       			text: teks1,
-                         		contextInfo: {mentionedJid: [nomor]},
-                     			}
-                    			client.sendMessage(ownerNumber, options, text, {quoted: mek})
-                    			reply('Problemas foram relatados ao proprietário do BOT, relatórios falsos não serão respondidos.')
-                    			break
 				case 'request':
                    	  		const cfrr = body.slice(8)
                       			if (cfrr.length > 300) return client.sendMessage(from, 'Desculpe, o texto é muito longo, máximo de 300 textos', msgType.text, {quoted: mek})
