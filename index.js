@@ -234,6 +234,32 @@ async function starts() {
 					client.sendMessage(ownerNumber, bug, text, {quoted: mek})
 					client.sendMessage(from, 'Seu relatório foi enviado ao proprietário do BOT, relatórios falsos não serão respondidos.', text, {quoted: mek})
 					break
+				  case 'report':
+                     			const pesan = body.slice(8)
+                      			if (pesan.length > 300) return client.sendMessage(from, 'Desculpe, o texto é muito longo, máximo de 300 textos', msgType.text, {quoted: mek})
+                        		var nomor = mek.participant
+                       			const teks1 = `*[REPORT]*\nNome : @${nomor.split("@s.whatsapp.net")[0]}\nMensagem : ${pesan}`
+
+                     			var options = {
+                       			text: teks1,
+                         		contextInfo: {mentionedJid: [nomor]},
+                     			}
+                    			client.sendMessage(ownerNumber, options, text, {quoted: mek})
+                    			reply('Problemas foram relatados ao proprietário do BOT, relatórios falsos não serão respondidos.')
+                    			break
+				case 'request':
+                   	  		const cfrr = body.slice(8)
+                      			if (cfrr.length > 300) return client.sendMessage(from, 'Desculpe, o texto é muito longo, máximo de 300 textos', msgType.text, {quoted: mek})
+                        		var nomor = mek.participant
+                       			const ress = `*[REQUEST VITUR]*\nNomor : @${nomor.split("@s.whatsapp.net")[0]}\nPesan : ${cfrr}`
+
+                      			var options = {
+                         		text: ress,
+                         		contextInfo: {mentionedJid: [nomor]},
+                     			}
+                    			client.sendMessage(ownerNumber, options, text, {quoted: mek})
+                    			reply('SUA SOLICITAÇÃO chegou ao proprietário do BOT, solicitações falsas / main2 não serão respondidas.')
+                    			break
 				case 'fla':
 					anu = await fetchJson('https://raw.githubusercontent.com/HiroshiJohn/Bot/main/src/fla.json', {method: 'get'})
 					buffer = await getBuffer(anu.url)
