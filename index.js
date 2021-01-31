@@ -481,12 +481,10 @@ async function starts() {
 					if (args.length < 1) return reply('Onde está o url?')
 					anu = await fetchJson(`https://docs-jojo.herokuapp.com/api/yt-search?q=${args[0]}`, {method: 'get'})
 					if (anu.error) return reply(anu.error)
-					teks = '=================\n'
 					for (let i in anu.result) {
-						var item = anu.result[i];
-						teks += `*Title* : ${item.result.title}\n*Id* : ${item.result.id}\n*Published* : ${item.result.publishTime}\n*Duration* : ${item.result.duration}\n=================\n`
+						teks = `*Title* : ${anu.title}\n*Id* : ${anu.id}\n*Published* : ${anu.publishTime}\n*Duration* : ${anu.duration}\n=================\n`
 					}
-					reply(teks.trim())
+					reply(teks)
 					break
 				case 'tiktok':
 					if (args.length < 1) return reply('Onde está o url?')
