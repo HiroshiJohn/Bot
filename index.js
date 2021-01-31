@@ -479,7 +479,7 @@ async function starts() {
 					break
 				case 'ytsearch':
 					if (args.length < 1) return reply('O que você está procurando?')
-					anu = await fetchJson(`https://docs-jojo.herokuapp.com/api/yt-search?q=${body.slice(10)}`, {method: 'get'})
+					anu = await fetchJson(`https://docs-jojo.herokuapp.com/api/yt-search?q=${body.slice(0)}`, {method: 'get'})
 					if (anu.error) return reply(anu.error)
 					teks = `*Titulo* : ${anu.title}\n*Duration* : ${anu.duration}\n*Link* : ${anu.link}\n`
 					pesquisa = await getBuffer(anu.link)
