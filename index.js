@@ -482,7 +482,7 @@ async function starts() {
 					anu = await fetchJson(`https://docs-jojo.herokuapp.com/api/yt-search?q=${args[0]}`, {method: 'get'})
 					if (anu.error) return reply(anu.error)
 					teks = '=================\n'
-					for (let i of anu.result) {
+					for (let i in anu.result) {
 						var item = anu.result[i];
 						teks += `*Title* : ${item.title}\n*Id* : ${item.id}\n*Published* : ${item.publishTime}\n*Duration* : ${item.duration}\n=================\n`
 						
