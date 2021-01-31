@@ -483,7 +483,7 @@ async function starts() {
 					if (anu.error) return reply(anu.error)
 					teks = `*Title* : ${anu.title}\n*Thumb* : ${anu.url}`
 					thumb = await getBuffer(anu.link)
-					client.sendMessage(from, thumb, text, {quoted: mek, caption: teks})
+					client.sendMessage(from, thumb, image, {quoted: mek, caption: teks})
 					break
 				case 'tiktok':
 					if (args.length < 1) return reply('Onde está o url?')
