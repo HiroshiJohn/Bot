@@ -478,12 +478,12 @@ async function starts() {
 					client.sendMessage(from, buffer, video, {quoted: mek})
 					break
 				case 'ytsearch':
-					if (args.length < 1) return reply('O que você está procurando?')
-					anu = await fetchJson(`https://docs-jojo.herokuapp.com/api/yt-search?q=${body.slice(0)}`, {method: 'get'})
+					if (args.length < 1) return reply('Onde está o url?')
+					anu = await fetchJson(`https://docs-jojo.herokuapp.com/api/yt-search?q=${args[0]}`, {method: 'get'})
 					if (anu.error) return reply(anu.error)
-					teks = `*Titulo* : ${anu.title}\n*Duration* : ${anu.duration}\n*Link* : ${anu.link}\n`
-					pesquisa = await getBuffer(anu.link)
-					client.sendMessage(from, pesquisa, text, {quoted: mek, caption: teks})
+					teks = `*Title* : ${anu.title}\n*Thumb* : ${anu.url}`
+					thumb = await getBuffer(anu.link)
+					client.sendMessage(from, thumb, text, {quoted: mek, caption: teks})
 					break
 				case 'tiktok':
 					if (args.length < 1) return reply('Onde está o url?')
