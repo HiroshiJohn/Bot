@@ -266,7 +266,7 @@ async function starts() {
 					if (isGod) return reply('*Modo Deus ativado*, sem safadeza pra você.')
           				data = await fetchJson('https://waifu.pics/api/nsfw/blowjob')
            				buffer = await getBuffer(data.url)
-           				client.sendMessage(from, buffer, image, {quoted: mek})
+           				client.sendMessage(from, buffer, video, {quoted: mek})
            				break
 				case 'neko':
 					if (isGod) return reply('*Modo Deus ativado*, sem safadeza pra você.')
