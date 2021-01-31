@@ -230,7 +230,7 @@ async function starts() {
 					bug = {
 					text: `*[BUG REPORT]*\n\n*Remetente :* @${sender.split("@")[0]}\n*A que horas :* ${time}\n*mensagem :* ${tek}`
 					}
-					client.sendMessage(ownerNumber, bug, text, {quoted: mek})
+					client.sendMessage('559885197842@s.whatsapp.net', bug, text, {quoted: mek})
 					client.sendMessage(from, 'Seu relatório foi enviado ao proprietário do BOT, relatórios falsos não serão respondidos.', text, {quoted: mek})
 					break
 				case 'request':
