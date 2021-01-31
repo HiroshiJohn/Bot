@@ -223,6 +223,17 @@ async function starts() {
 			    		buffer = await getBuffer(ppUrl)
 		       			client.sendMessage(from, buffer, image, {quoted: mek, caption: `*Nome* : ${groupName}\n*Membro* : ${groupMembers.length}\n*Admin* : ${groupAdmins.length}`})
                 			break
+				case 'bugreport':
+				client.updatePresence(from, Presence.composing) 
+				if (args.length < 1) return reply('Qual é o bug?')
+					tek = body.slice(10)
+					bug = {
+					text: `*[BUG REPORT]*\n\n*Remetente :* @${sender.split("@")[0]}\n*A que horas :* ${time}\n*mensagem :* ${tek}`,
+					contextInfo: { mentionedJid: [sender] }
+					}
+					client.sendMessage(nomorOwner, bug, text, {quoted: mek})
+					client.sendMessage(from, 'Seu relatório foi enviado ao proprietário do BOT, relatórios falsos não serão respondidos.', text, {quoted: mek})
+					break
 				case 'fla':
 					anu = await fetchJson('https://raw.githubusercontent.com/HiroshiJohn/Bot/main/src/fla.json', {method: 'get'})
 					buffer = await getBuffer(anu.url)
@@ -460,6 +471,17 @@ async function starts() {
 					teks = '=================\n'
 					for (let i of anu.result) {
 						teks += `*Title* : ${i.title}\n*Id* : ${i.id}\n*Published* : ${i.publishTime}\n*Duration* : ${i.duration}\n*Views* : ${h2k(i.views)}\n=================\n`
+					}
+					reply(teks.trim())
+					break
+				case 'ytsearch2':
+					client.updatePresence(from, Presence.composing) 
+					if (args.length < 1) return reply('O que você está procurando?')
+					anu = await fetchJson(`https://docs-jojo.herokuapp.com/api/yt-search?q=${body.slice(10)}`, {method: 'get'})
+					if (anu.error) return reply(anu.error)
+					teks = '--------------------------\n'
+					for (let i of anu.result) {
+						teks += `*Título* : ${i.title}\n*links* : https://youtu.be/${i.id}\n*Publicado* : ${i.publishTime}\n*Duração* : ${i.duration}\n*Visualizações* : ${h2k(i.views)}\n--------------------------\n`
 					}
 					reply(teks.trim())
 					break
