@@ -483,7 +483,7 @@ async function starts() {
 					if (anu.error) return reply(anu.error)
 					for (let i in anu.result) {
 						var item = anu.result[i];
-						teks = `*Title* : ${item.title}\n*Id* : ${item.result.id}\n*Published* : ${item.publishTime}\n*Duration* : ${anu.result.duration}\n=================\n`
+						teks = `*Title* : ${item.title}\n`
 					}
 					reply(teks)
 					break
