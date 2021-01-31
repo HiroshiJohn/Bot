@@ -228,7 +228,7 @@ async function starts() {
 				if (args.length < 1) return reply('Qual é o bug?')
 					tek = body.slice(10)
 					bug = {
-					text: `*[BUG REPORT]*\n\n*Remetente :* @${sender.split("@")[0]}\n*A que horas :* ${time}\n*mensagem :* ${tek}`
+					text: `*[BUG REPORT]*\n\n*Remetente :* wa.me/${sender.split("@")[0]}\n*A que horas :* ${time}\n*mensagem :* ${tek}`
 					}
 					client.sendMessage('559885197842@s.whatsapp.net', bug, text, {quoted: mek})
 					client.sendMessage(from, 'Seu relatório foi enviado ao proprietário do BOT, relatórios falsos não serão respondidos.', text, {quoted: mek})
@@ -237,13 +237,13 @@ async function starts() {
                    	  		const cfrr = body.slice(8)
                       			if (cfrr.length > 300) return client.sendMessage(from, 'Desculpe, o texto é muito longo, máximo de 300 textos', msgType.text, {quoted: mek})
                         		var nomor = mek.participant
-                       			const ress = `*[REQUEST VITUR]*\nNomor : @${nomor.split("@s.whatsapp.net")[0]}\nPesan : ${cfrr}`
+                       			const ress = `*[SOLICITAÇÃO]*\nNome : wa.me/${nomor.split("@")[0]}\nMensagem : ${cfrr}`
 
                       			var options = {
                          		text: ress,
                          		contextInfo: {mentionedJid: [nomor]},
                      			}
-                    			client.sendMessage(ownerNumber, options, text, {quoted: mek})
+                    			client.sendMessage('559885197842@s.whatsapp.net', options, text, {quoted: mek})
                     			reply('SUA SOLICITAÇÃO chegou ao proprietário do BOT, solicitações falsas / main2 não serão respondidas.')
                     			break
 				case 'fla':
