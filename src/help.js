@@ -1,7 +1,8 @@
 const help = (prefix) => {
 	return 
+	
 ╭──────────────╮
- *COMANDOS DO DARK*
+ *JOHN BOT*
 ╰──────────────╯
  
 
