@@ -481,11 +481,9 @@ async function starts() {
 					if (args.length < 1) return reply('O que você está procurando?')
 					anu = await fetchJson(`https://docs-jojo.herokuapp.com/api/yt-search?q=${body.slice(10)}`, {method: 'get'})
 					if (anu.error) return reply(anu.error)
-					teks = '=================\n'
-					for (let i of anu.result) {
-						teks += `*Title* : ${i.title}\n*Id* : ${i.id}\n*Published* : ${i.publishTime}\n*Duration* : ${i.duration}\n*Views* : ${h2k(i.views)}\n=================\n`
-					}
-					reply(teks.trim())
+					teks = `*Titulo* : ${anu.title}\n*Id* : ${anu.id}\n*Published* : ${anu.publishTime}\n*Duration* : ${anu.duration}\n*Views* : ${h2k(anu.views)}\n=================\n`
+					pesquisa = await getBuffer(anu.result)
+					client.sendMessage(from, pesquisa, text, {quoted: mek, caption: teks})
 					break
 				case 'tiktok':
 					if (args.length < 1) return reply('Onde está o url?')
