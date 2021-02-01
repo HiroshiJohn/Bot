@@ -478,11 +478,20 @@ async function starts() {
 					client.sendMessage(from, buffer, video, {quoted: mek})
 					break
 				case 'ytsearch':
-					if (args.length < 1) return reply('Onde está o url?')
-					anu = await fetchJson(`https://docs-jojo.herokuapp.com/api/yt-search?q=${args[0]}`, {method: 'get'})
+				if (isBanned) return reply(mess.only.benned)    
+				if (!isUser) return reply(mess.only.userB)
+				if (isLimit(sender)) return reply(limits.limitend(pushname2))
+					if (args.length < 1) return reply('O que você está procurando?')
+					reply(mess.wait)
+					anu = await fetchJson(`https://api.arugaz.my.id/api/media/ytsearch?query=${body.slice(10)}`, {method: 'get'})
 					if (anu.error) return reply(anu.error)
-					reply(anu.result)
-					break
+					teks = '=================\n'
+					for (let i of anu.result) {
+						teks += `\`\`\`Titulo\`\`\` : *${i.title}*\n\`\`\`Link\`\`\` : *https://youtu.be/${i.id}*\n\`\`\`Publicado\`\`\` : *${i.uploadDate}*\n\`\`\`Duração\`\`\` : *${i.duration}*\n\`\`\`Viewers: \`\`\`*${h2k(i.viewCount)}*\n\`\`\`Canal:\`\`\` *${i.channel.name}*\n=================\n`
+					}
+					reply(teks.trim())
+					await limitAdd(sender) 
+					break 
 				case 'tiktok':
 					if (args.length < 1) return reply('Onde está o url?')
 					if (!isUrl(args[0]) && !args[0].includes('tiktok.com')) return reply(mess.error.Iv)
