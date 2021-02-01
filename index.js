@@ -479,7 +479,6 @@ async function starts() {
 					break
 				case 'ytsearch':
 					if (args.length < 1) return reply('O que você está procurando?')
-					reply(mess.wait)
 					anu = await fetchJson(`https://api.arugaz.my.id/api/media/ytsearch?query=${body.slice(10)}`, {method: 'get'})
 					if (anu.error) return reply(anu.error)
 					teks = '=================\n'
