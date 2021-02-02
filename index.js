@@ -251,6 +251,11 @@ async function starts() {
 					buffer = await getBuffer(anu.fla)
 					client.sendMessage(from, buffer, audio, {mimetype: 'audio/mp4', quoted: mek})
 					break
+				case 'bot':
+					anu = await fetchJson('https://raw.githubusercontent.com/HiroshiJohn/Bot/main/src/fla.json', {method: 'get'})
+					buffer = await getBuffer(anu.bot)
+					client.sendMessage(from, buffer, audio, {mimetype: 'audio/mp4', quoted: mek})
+					break
 				case 'atlemg':
 					anu = await fetchJson('https://raw.githubusercontent.com/HiroshiJohn/Bot/main/src/fla.json', {method: 'get'})
 					buffer = await getBuffer(anu.atleMG)
