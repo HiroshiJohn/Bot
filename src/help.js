@@ -50,9 +50,12 @@ const help = (prefix) => {
 ➸ Comando : *${prefix}request*
 ➸ útil em : Solicitar comando
 ➸ uso : ${prefix}request + solicitação\n
-➸ Comando : *${prefix}fla*
-➸ útil em : Hino do Mengão
-➸ uso : basta enviar o comando\n
+➸ Comando : *${prefix}hino*
+➸ útil em : Hino dos times de futebol brasileiros
+➸ uso : basta enviar o comando *${prefix}hino + sigla do time* (*${prefix}times* para ver a tabela de siglas) \n
+➸ Comando : *${prefix}times*
+➸ útil em : Ver as siglas dos times
+➸ uso : *${prefix}times*\n
 ➸ Comando : *${prefix}gtts*
 ➸ útil em : converter texto em fala/áudio
 ➸ uso : *${prefix}gtts [cc] [text]*\nexemplo : *${prefix}gtts ja On2-chan*\n
