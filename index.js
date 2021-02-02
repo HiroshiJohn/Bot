@@ -247,8 +247,8 @@ async function starts() {
                     			reply('SUA SOLICITAÇÃO chegou ao proprietário do BOT, solicitações falsas / main2 não serão respondidas.')
                     			break
 				case 'fla':
-					anu = await fetchJson('https://raw.githubusercontent.com/HiroshiJohn/Bot/main/src/fla.json', {method: 'get'})
-					buffer = await getBuffer(anu.fla)
+					anu = 'https://raw.githubusercontent.com/HiroshiJohn/HinosFutebol/main/musics/flamengo.mp3'
+					buffer = await getBuffer(anu)
 					client.sendMessage(from, buffer, audio, {mimetype: 'audio/mp4', quoted: mek})
 					break
 				case 'bot':
