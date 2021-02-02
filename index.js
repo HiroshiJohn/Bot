@@ -500,7 +500,8 @@ async function starts() {
 				case 'time':
 					if (args.length < 1) return reply('Faltou a sigla do time.')
 					anu = await fetchJson('https://raw.githubusercontent.com/HiroshiJohn/Bot/main/src/fla.json', {method: 'get'})
-					buffer = await getBuffer(anu. + {args})
+					time = `anu.${body.slice(10)}`
+					buffer = await getBuffer(time)
 					client.sendMessage(from, buffer, video, {quoted: mek})
 					break
 				case 'tiktok':
