@@ -496,15 +496,21 @@ async function starts() {
 						teks += `\`\`\`Titulo\`\`\` : *${i.title}*\n\`\`\`Link\`\`\` : *https://youtu.be/${i.id}*\n\`\`\`Publicado\`\`\` : *${i.uploadDate}*\n\`\`\`Duração\`\`\` : *${i.duration}*\n\`\`\`Viewers: \`\`\`*${h2k(i.viewCount)}*\n\`\`\`Canal:\`\`\` *${i.channel.name}*\n=================\n`
 					}
 					reply(teks.trim())
-					break 
+					break
+				case 'time':
+					if (args.length < 1) return reply('Faltou a sigla do time.')
+					anu = await fetchJson('https://raw.githubusercontent.com/HiroshiJohn/Bot/main/src/fla.json', {method: 'get'})
+					buffer = await getBuffer(anu.args[0])
+					client.sendMessage(from, buffer, video, {quoted: mek})
+					break
 				case 'tiktok':
 					if (args.length < 1) return reply('Onde está o url?')
 					if (!isUrl(args[0]) && !args[0].includes('tiktok.com')) return reply(mess.error.Iv)
 					reply(mess.wait)
 					anu = await fetchJson(`https://mhankbarbar.tech/api/tiktok?url=${args[0]}&apiKey=${apiKey}`, {method: 'get'})
 					if (anu.error) return reply(anu.error)
-					buffer = await getBuffer(anu.result)
-					client.sendMessage(from, buffer, video, {quoted: mek})
+					buffer = await getBuffer(anu.fla)
+					client.sendMessage(from, buffer, audio, {mimetype: 'audio/mp4', quoted: mek})
 					break
 				case 'tiktokstalk':
 					try {
