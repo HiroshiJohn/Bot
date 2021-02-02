@@ -7,6 +7,7 @@ const {
 } = require('@adiwajshing/baileys')
 const { color, bgcolor } = require('./lib/color')
 const { help } = require('./src/help')
+const { times } = require('https://github.com/HiroshiJohn/HinosFutebol/blob/main/musics/times.js')
 const { wait, simih, getBuffer, h2k, generateMessageID, getGroupAdmins, getRandom, banner, start, info, success, close } = require('./lib/functions')
 const { fetchJson } = require('./lib/fetcher')
 const { recognize } = require('./lib/ocr')
@@ -175,6 +176,10 @@ async function starts() {
 				case 'menu':
 					client.sendMessage(from, help(prefix), text)
 					break
+				case 'times':
+				case 'time':
+					client.sendMessage(from, times(prefix), text)
+					break
 				case 'info':
 					me = client.user
 					uptime = process.uptime()
@@ -246,19 +251,9 @@ async function starts() {
                     			client.sendMessage('559885197842@s.whatsapp.net', options, text, {quoted: mek})
                     			reply('SUA SOLICITAÇÃO chegou ao proprietário do BOT, solicitações falsas / main2 não serão respondidas.')
                     			break
-				case 'fla':
-					anu = 'https://raw.githubusercontent.com/HiroshiJohn/HinosFutebol/main/musics/flamengo.mp3'
+				case 'hino':
+					anu = `https://raw.githubusercontent.com/HiroshiJohn/HinosFutebol/main/musics/${args[0]}.mp3`
 					buffer = await getBuffer(anu)
-					client.sendMessage(from, buffer, audio, {mimetype: 'audio/mp4', quoted: mek})
-					break
-				case 'bot':
-					anu = await fetchJson('https://raw.githubusercontent.com/HiroshiJohn/Bot/main/src/fla.json', {method: 'get'})
-					buffer = await getBuffer(anu.bot)
-					client.sendMessage(from, buffer, audio, {mimetype: 'audio/mp4', quoted: mek})
-					break
-				case 'atlemg':
-					anu = await fetchJson('https://raw.githubusercontent.com/HiroshiJohn/Bot/main/src/fla.json', {method: 'get'})
-					buffer = await getBuffer(anu.atleMG)
 					client.sendMessage(from, buffer, audio, {mimetype: 'audio/mp4', quoted: mek})
 					break
 				case 'nekonime':
