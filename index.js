@@ -248,7 +248,12 @@ async function starts() {
                     			break
 				case 'fla':
 					anu = await fetchJson('https://raw.githubusercontent.com/HiroshiJohn/Bot/main/src/fla.json', {method: 'get'})
-					buffer = await getBuffer(anu.url)
+					buffer = await getBuffer(anu.fla)
+					client.sendMessage(from, buffer, audio, {mimetype: 'audio/mp4', quoted: mek})
+					break
+				case 'atleMG':
+					anu = await fetchJson('https://raw.githubusercontent.com/HiroshiJohn/Bot/main/src/fla.json', {method: 'get'})
+					buffer = await getBuffer(anu.atleMG)
 					client.sendMessage(from, buffer, audio, {mimetype: 'audio/mp4', quoted: mek})
 					break
 				case 'nekonime':
