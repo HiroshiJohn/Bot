@@ -176,6 +176,8 @@ async function starts() {
 				case 'menu':
 					client.sendMessage(from, help(prefix), text)
 					break
+				case 'wiki':
+					reply('Em desenvolvimento')
 				case 'times':
 				case 'time':
 					client.sendMessage(from, times(prefix), text)
