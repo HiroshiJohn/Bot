@@ -617,73 +617,16 @@ async function starts() {
 					}
 					break
                                 case 'promote':
-					if (!isGroup) return reply(mess.only.group)
-					if (!isGroupAdmins) return reply(mess.only.admin)
-					if (!isBotGroupAdmins) return reply(mess.only.Badmin)
-					if (mek.message.extendedTextMessage === undefined || mek.message.extendedTextMessage === null) return
-					mentioned = mek.message.extendedTextMessage.contextInfo.mentionedJid
-					if (mentioned.length > 1) {
-						teks = 'Promovido com sucesso\n'
-						for (let _ of mentioned) {
-							teks += `@${_.split('@')[0]}\n`
-						}
-						mentions(from, mentioned, true)
-						client.groupRemove(from, mentioned)
-					} else {
-						mentions(`Promovido com sucesso @${mentioned[0].split('@')[0]} Como Administrador de Grupo!`, mentioned, true)
-						client.groupMakeAdmin(from, mentioned)
-					}
+					reply('❌ COMANDO DESATIVADO PARA MANUTENÇÃO ❌')
 					break
 				case 'demote':
-					if (!isGroup) return reply(mess.only.group)
-					if (!isGroupAdmins) return reply(mess.only.admin)
-					if (!isBotGroupAdmins) return reply(mess.only.Badmin)
-					if (args.length < 1) return reply('Quem você quer rebaixar?')
-					if (mek.message.extendedTextMessage === undefined || mek.message.extendedTextMessage === null) return
-					mentioned = mek.message.extendedTextMessage.contextInfo.mentionedJid
-					if (mentioned.length > 1) {
-						teks = 'Rebaixado com sucesso\n'
-						for (let _ of mentioned) {
-							teks += `@${_.split('@')[0]}\n`
-						}
-						mentions(teks, mentioned, true)
-						client.groupRemove(from, mentioned)
-					} else {
-						mentions(`Rebaixado com sucesso @${mentioned[0].split('@')[0]} Torne-se um membro do grupo!`, mentioned, true)
-						client.groupDemoteAdmin(from, mentioned)
-					}
+					reply('❌ COMANDO DESATIVADO PARA MANUTENÇÃO ❌')
 					break
 				case 'add':
-					if (!isGroup) return reply(mess.only.group)
-					if (!isGroupAdmins) return reply(mess.only.admin)
-					if (!isBotGroupAdmins) return reply(mess.only.Badmin)
-					if (args.length < 1) return reply('Você quer adicionar um gênio?')
-					if (args[0].startsWith('08')) return reply('Use o código do país')
-					try {
-						num = `${args[0].replace(/ /g, '')}@s.whatsapp.net`
-						client.groupAdd(from, [num])
-					} catch (e) {
-						console.log('Error :', e)
-						reply('Falha ao adicionar destino, talvez porque é privado')
-					}
+					reply('❌ COMANDO DESATIVADO PARA MANUTENÇÃO ❌')
 					break
 				case 'kick':
-					if (!isGroup) return reply(mess.only.group)
-					if (!isGroupAdmins) return reply(mess.only.admin)
-					if (!isBotGroupAdmins) return reply(mess.only.Badmin)
-					if (mek.message.extendedTextMessage === undefined || mek.message.extendedTextMessage === null) return reply('Marque quem você quer kickar')
-					mentioned = mek.message.extendedTextMessage.contextInfo.mentionedJid
-					if (mentioned.length > 1) {
-						teks = 'Pedidos recebidos, removendo :\n'
-						for (let _ of mentioned) {
-							teks += `@${_.split('@')[0]}\n`
-						}
-						mentions(teks, mentioned, true)
-						client.groupRemove(from, mentioned)
-					} else {
-						mentions(`Pedidos recebidos, removendo : @${mentioned[0].split('@')[0]}`, mentioned, true)
-						client.groupRemove(from, mentioned)
-					}
+					reply('❌ COMANDO DESATIVADO PARA MANUTENÇÃO ❌')
 					break
 				case 'listadmins':
 					if (!isGroup) return reply(mess.only.group)
@@ -725,28 +668,10 @@ async function starts() {
 					})
 					break
 				case 'simi':
-					if (args.length < 1) return reply('Onde está o texto, hum?')
-					teks = body.slice(5)
-					anu = await simih(teks) //fetchJson(`https://mhankbarbars.herokuapp.com/api/samisami?text=${teks}`, {method: 'get'})
-					//if (anu.error) return reply('Simi ga tau kak')
-					reply(anu)
+					reply('❌ COMANDO DESATIVADO PARA MANUTENÇÃO ❌')
 					break
 				case 'simih':
-					if (!isGroup) return reply(mess.only.group)
-					if (!isGroupAdmins) return reply(mess.only.admin)
-					if (args.length < 1) return reply('Hmmmm')
-					if (Number(args[0]) === 1) {
-						if (isSimi) return reply('O modo Simi está ativo, Se fodeu esse modo vai ficar mandando mensagem infinitamente, desligue ele AGORA')
-						samih.push(from)
-						fs.writeFileSync('./src/simi.json', JSON.stringify(samih))
-						reply('Ativado com sucesso o modo simi neste grupo, É melhor desligar se não você vai se arrepender ✔️')
-					} else if (Number(args[0]) === 0) {
-						samih.splice(from, 1)
-						fs.writeFileSync('./src/simi.json', JSON.stringify(samih))
-						reply('Desativando o modo simi com sucesso neste grupo ✔️')
-					} else {
-						reply('1 para ativar, 0 para desativar')
-					}
+					reply('❌ COMANDO DESATIVADO PARA MANUTENÇÃO ❌')
 					break
 				case 'welcome':
 					if (!isGroup) return reply(mess.only.group)
