@@ -17,7 +17,7 @@
     "whatsapp",
     "bot"
   ],
-  "author": "MhankBarBar",
+  "author": "HiroshiJohn",
   "license": "ISC",
   "dependencies": {
     "@adiwajshing/baileys": "github:adiwajshing/baileys",
@@ -39,10 +39,10 @@
   "devDependencies": {},
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mhankbarbar/termux-wabot.git"
+    "url": "git+https://github.com/hiroshijohn/bot.git"
   },
   "bugs": {
-    "url": "https://github.com/mhankbarbar/termux-wabot/issues"
+    "url": "https://github.com/hiroshijohn/bot/issues"
   },
-  "homepage": "https://github.com/mhankbarbar/termux-wabot#readme"
+  "homepage": "https://github.com/hiroshijohn/bot#readme"
 }
