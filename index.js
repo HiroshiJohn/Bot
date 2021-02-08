@@ -424,7 +424,7 @@ async function starts() {
 					if (args.length < 1) return client.sendMessage(from, 'Onde está o código do idioma?', text, {quoted: mek})
 					const gtts = require('./lib/gtts')(args[0])
 					if (args.length < 2) return client.sendMessage(from, 'Cadê o texto?', text, {quoted: mek})
-					dtt = body.slice(8)
+					dtt = body.slice(9)
 					ranm = getRandom('.mp3')
 					rano = getRandom('.ogg')
 					dtt.length > 600
