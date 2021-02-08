@@ -263,11 +263,6 @@ async function starts() {
 					buffer = await getBuffer(anu)
 					client.sendMessage(from, buffer, audio, {mimetype: 'audio/mp4', quoted: mek})
 					break
-				case 'mp3teste':
-					anu = `https://raw.githubusercontent.com/HiroshiJohn/HinosFutebol/main/musics/fla.mp3`
-					buffer = await getBuffer(anu)
-					client.sendMessage(from, buffer, audio, {mimetype: 'audio/mp3', quoted: mek})
-					break
 				case 'nekonime':
           				data = await fetchJson('https://waifu.pics/api/sfw/neko')
            				hasil = await getBuffer(data.url)
