@@ -424,15 +424,14 @@ async function starts() {
 					if (args.length < 1) return client.sendMessage(from, 'Onde está o código do idioma?', text, {quoted: mek})
 					const gtts = require('./lib/gtts')(args[0])
 					if (args.length < 2) return client.sendMessage(from, 'Cadê o texto?', text, {quoted: mek})
-					dtt = body.slice(8)
-						if (dtt === '') return reply(from, 'qual é o texto afinal ..', text, {quoted: mek})
-                				try {
-                    				    gtts.save('./media/tts.mp3', dtt, function () {
-                    				    client.sendMessage(from, './media/tts.mp3', audio, {quoted: mek, mimetype: 'audio/mp3', ptt:true})
-                    				    })
-               		 		} catch (err) {
-                    				    reply(from, err, {quoted: mek})
-                			}
+					dtt = body.slice(9)
+					ranm = './media/tts.mp3'
+					dtt.length > 600
+					? reply('Texto muito grande.')
+					: gtts.save(ranm, dtt, function() {
+						client.sendMessage(from, fs.readFileSync(ranm), audio, {quoted: mek, mimetype: 'audio/mp4', ptt:true})
+						fs.unlinkSync(ranm)
+					})
 					break
 				/*case 'meme':
 					meme = await fetchJson('https//kagchi-api.glitch.me/meme/memes', { method: 'get' })
