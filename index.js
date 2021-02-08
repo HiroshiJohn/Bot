@@ -428,7 +428,7 @@ async function starts() {
 						if (dtt === '') return reply(from, 'qual é o texto afinal ..', text, {quoted: mek})
                 				try {
                     				    gtts.save('./media/tts.mp3', dtt, function () {
-                    				    client.sendMessaage(from, './media/tts.mp3', audio, {quoted: mek, mimetype: 'audio/mp3', ptt:true})
+                    				    client.sendMessage(from, './media/tts.mp3', audio, {quoted: mek, ptt:true})
                     				    })
                		 		} catch (err) {
                     				    reply(from, err, {quoted: mek})
