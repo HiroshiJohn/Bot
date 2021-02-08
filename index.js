@@ -430,8 +430,7 @@ async function starts() {
 					dtt.length > 600
 					? reply('Texto muito grande.')
 					: gtts.save(ranm, dtt, function() {
-						client.sendMessage(from, fs.readFileSync(ranm), audio, {quoted: mek, mimetype: 'audio/mp4', ptt:true})
-						fs.unlinkSync(rano)
+						client.sendMessage(from, fs.readFileSync(rano), audio, {quoted: mek, mimetype: 'audio/mp4', ptt:true})
 					})
 					break
 				/*case 'meme':
