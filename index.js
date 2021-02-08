@@ -424,11 +424,11 @@ async function starts() {
 					if (args.length < 1) return client.sendMessage(from, 'Onde está o código do idioma?', text, {quoted: mek})
 					const gtts = require('./lib/gtts')(args[0])
 					if (args.length < 2) return client.sendMessage(from, 'Cadê o texto?', text, {quoted: mek})
-					dtt = body.slice(9)
+					dtt = body.slice(8)
 						if (dtt === '') return reply(from, 'qual é o texto afinal ..', text, {quoted: mek})
                 				try {
                     				    gtts.save('./media/tts.mp3', dtt, function () {
-                    				    client.sendMessaage(from, './media/tts.mp3', audio, {quoted: mek, ptt:true})
+                    				    client.sendMessaage(from, './media/tts.mp3', audio, {quoted: mek, mimetype: 'audio/mp3', ptt:true})
                     				    })
                		 		} catch (err) {
                     				    reply(from, err, {quoted: mek})
