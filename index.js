@@ -425,13 +425,13 @@ async function starts() {
 					const gtts = require('./lib/gtts')(args[0])
 					if (args.length < 2) return client.sendMessage(from, 'Cadê o texto?', text, {quoted: mek})
 					dtt = body.slice(9)
-						if (dtt === '') return reply(from, 'qual é o texto afinal ..', id)
+						if (dtt === '') return reply(from, 'qual é o texto afinal ..', text, {quoted: mek})
                 				try {
                     				    gtts.save('./media/tts.mp3', dtt, function () {
-                    				    client.sendPtt(from, './media/tts.mp3', id)
+                    				    client.sendMessaage(from, './media/tts.mp3', audio, {quoted: mek, ptt:true})
                     				    })
                		 		} catch (err) {
-                    				    reply(from, err, id)
+                    				    reply(from, err, {quoted: mek})
                 			}
 					break
 				/*case 'meme':
