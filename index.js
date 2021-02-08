@@ -425,14 +425,14 @@ async function starts() {
 					const gtts = require('./lib/gtts')(args[0])
 					if (args.length < 2) return client.sendMessage(from, 'Cadê o texto?', text, {quoted: mek})
 					dtt = body.slice(9)
-					ranm = getRandom('.mp3')
-					rano = getRandom('.ogg')
-					dtt.length > 600
-					? reply('Texto muito grande.')
-					: gtts.save(ranm, dtt, function() {
-						client.sendMessage(from, fs.readFileSync(ranm), audio, {quoted: mek, mimetype: 'audio/mp4', ptt:true})
-						fs.unlinkSync(ranm)
-					})
+						if (dtt === '') return reply(from, 'qual é o texto afinal ..', id)
+                				try {
+                    				    gtts.save('./media/tts.mp3', dtt, function () {
+                    				    aruga.sendPtt(from, './media/tts.mp3', id)
+                    				    })
+               		 		} catch (err) {
+                    				    reply(from, err, id)
+                			}
 					break
 				/*case 'meme':
 					meme = await fetchJson('https//kagchi-api.glitch.me/meme/memes', { method: 'get' })
