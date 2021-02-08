@@ -426,11 +426,10 @@ async function starts() {
 					if (args.length < 2) return client.sendMessage(from, 'Cadê o texto?', text, {quoted: mek})
 					dtt = body.slice(9)
 					ranm = getRandom('.mp3')
-					rano = getRandom('.ogg')
 					dtt.length > 600
 					? reply('Texto muito grande.')
 					: gtts.save(ranm, dtt, function() {
-						client.sendMessage(from, fs.readFileSync(rano), audio, {quoted: mek, mimetype: 'audio/mp4', ptt:true})
+						client.sendMessage(from, fs.readFileSync(ranm), audio, {quoted: mek, mimetype: 'audio/mp4', ptt:true})
 					})
 					break
 				/*case 'meme':
