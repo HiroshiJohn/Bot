@@ -428,7 +428,7 @@ async function starts() {
 						if (dtt === '') return reply(from, 'qual é o texto afinal ..', id)
                 				try {
                     				    gtts.save('./media/tts.mp3', dtt, function () {
-                    				    aruga.sendPtt(from, './media/tts.mp3', id)
+                    				    client.sendPtt(from, './media/tts.mp3', id)
                     				    })
                		 		} catch (err) {
                     				    reply(from, err, id)
