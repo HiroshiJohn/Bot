@@ -424,13 +424,14 @@ async function starts() {
 					if (args.length < 1) return client.sendMessage(from, 'Onde está o código do idioma?', text, {quoted: mek})
 					const gtts = require('./lib/gtts')(args[0])
 					if (args.length < 2) return client.sendMessage(from, 'Cadê o texto?', text, {quoted: mek})
-					dtt = body.slice(9)
-					ranm = './media/tts.mp3'
+					dtt = body.slice(8)
+					ranm = getRandom('.mp3')
+					rano = getRandom('.ogg')
 					dtt.length > 600
 					? reply('Texto muito grande.')
 					: gtts.save(ranm, dtt, function() {
-						client.sendMessage(from, fs.readFileSync(ranm), audio, {quoted: mek, mimetype: 'audio/ogg', ptt:true})
-						fs.unlinkSync(ranm)
+						client.sendMessage(from, fs.readFileSync(ranm), audio, {quoted: mek, mimetype: 'audio/mp4', ptt:true})
+						fs.unlinkSync(rano)
 					})
 					break
 				/*case 'meme':
