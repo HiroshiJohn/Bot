@@ -8,6 +8,7 @@ const {
 const { color, bgcolor } = require('./lib/color')
 const { help } = require('./src/help')
 const { times } = require('./src/times')
+const { idiomas } = require('./src/idiomas')
 const { wait, simih, getBuffer, h2k, generateMessageID, getGroupAdmins, getRandom, banner, start, info, success, close } = require('./lib/functions')
 const { fetchJson } = require('./lib/fetcher')
 const { recognize } = require('./lib/ocr')
@@ -181,6 +182,10 @@ async function starts() {
 				case 'times':
 				case 'time':
 					client.sendMessage(from, times(prefix), text)
+					break
+				case 'idiomas':
+				case 'idioma':
+					client.sendMessage(from, idiomas(prefix), text)
 					break
 				case 'info':
 					me = client.user
