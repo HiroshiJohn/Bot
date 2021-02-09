@@ -281,14 +281,14 @@ async function starts() {
 						ran = getRandom('.webp')
 						reply(mess.wait)
 						await ffmpeg(`./${buffer}`)
-							.inputFormat(media.split('.')[1])
+							.inputFormat(buffer.split('.')[1])
 							.on('start', function (cmd) {
 								console.log(`Started : ${cmd}`)
 							})
 							.on('error', function (err) {
 								console.log(`Error : ${err}`)
 								fs.unlinkSync(buffer)
-								tipe = media.endsWith('.mp4') ? 'video' : 'gif'
+								tipe = buffer.endsWith('.mp4') ? 'video' : 'gif'
 								reply(`❌ Falhou, no momento da conversão ${tipe} para o gif`)
 							})
 							.on('end', function () {
