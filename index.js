@@ -278,9 +278,11 @@ async function starts() {
 					if (isGod) return reply('*Modo Deus ativado*, sem safadeza pra você.')
           				data = await fetchJson('https://waifu.pics/api/nsfw/blowjob')
            				buffer = await getBuffer(data.url)
-						ran = getRandom('.webp')
+					ran = getRandom('.webp')
+					rang = getRandom('.gif')
+					.save(rang, buffer, function() {fs.readFileSync(rang)}
 						reply(mess.wait)
-						await ffmpeg(data.url)
+						await ffmpeg(rang)
 							.on('end', function () {
 								console.log('Finish')
 								client.sendMessage(from, fs.readFileSync(ran), video, {quoted: mek})
