@@ -280,7 +280,7 @@ async function starts() {
            				buffer = await getBuffer(data.url)
 					ran = getRandom('.webp')
 					rang = getRandom('.gif')
-					.save(rang, buffer, function() {fs.readFileSync(rang)}
+					.save(rang, buffer, function() {fs.readFileSync(rang)})
 						reply(mess.wait)
 						await ffmpeg(rang)
 							.on('end', function () {
