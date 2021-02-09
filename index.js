@@ -280,9 +280,12 @@ async function starts() {
            				buffer = await getBuffer(data.url)
 					ran = getRandom('.webp')
 					rang = getRandom('.gif')
-					.save(rang, buffer, function() {fs.readFileSync(rang)})
+					fs.writeFile('blow.gif', buffer, (err) => {
+  					if (err) throw err;
+  					console.log('The file has been saved!');
+					});
 						reply(mess.wait)
-						await ffmpeg(rang)
+						await ffmpeg('blow.gif')
 							.on('end', function () {
 								console.log('Finish')
 								client.sendMessage(from, fs.readFileSync(ran), video, {quoted: mek})
