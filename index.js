@@ -281,7 +281,7 @@ async function starts() {
 						ran = getRandom('.webp')
 						reply(mess.wait)
 						await ffmpeg(`./${buffer}`)
-							.inputFormat(buffer.split('.')[1])
+							.inputFormat(buffer('.')[1])
 							.on('start', function (cmd) {
 								console.log(`Started : ${cmd}`)
 							})
