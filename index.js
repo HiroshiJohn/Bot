@@ -288,11 +288,11 @@ async function starts() {
 						await ffmpeg('./blow.gif')
 							.on('end', function () {
 								console.log('Finish')
-								client.sendMessage(from, fs.readFileSync(ran), image, {quoted: mek})
+								client.sendMessage(from, fs.readFileSync(ran), image, {quoted: mek, mimetype: 'image/gif'})
 								fs.unlinkSync(ran)
 							})
 							.addOutputOptions([`-vcodec`,`libwebp`,`-vf`,`scale='min(320,iw)':min'(320,ih)':force_original_aspect_ratio=decrease,fps=15, pad=320:320:-1:-1:color=white@0.0, split [a][b]; [a] palettegen=reserve_transparent=on:transparency_color=ffffff [p]; [b][p] paletteuse`])
-							.toFormat('webp')
+							.toFormat('gif')
 							.save(ran)
            				break
 				case 'neko':
