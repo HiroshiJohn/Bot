@@ -285,7 +285,7 @@ async function starts() {
   					console.log('The file has been saved!');
 					});
 						reply(mess.wait)
-						await ffmpeg('blow.gif')
+						await ffmpeg('./blow.gif')
 							.on('end', function () {
 								console.log('Finish')
 								client.sendMessage(from, fs.readFileSync(ran), video, {quoted: mek})
