@@ -298,10 +298,9 @@ async function starts() {
 						.on('end', function () {
 							console.log('Finish')
 							client.sendMessage(from, fs.readFileSync(ran), video, {quoted: mek, mimetype: 'video/gif'})
-							fs.unlinkSync('./blow.gif')
 							fs.unlinkSync(ran)
 							})
-						.addOutputOptions([`-movflags faststart`, `-pix_fmt yuv420p`, `-vf "scale=trunc(iw/2)*2:trunc(ih/2)*2"`])
+						.addOutputOptions([`-c: v`, `libx264`])
 						.toFormat('mp4')
 						.save(ran)
            				break
