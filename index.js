@@ -278,14 +278,14 @@ async function starts() {
 					if (isGod) return reply('*Modo Deus ativado*, sem safadeza pra você.')
           				data = await fetchJson('https://waifu.pics/api/nsfw/blowjob')
            				buffer = await getBuffer(data.url)
-					client.sendMessage(from, buffer, video, {quoted: mek, mimetype: 'video/gif'})
-					/*ran = getRandom('.webp')
-					rang = getRandom('.gif')
-					fs.writeFile('blow.gif', buffer, (err) => {
+					ran = getRandom('.webp')
+					rang = getRandom('.mp4')
+					fs.writeFile('blow.mp4', buffer, (err) => {
   					if (err) throw err;
   					console.log('The file has been saved!');
 					});
-					reply(mess.wait)
+					client.sendMessage(from, 'blow.mp4', video, {quoted: mek, mimetype: 'video/gif'})
+					/*reply(mess.wait)
 					await ffmpeg()
 						.input('./blow.gif')
 						.inputFormat('gif')
