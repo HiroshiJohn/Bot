@@ -278,14 +278,12 @@ async function starts() {
 					if (isGod) return reply('*Modo Deus ativado*, sem safadeza pra você.')
           				data = await fetchJson('https://waifu.pics/api/nsfw/blowjob')
            				buffer = await getBuffer(data.url)
-					ran = getRandom('.webp')
-					rang = getRandom('.mp4')
+					ran = getRandom('.mp4')
 					fs.writeFile('blow.gif', buffer, (err) => {
   					if (err) throw err;
   					console.log('The file has been saved!');
 					});
-					client.sendMessage(from, 'blow.gif', video, {quoted: mek, mimetype: 'video/gif'})
-					/*reply(mess.wait)
+					reply(mess.wait)
 					await ffmpeg()
 						.input('./blow.gif')
 						.inputFormat('gif')
@@ -304,8 +302,8 @@ async function starts() {
 							fs.unlinkSync(ran)
 							})
 						.addOutputOptions([`-vcodec`,`libwebp`,`-vf`,`scale='min(320,iw)':min'(320,ih)':force_original_aspect_ratio=decrease,fps=15, pad=320:320:-1:-1:color=white@0.0, split [a][b]; [a] palettegen=reserve_transparent=on:transparency_color=ffffff [p]; [b][p] paletteuse`])
-						.toFormat('webp')
-						.save(ran)*/
+						.toFormat('mp4')
+						.save(ran)
            				break
 				case 'neko':
 					if (isGod) return reply('*Modo Deus ativado*, sem safadeza pra você.')
