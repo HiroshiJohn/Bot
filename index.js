@@ -486,7 +486,7 @@ async function starts() {
 					reply(anu.result)
 					break*/
 				case 'ytmp3':
-					if (args.length < 1) return reply('Onde está o url?')
+					/*if (args.length < 1) return reply('Onde está o url?')
 					if(!isUrl(args[0]) && !args[0].includes('youtu')) return reply(mess.error.Iv)
 					anu = await fetchJson(`https://docs-jojo.herokuapp.com/api/ytmp3?url=${args[0]}`, {method: 'get'})
 					if (anu.error) return reply(anu.error)
@@ -494,25 +494,28 @@ async function starts() {
 					thumb = await getBuffer(anu.thumb)
 					client.sendMessage(from, thumb, image, {quoted: mek, caption: teks})
 					buffer = await getBuffer(anu.result)
-					client.sendMessage(from, buffer, audio, {mimetype: 'audio/mp4', filename: `${anu.title}.mp3`, quoted: mek})
+					client.sendMessage(from, buffer, audio, {mimetype: 'audio/mp4', filename: `${anu.title}.mp3`, quoted: mek})*/
+					reply('❌ COMANDO DESATIVADO PARA MANUTENÇÃO ❌')
 					break
 				 case 'ytmp4':
-					if (args.length < 1) return reply('Onde está o url?')
+					/*if (args.length < 1) return reply('Onde está o url?')
 					if(!isUrl(args[0]) && !args[0].includes('youtu')) return reply(mess.error.Iv)
 					anu = await fetchJson(`https://docs-jojo.herokuapp.com/api/ytmp4?url=${args[0]}`, {method: 'get'})
 					if (anu.error) return reply(anu.error)
 					buffer = await getBuffer(anu.result)
-					client.sendMessage(from, buffer, video, {quoted: mek})
+					client.sendMessage(from, buffer, video, {quoted: mek})*/
+					reply('❌ COMANDO DESATIVADO PARA MANUTENÇÃO ❌')
 					break
 				case 'ytsearch':
-					if (args.length < 1) return reply('O que você está procurando?')
+					/*if (args.length < 1) return reply('O que você está procurando?')
 					anu = await fetchJson(`https://api.arugaz.my.id/api/media/ytsearch?query=${body.slice(10)}`, {method: 'get'})
 					if (anu.error) return reply(anu.error)
 					teks = '=================\n'
 					for (let i of anu.result) {
 						teks += `\`\`\`Titulo\`\`\` : *${i.title}*\n\`\`\`Link\`\`\` : *https://youtu.be/${i.id}*\n\`\`\`Publicado\`\`\` : *${i.uploadDate}*\n\`\`\`Duração\`\`\` : *${i.duration}*\n\`\`\`Viewers: \`\`\`*${h2k(i.viewCount)}*\n\`\`\`Canal:\`\`\` *${i.channel.name}*\n=================\n`
 					}
-					reply(teks.trim())
+					reply(teks.trim())*/
+					reply('❌ COMANDO DESATIVADO PARA MANUTENÇÃO ❌')
 					break
 				case 'tiktok':
 					if (args.length < 1) return reply('Onde está o url?')
