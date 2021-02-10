@@ -298,7 +298,7 @@ async function starts() {
 							})
 						.on('end', function () {
 							console.log('Finish')
-							client.sendMessage(from, fs.readFileSync(ran), image, {quoted: mek, mimetype: 'image/gif'})
+							client.sendMessage(from, fs.readFileSync(ran), video, {quoted: mek, mimetype: 'video/gif'})
 							fs.unlinkSync('./blow.gif')
 							fs.unlinkSync(ran)
 							})
