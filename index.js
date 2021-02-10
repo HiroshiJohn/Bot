@@ -444,7 +444,10 @@ async function starts() {
                 			try {
                     			gtts.save('./media/tts.mp3', dtt, function () {
                     			client.sendMessage(from, './media/tts.mp3', audio, {quoted: mek, mimetype: 'audio/mp4', ptt:true})
-                    			})}
+                    			})
+					} catch (err) {
+                    			reply('erro')
+                			}
 					break
 				/*case 'meme':
 					meme = await fetchJson('https//kagchi-api.glitch.me/meme/memes', { method: 'get' })
