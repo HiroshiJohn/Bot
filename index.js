@@ -274,7 +274,7 @@ async function starts() {
            				hasil = await getBuffer(data.url)
            				client.sendMessage(from, hasil, image, {quoted: mek})
            				break
-				/*case 'blowjob':
+				case 'blowjob':
 					if (isGod) return reply('*Modo Deus ativado*, sem safadeza pra você.')
           				data = await fetchJson('https://waifu.pics/api/nsfw/blowjob')
            				buffer = await getBuffer(data.url)
@@ -284,17 +284,28 @@ async function starts() {
   					if (err) throw err;
   					console.log('The file has been saved!');
 					});
-						reply(mess.wait)
-						await ffmpeg('./blow.gif')
-							.on('end', function () {
-								console.log('Finish')
-								client.sendMessage(from, fs.readFileSync(ran), image, {quoted: mek, mimetype: 'image/gif'})
-								fs.unlinkSync(ran)
+					reply(mess.wait)
+					await ffmpeg()
+						.input('./blow.gif')
+						.inputFormat('gif')
+							.on('start', function (cmd) {
+								console.log(`Started : ${cmd}`)
 							})
-							.addOutputOptions([`-vcodec`,`libwebp`,`-vf`,`scale='min(320,iw)':min'(320,ih)':force_original_aspect_ratio=decrease,fps=15, pad=320:320:-1:-1:color=white@0.0, split [a][b]; [a] palettegen=reserve_transparent=on:transparency_color=ffffff [p]; [b][p] paletteuse`])
-							.toFormat('gif')
-							.save(ran)
-           				break*/
+							.on('error', function (err) {
+								console.log(`Error : ${err}`)
+								fs.unlinkSync('./blow.gif')
+								reply(`❌ Falhou, no momento da conversão`)
+							})
+						.on('end', function () {
+							console.log('Finish')
+							client.sendMessage(from, fs.readFileSync(ran), image, {quoted: mek, mimetype: 'image/gif'})
+							fs.unlinkSync('./blow.gif')
+							fs.unlinkSync(ran)
+							})
+						.addOutputOptions([`-vcodec`,`libwebp`,`-vf`,`scale='min(320,iw)':min'(320,ih)':force_original_aspect_ratio=decrease,fps=15, pad=320:320:-1:-1:color=white@0.0, split [a][b]; [a] palettegen=reserve_transparent=on:transparency_color=ffffff [p]; [b][p] paletteuse`])
+						.toFormat('webp')
+						.save(ran)
+           				break
 				case 'neko':
 					if (isGod) return reply('*Modo Deus ativado*, sem safadeza pra você.')
           				data = await fetchJson('https://waifu.pics/api/nsfw/neko')
