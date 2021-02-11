@@ -25,6 +25,7 @@ const welkom = JSON.parse(fs.readFileSync('./src/welkom.json'))
 const god = JSON.parse(fs.readFileSync('./src/god.json'))
 const nsfw = JSON.parse(fs.readFileSync('./src/nsfw.json'))
 const samih = JSON.parse(fs.readFileSync('./src/simi.json'))
+apikeytobz = 'BotWeA'
 prefix = '.'
 blocked = []
 
