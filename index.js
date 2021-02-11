@@ -653,6 +653,7 @@ async function starts() {
 					if (!isBotGroupAdmins) return reply(mess.only.Badmin)
 					if (mek.message.extendedTextMessage === undefined || mek.message.extendedTextMessage === null) return
 					mentioned = mek.message.extendedTextMessage.contextInfo.mentionedJid
+					if (mentioned[0] === botNumber) return reply('Como vou me promover?')
 					if (mentioned.length > 1) {
 						reply('❌ Não se apresse, marque apenas um ❌')
 					} else {
