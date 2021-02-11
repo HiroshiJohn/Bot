@@ -503,7 +503,15 @@ async function starts() {
 					client.sendMessage(from, thumb, image, {quoted: mek, caption: teks})
 					buffer = await getBuffer(anu.result)
 					client.sendMessage(from, buffer, audio, {mimetype: 'audio/mp4', filename: `${anu.title}.mp3`, quoted: mek})*/
-					reply('❌ COMANDO DESATIVADO PARA MANUTENÇÃO ❌')
+					if (args.length < 1) return reply('Onde está o url?')
+					if(!isUrl(args[0]) && !args[0].includes('youtu')) return reply(mess.error.Iv)
+					anu = await fetchJson(`https://tobz-api.herokuapp.com/api/yta?url=${args[0]}&apikey=${apikeytobz}`, {method: 'get'})
+					if (anu.error) return reply(anu.error)
+					teks = `*Title* : ${anu.title}\n*Filesize* : ${anu.filesize}`
+					thumb = await getBuffer(anu.thumb)
+					client.sendMessage(from, thumb, image, {quoted: mek, caption: teks})
+					buffer = await getBuffer(anu.result)
+					client.sendMessage(from, buffer, audio, {mimetype: 'audio/mp4', filename: `${anu.title}.mp3`, quoted: mek})
 					break
 				 case 'ytmp4':
 					/*if (args.length < 1) return reply('Onde está o url?')
@@ -512,7 +520,12 @@ async function starts() {
 					if (anu.error) return reply(anu.error)
 					buffer = await getBuffer(anu.result)
 					client.sendMessage(from, buffer, video, {quoted: mek})*/
-					reply('❌ COMANDO DESATIVADO PARA MANUTENÇÃO ❌')
+					if (args.length < 1) return reply('Onde está o url?')
+					if(!isUrl(args[0]) && !args[0].includes('youtu')) return reply(mess.error.Iv)
+					anu = await fetchJson(`https://tobz-api.herokuapp.com/api/ytv?url=${args[0]}&apikey=${apikeytobz}`, {method: 'get'})
+					if (anu.error) return reply(anu.error)
+					buffer = await getBuffer(anu.result)
+					client.sendMessage(from, buffer, video, {quoted: mek})
 					break
 				case 'ytsearch':
 					/*if (args.length < 1) return reply('O que você está procurando?')
