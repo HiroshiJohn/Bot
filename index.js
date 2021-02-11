@@ -538,7 +538,7 @@ async function starts() {
 					if (anu.error) return reply(anu.error)
 					teks = '=================\n'
 					for (let i of anu.result) {
-						teks += `\`\`\`Titulo\`\`\` : *${i.video.title}*\n\`\`\`Link\`\`\` : *https://youtu.be/${i.video.url}*\n\`\`\`Duração\`\`\` : *${i.video.duration}*\n=================\n`
+						teks += `\`\`\`Titulo\`\`\` : *${i.title}*\n\`\`\`Link\`\`\` : *https://youtu.be/${i.url}*\n\`\`\`Duração\`\`\` : *${i.duration}*\n=================\n`
 					}
 					reply(teks.trim())
 					break
