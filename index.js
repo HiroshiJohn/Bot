@@ -667,6 +667,7 @@ async function starts() {
 					if (!isBotGroupAdmins) return reply(mess.only.Badmin)
 					if (mek.message.extendedTextMessage === undefined || mek.message.extendedTextMessage === null) return
 					mentioned = mek.message.extendedTextMessage.contextInfo.mentionedJid
+					if (mentioned[0] === botNumber) return reply('Como vou tirar meu próprio adm?')
 					if (mentioned.length > 1) {
 						reply('❌ Não se apresse, marque apenas um ❌')
 					} else {
@@ -694,6 +695,7 @@ async function starts() {
 					if (!isBotGroupAdmins) return reply(mess.only.Badmin)
 					if (mek.message.extendedTextMessage === undefined || mek.message.extendedTextMessage === null) return reply('Marque quem você deseja remover!')
 					mentioned = mek.message.extendedTextMessage.contextInfo.mentionedJid
+					if (mentioned[0] === botNumber) return reply('HaHa Não vou sair')
 					if (mentioned.length > 1) {
 						reply('❌ Não se apresse, marque apenas um ❌')
 					} else {
