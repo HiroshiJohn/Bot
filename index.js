@@ -537,8 +537,8 @@ async function starts() {
 					anu = await fetchJson(`https://api.zeks.xyz/api/yts?q=${body.slice(10)}&apikey=${apikeyzeks}`, {method: 'get'})
 					if (anu.error) return reply(anu.error)
 					teks = '=================\n'
-					for (let i of anu.result.video) {
-						teks += `\`\`\`Titulo\`\`\` : *${i.title}*\n\`\`\`Link\`\`\` : *https://youtu.be/${i.url}*\n\`\`\`Duração\`\`\` : *${i.duration}*\n=================\n`
+					for (let i of anu.result) {
+						teks += `\`\`\`Titulo\`\`\` : *${i.video.title}*\n\`\`\`Link\`\`\` : *https://youtu.be/${i.video.url}*\n\`\`\`Duração\`\`\` : *${i.video.duration}*\n=================\n`
 					}
 					reply(teks.trim())
 					break
