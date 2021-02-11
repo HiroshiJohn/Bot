@@ -638,27 +638,69 @@ async function starts() {
 						const encmedia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
 						buff = await client.downloadMediaMessage(encmedia)
 						for (let _ of anu) {
-							client.sendMessage(_.jid, buff, image, {caption: `[ Transmissão para Todos ]\n\n${body.slice(4)}\n\n[ *Obs: Mensagem enviada automaticamente* ]`})
+							client.sendMessage(_.jid, buff, image, {caption: `[ *Transmissão para Todos os Grupos* ]\n\n${body.slice(4)}\n\n[ Obs: *Mensagem enviada automaticamente* ]`})
 						}
 						reply('Transmissão feita com sucesso')
 					} else {
 						for (let _ of anu) {
-							sendMess(_.jid, `[ *Transmissão para Todos os Grupos* ]\n\n${body.slice(4)}\n\n[ *Obs: Mensagem enviada automaticamente* ]`)
+							sendMess(_.jid, `[ *Transmissão para Todos os Grupos* ]\n\n${body.slice(4)}\n\n[ Obs: *Mensagem enviada automaticamente* ]`)
 						}
 						reply('Transmissão feita com sucesso')
 					}
 					break
                                 case 'promote':
-					reply('❌ COMANDO DESATIVADO PARA MANUTENÇÃO ❌')
+					if (!isGroup) return reply(mess.only.group)
+					if (!isGroupAdmins) return reply(mess.only.admin)
+					if (!isBotGroupAdmins) return reply(mess.only.Badmin)
+					if (mek.message.extendedTextMessage === undefined || mek.message.extendedTextMessage === null) return
+					mentioned = mek.message.extendedTextMessage.contextInfo.mentionedJid
+					if (mentioned.length > 1) {
+						reply('❌ Não se apresse, marque apenas um ❌')
+					} else {
+						mentions(`Esse carinha aqui @${mentioned[0].split('@')[0]} agora é admin, então respeitem ok?! 😂`, mentioned, true)
+						client.groupMakeAdmin(from, mentioned)
+					}
+					break
 					break
 				case 'demote':
-					reply('❌ COMANDO DESATIVADO PARA MANUTENÇÃO ❌')
+					if (!isGroup) return reply(mess.only.group)
+					if (!isGroupAdmins) return reply(mess.only.admin)
+					if (!isBotGroupAdmins) return reply(mess.only.Badmin)
+					if (mek.message.extendedTextMessage === undefined || mek.message.extendedTextMessage === null) return
+					mentioned = mek.message.extendedTextMessage.contextInfo.mentionedJid
+					if (mentioned.length > 1) {
+						reply('❌ Não se apresse, marque apenas um ❌')
+					} else {
+						mentions(`Esse carinha aqui @${mentioned[0].split('@')[0]} Acabou de perder o adm, pressionem F ai rapaziada 😂!`, mentioned, true)
+						client.groupDemoteAdmin(from, mentioned)
+					}
 					break
 				case 'add':
-					reply('❌ COMANDO DESATIVADO PARA MANUTENÇÃO ❌')
+					if (!isGroup) return reply(mess.only.group)
+					if (!isGroupAdmins) return reply(mess.only.admin)
+					if (!isBotGroupAdmins) return reply(mess.only.Badmin)
+					if (args.length < 1) return reply('Você quer adicionar um gênio?')
+					if (args[0].startsWith('08')) return reply('Use o código do país')
+					try {
+						num = `${args[0].replace(/ /g, '')}@s.whatsapp.net`
+						client.groupAdd(from, [num])
+					} catch (e) {
+						console.log('Error :', e)
+						reply('Falha ao adicionar destino, talvez porque é privado')
+					}
 					break
 				case 'kick':
-					reply('❌ COMANDO DESATIVADO PARA MANUTENÇÃO ❌')
+					if (!isGroup) return reply(mess.only.group)
+					if (!isGroupAdmins) return reply(mess.only.admin)
+					if (!isBotGroupAdmins) return reply(mess.only.Badmin)
+					if (mek.message.extendedTextMessage === undefined || mek.message.extendedTextMessage === null) return reply('Marque quem você deseja remover!')
+					mentioned = mek.message.extendedTextMessage.contextInfo.mentionedJid
+					if (mentioned.length > 1) {
+						reply('❌ Não se apresse, marque apenas um ❌')
+					} else {
+						mentions(`Removendo : @${mentioned[0].split('@')[0]}`, mentioned, true)
+						client.groupRemove(from, mentioned)
+					}
 					break
 				case 'listadmins':
 					if (!isGroup) return reply(mess.only.group)
