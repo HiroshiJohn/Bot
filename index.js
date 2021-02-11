@@ -511,7 +511,7 @@ async function starts() {
 					teks = `*Title* : ${anu.title}\n*Filesize* : ${anu.size}`
 					thumb = await getBuffer(anu.thumbnail)
 					client.sendMessage(from, thumb, image, {quoted: mek, caption: teks})
-					buffer = await getBuffer(anu.url_audio)
+					buffer = await getBuffer(anu.urlaudio)
 					client.sendMessage(from, buffer, audio, {mimetype: 'audio/mp4', filename: `${anu.title}.mp3`, quoted: mek})
 					break
 				 case 'ytmp4':
