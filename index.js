@@ -506,13 +506,14 @@ async function starts() {
 					buffer = await getBuffer(anu.result)
 					client.sendMessage(from, buffer, audio, {mimetype: 'audio/mp4', filename: `${anu.title}.mp3`, quoted: mek})*/
 					if (args.length < 1) return reply('Onde está o url?')
+					if(!isUrl(args[0]) && !args[0].includes('youtu')) return reply(mess.error.Iv)
 					anu = await fetchJson(`https://api.zeks.xyz/api/ytmp3/2?url=${args[0]}&apikey=${apikeyzeks}`, {method: 'get'})
 					if (anu.error) return reply(anu.error)
 					teks = `*Title* : ${anu.result.title}\n*Filesize* : ${anu.result.size}`
 					thumb = await getBuffer(anu.result.thumb)
 					client.sendMessage(from, thumb, image, {quoted: mek, caption: teks})
 					buffer = await getBuffer(anu.result.link)
-					client.sendMessage(from, buffer, audio, {mimetype: 'audio/mp4', filename: `${anu.title}.mp3`, quoted: mek})
+					client.sendMessage(from, buffer, audio, {mimetype: 'audio/mp4', filename: `${anu.result.title}.mp3`, quoted: mek})
 					break
 				 case 'ytmp4':
 					/*if (args.length < 1) return reply('Onde está o url?')
@@ -525,7 +526,10 @@ async function starts() {
 					if(!isUrl(args[0]) && !args[0].includes('youtu')) return reply(mess.error.Iv)
 					anu = await fetchJson(`https://api.zeks.xyz/api/ytmp4/2?url=${args[0]}&apikey=${apikeyzeks}`, {method: 'get'})
 					if (anu.error) return reply(anu.error)
-					buffer = await getBuffer(anu.result)
+					teks = `*Title* : ${anu.result.title}\n*Filesize* : ${anu.result.size}`
+					thumb = await getBuffer(anu.result.thumb)
+					client.sendMessage(from, thumb, image, {quoted: mek, caption: teks})
+					buffer = await getBuffer(anu.result.link)
 					client.sendMessage(from, buffer, video, {quoted: mek})
 					break
 				case 'ytsearch':
@@ -534,7 +538,7 @@ async function starts() {
 					if (anu.error) return reply(anu.error)
 					teks = '=================\n'
 					for (let i of anu.result) {
-						teks += `\`\`\`Titulo\`\`\` : *${i.title_video}*\n\`\`\`Link\`\`\` : *https://youtu.be/${i.url_video}*\n\`\`\`Publicado\`\`\` : *${i.uploadDate_video}*\n\`\`\`Duração\`\`\` : *${i.duration_video}*\n=================\n`
+						teks += `\`\`\`Titulo\`\`\` : *${i.video.title}*\n\`\`\`Link\`\`\` : *https://youtu.be/${i.video.url}*\n\`\`\`Duração\`\`\` : *${i.video.duration}*\n=================\n`
 					}
 					reply(teks.trim())
 					break
