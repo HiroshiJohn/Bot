@@ -25,6 +25,7 @@ const welkom = JSON.parse(fs.readFileSync('./src/welkom.json'))
 const god = JSON.parse(fs.readFileSync('./src/god.json'))
 const nsfw = JSON.parse(fs.readFileSync('./src/nsfw.json'))
 const samih = JSON.parse(fs.readFileSync('./src/simi.json'))
+apikeyzeks = 'benbenz'
 apikeytobz = 'BotWeA'
 prefix = '.'
 blocked = []
@@ -506,7 +507,7 @@ async function starts() {
 					client.sendMessage(from, buffer, audio, {mimetype: 'audio/mp4', filename: `${anu.title}.mp3`, quoted: mek})*/
 					if (args.length < 1) return reply('Onde está o url?')
 					if(!isUrl(args[0]) && !args[0].includes('youtu')) return reply(mess.error.Iv)
-					anu = await fetchJson(`https://tobz-api.herokuapp.com/api/yta?url=${args[0]}&apikey=${apikeytobz}`, {method: 'get'})
+					anu = await fetchJson(`https://api.zeks.xyz/api/ytmp3/2?url=${args[0]}&apikey=${apikeyzeks}`, {method: 'get'})
 					if (anu.error) return reply(anu.error)
 					teks = `*Title* : ${anu.title}\n*Filesize* : ${anu.filesize}`
 					thumb = await getBuffer(anu.thumb)
@@ -523,21 +524,20 @@ async function starts() {
 					client.sendMessage(from, buffer, video, {quoted: mek})*/
 					if (args.length < 1) return reply('Onde está o url?')
 					if(!isUrl(args[0]) && !args[0].includes('youtu')) return reply(mess.error.Iv)
-					anu = await fetchJson(`https://tobz-api.herokuapp.com/api/ytv?url=${args[0]}&apikey=${apikeytobz}`, {method: 'get'})
+					anu = await fetchJson(`https://api.zeks.xyz/api/ytmp4/2?url=${args[0]}&apikey=${apikeyzeks}`, {method: 'get'})
 					if (anu.error) return reply(anu.error)
 					buffer = await getBuffer(anu.result)
 					client.sendMessage(from, buffer, video, {quoted: mek})
 					break
 				case 'ytsearch':
-					/*if (args.length < 1) return reply('O que você está procurando?')
-					anu = await fetchJson(`https://api.arugaz.my.id/api/media/ytsearch?query=${body.slice(10)}`, {method: 'get'})
+					if (args.length < 1) return reply('O que você está procurando?')
+					anu = await fetchJson(`https://api.zeks.xyz/api/yts?q=${body.slice(10)}&apikey=${apikeyzeks}`, {method: 'get'})
 					if (anu.error) return reply(anu.error)
 					teks = '=================\n'
 					for (let i of anu.result) {
 						teks += `\`\`\`Titulo\`\`\` : *${i.title}*\n\`\`\`Link\`\`\` : *https://youtu.be/${i.id}*\n\`\`\`Publicado\`\`\` : *${i.uploadDate}*\n\`\`\`Duração\`\`\` : *${i.duration}*\n\`\`\`Viewers: \`\`\`*${h2k(i.viewCount)}*\n\`\`\`Canal:\`\`\` *${i.channel.name}*\n=================\n`
 					}
-					reply(teks.trim())*/
-					reply('❌ COMANDO DESATIVADO PARA MANUTENÇÃO ❌')
+					reply(teks.trim())
 					break
 				case 'tiktok':
 					if (args.length < 1) return reply('Onde está o url?')
