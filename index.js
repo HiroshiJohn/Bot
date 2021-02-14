@@ -694,18 +694,7 @@ async function starts() {
 					}
 					break
 				case 'add':
-					if (!isGroup) return reply(mess.only.group)
-					if (!isGroupAdmins) return reply(mess.only.admin)
-					if (!isBotGroupAdmins) return reply(mess.only.Badmin)
-					if (args.length < 1) return reply('Você quer adicionar um gênio?')
-					if (args[0].startsWith('08')) return reply('Use o código do país')
-					try {
-						num = `${args[0].replace(/ /g, '')}@s.whatsapp.net`
-						client.groupAdd(from, [num])
-					} catch (e) {
-						console.log('Error :', e)
-						reply('Falha ao adicionar destino, talvez porque é privado')
-					}
+					reply('❌ COMANDO DESATIVADO POR MOTIVOS DE BAN ❌')
 					break
 				case 'kick':
 					if (!isGroup) return reply(mess.only.group)
