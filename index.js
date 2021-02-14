@@ -180,6 +180,7 @@ async function starts() {
 					break
 				case 'wiki':
 					reply('Em desenvolvimento')
+					break
 				case 'times':
 				case 'time':
 					client.sendMessage(from, times(prefix), text)
