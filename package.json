@@ -20,7 +20,7 @@
   "author": "HiroshiJohn",
   "license": "ISC",
   "dependencies": {
-    "@adiwajshing/baileys": "github:adiwajshing/baileys",
+    "@adiwajshing/baileys": "^3.4.1",
     "async": "^3.2.0",
     "axios": "^0.21.1",
     "cfonts": "^2.9.0",
