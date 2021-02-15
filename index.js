@@ -851,7 +851,7 @@ async function starts() {
 					media = await client.downloadAndSaveMediaMessage(encmedia)
 					ran = getRandom('.mp4')
 					try {
-					var process = new ffmpeg(media);
+					var process = new ffmpeg2(media);
 					process.then(function (video) {
 		
 					video
