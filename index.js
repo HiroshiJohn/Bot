@@ -850,13 +850,39 @@ async function starts() {
 					encmedia = isQuotedSticker ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
 					media = await client.downloadAndSaveMediaMessage(encmedia)
 					ran = getRandom('.webp')
-					exec(`ffmpeg -i ${media} ${ran}`, (err) => {
-						fs.unlinkSync(media)
-						if (err) return reply('❌ Falha ao converter adesivos em imagens ❌')
-						buffer = fs.readFileSync(ran)
-						client.sendMessage(from, buffer, image, {quoted: mek, caption: '>//<', mimetype: 'image/gif'})
-						fs.unlinkSync(ran)
-					})
+					client.sendMessage(from, media, image, {quoted: mek, caption: '>//<', mimetype: 'image/gif'})
+					break
+				case 'tovid2':
+					if (!isQuotedSticker) return reply('❌ Marque o sticker ❌')
+					reply(mess.wait)
+					encmedia = isQuotedSticker ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
+					media = await client.downloadAndSaveMediaMessage(encmedia)
+					ran = getRandom('.webp')
+					client.sendMessage(from, media, video, {quoted: mek, caption: '>//<', mimetype: 'video/gif'})
+					break
+				case 'tovid3':
+					if (!isQuotedSticker) return reply('❌ Marque o sticker ❌')
+					reply(mess.wait)
+					encmedia = isQuotedSticker ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
+					media = await client.downloadAndSaveMediaMessage(encmedia)
+					ran = getRandom('.webp')
+					client.sendMessage(from, media, video, {quoted: mek, caption: '>//<', mimetype: 'video/webp'})
+					break
+				case 'tovid4':
+					if (!isQuotedSticker) return reply('❌ Marque o sticker ❌')
+					reply(mess.wait)
+					encmedia = isQuotedSticker ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
+					media = await client.downloadAndSaveMediaMessage(encmedia)
+					ran = getRandom('.webp')
+					client.sendMessage(from, media, image, {quoted: mek, caption: '>//<', mimetype: 'image/webp'})
+					break
+				case 'tovid5':
+					if (!isQuotedSticker) return reply('❌ Marque o sticker ❌')
+					reply(mess.wait)
+					encmedia = isQuotedSticker ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
+					media = await client.downloadAndSaveMediaMessage(encmedia)
+					ran = getRandom('.webp')
+					client.sendMessage(from, media, video, {quoted: mek, caption: '>//<', mimetype: 'video/webm'})
 					break
 				case 'simi':
 					reply('❌ COMANDO DESATIVADO PARA MANUTENÇÃO ❌')
