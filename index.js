@@ -857,10 +857,10 @@ async function starts() {
 						video
 						.setVideoSize('640x?', true, true, '#fff')
 						.setVideoFormat('mp4')
-						.setVideoCodec('libx264')
+						.setVideoCodec('mpeg4')
 						.setAudioCodec('acc')
-						.setAudioChannels(2)
-						.save(ran, function (error, file) {
+						.setVideoFrameRate(24)
+						.save('video.mp4', function (error, file) {
 							if (!error)
 								console.log('Video file: ' + file);
 						});
