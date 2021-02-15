@@ -851,7 +851,7 @@ async function starts() {
 					media = await client.downloadAndSaveMediaMessage(encmedia)
 					ran = getRandom('.mp4')
 					try {
-					var process = new ffmpeg('/path/to/your_movie.avi');
+					var process = new ffmpeg2(media);
 					process.then(function (video) {
 						// Video metadata
 						console.log(video.metadata);
