@@ -850,16 +850,27 @@ async function starts() {
 					encmedia = isQuotedSticker ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
 					media = await client.downloadAndSaveMediaMessage(encmedia)
 					ran = getRandom('.mp4')
-					await ffmpeg2(media)
+					try {
+					var process = new ffmpeg('/path/to/your_movie.avi');
 					process.then(function (video) {
-		
-					video
-					.setVideoFormat('mp4')
-					.setVideoCodec('h264')
-					.setVideoSize('640x480', true, false)
-					.setDisableAudio ()
-					.save(ran) 
+						// Video metadata
+						console.log(video.metadata);
+						video.setDisableAudio ()
+						video.setVideoFormat ('mp4')
+						video.setVideoCodec('libx264')
+						video.setVideoSize('640x480', true, false)
+						video.save(ran, function (error, file) {
+						if (!error)
+						console.log('Video file: ' + file);
+						});
+						console.log(video.info_configuration);
+					}, function (err) {
+						console.log('Error: ' + err);
 					});
+					} catch (e) {
+					console.log(e.code);
+					console.log(e.msg);
+					}
 					client.sendMessage(from, ran, video, {quoted: mek, mimetype: 'video/mp4',})
 					break
 				case 'simi':
