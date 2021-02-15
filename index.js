@@ -18,6 +18,7 @@ const { exec } = require('child_process')
 const fetch = require('node-fetch')
 const tiktod = require('tiktok-scraper')
 const ffmpeg = require('fluent-ffmpeg')
+const ffmpeg2 = require('ffmpeg')
 const { removeBackgroundFromImageFile } = require('remove.bg')
 const lolis = require('lolis.life')
 const loli = new lolis()
@@ -842,6 +843,34 @@ async function starts() {
 						client.sendMessage(from, buffer, image, {quoted: mek, caption: '>//<'})
 						fs.unlinkSync(ran)
 					})
+					break
+				case 'tovid':
+					if (!isQuotedSticker) return reply('❌ Marque o sticker ❌')
+					reply(mess.wait)
+					encmedia = isQuotedSticker ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
+					media = await client.downloadAndSaveMediaMessage(encmedia)
+					ran = getRandom('.mp4')
+					try {
+					var process = new ffmpeg(media);
+					process.then(function (video) {
+		
+					video
+					.setVideoFormat('mp4')
+					.setVideoCodec('h264')
+					.setVideoSize('640x?', true, true, '#fff')
+					.setDisableAudio ()
+					.save(ran, function (error, file) {
+					if (!error)
+					console.log('Video file: ' + file);
+					});
+
+					}, function (err) {
+					console.log('Error: ' + err);
+					});
+					} catch (e) {
+					console.log(e.code);
+					console.log(e.msg);
+					}
 					break
 				case 'simi':
 					reply('❌ COMANDO DESATIVADO PARA MANUTENÇÃO ❌')
