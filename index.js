@@ -858,18 +858,8 @@ async function starts() {
 					.setVideoCodec('h264')
 					.setVideoSize('640x480', true, false)
 					.setDisableAudio ()
-					.save(ran, function (error, file) {
-					if (!error)
-					console.log('Video file: ' + file);
-					});
-
-					}, function (err) {
-					console.log('Error: ' + err);
-					);
-					} catch (e) {
-					console.log(e.code);
-					console.log(e.msg);
-					}	
+					.save(ran) 
+					};
 					client.sendMessage(from, ran, video, {quoted: mek, mimetype: 'video/mp4',})
 					break
 				case 'simi':
