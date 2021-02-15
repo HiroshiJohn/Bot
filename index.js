@@ -850,7 +850,9 @@ async function starts() {
 					encmedia = isQuotedSticker ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
 					media = await client.downloadAndSaveMediaMessage(encmedia)
 					ran = getRandom('.mp4')
+					reply('getrandom')
 					try {
+					reply('inicio')
 					var process = new ffmpeg2(media);
 					process.then(function (video) {
 						// Video metadata
