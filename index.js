@@ -850,8 +850,7 @@ async function starts() {
 					encmedia = isQuotedSticker ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
 					media = await client.downloadAndSaveMediaMessage(encmedia)
 					ran = getRandom('.mp4')
-					try {
-					var process = new ffmpeg2(media);
+					await ffmpeg2(media)
 					process.then(function (video) {
 		
 					video
@@ -870,7 +869,8 @@ async function starts() {
 					} catch (e) {
 					console.log(e.code);
 					console.log(e.msg);
-					}
+					}	
+					client.sendMessage(from, ran, video, {quoted: mek, mimetype: 'video/mp4',})
 					break
 				case 'simi':
 					reply('❌ COMANDO DESATIVADO PARA MANUTENÇÃO ❌')
