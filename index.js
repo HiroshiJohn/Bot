@@ -850,21 +850,12 @@ async function starts() {
 					encmedia = isQuotedSticker ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
 					media = await client.downloadAndSaveMediaMessage(encmedia)
 					ran = getRandom('.mp4')
-					try {
-					var process = new ffmpeg2(media);
-					process.then(function (video) {
-						// Video metadata
-						console.log(video.metadata);
-						video.save(ran)
-						console.log(video.info_configuration);
-					}, function (err) {
-						console.log('Error: ' + err);
-					});
-				} catch (e) {
-					console.log(e.code);
-					console.log(e.msg);
-				}
-					client.sendMessage(from, ran, video, {quoted: mek, mimetype: 'video/mp4',})
+					exec(`ffmpeg -i ${media} -map 0 -c:v libx264 -c:a copy ${ran}`, (err) => {
+						fs.unlinkSync(media)
+						if (err) return reply('❌ Falha ao converter adesivos em imagens ❌')
+						buffer = fs.readFileSync(ran)
+						client.sendMessage(from, buffer, video, {quoted: mek, caption: '>//<', mimetype: 'video/mp4'})
+						fs.unlinkSync(ran)
 					break
 				case 'simi':
 					reply('❌ COMANDO DESATIVADO PARA MANUTENÇÃO ❌')
