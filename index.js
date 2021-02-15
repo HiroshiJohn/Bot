@@ -853,18 +853,10 @@ async function starts() {
 					try {
 					var process = new ffmpeg2(media);
 					process.then(function (video) {
-
-						video
-						.setVideoSize('640x?', true, true, '#fff')
-						.setVideoFormat('mp4')
-						.setVideoCodec('mpeg4')
-						.setAudioCodec('acc')
-						.setVideoFrameRate(24)
-						.save('video.mp4', function (error, file) {
-							if (!error)
-								console.log('Video file: ' + file);
-						});
-
+						// Video metadata
+						console.log(video.metadata);
+						video.save(ran)
+						console.log(video.info_configuration);
 					}, function (err) {
 						console.log('Error: ' + err);
 					});
