@@ -856,6 +856,7 @@ async function starts() {
 						buffer = fs.readFileSync(ran)
 						client.sendMessage(from, buffer, video, {quoted: mek, caption: '>//<', mimetype: 'video/mp4'})
 						fs.unlinkSync(ran)
+						})
 					break
 				case 'simi':
 					reply('❌ COMANDO DESATIVADO PARA MANUTENÇÃO ❌')
