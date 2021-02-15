@@ -849,12 +849,12 @@ async function starts() {
 					reply(mess.wait)
 					encmedia = isQuotedSticker ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
 					media = await client.downloadAndSaveMediaMessage(encmedia)
-					ran = getRandom('.mp4')
-					exec(`ffmpeg -i ${media} -map 0 -c:v libx264 -c:a copy ${ran}`, (err) => {
+					ran = getRandom('.mpeg')
+					exec(`ffmpeg -i ${media} ${ran}`, (err) => {
 						fs.unlinkSync(media)
 						if (err) return reply('❌ Falha ao converter adesivos em imagens ❌')
 						buffer = fs.readFileSync(ran)
-						client.sendMessage(from, buffer, video, {quoted: mek, caption: '>//<', mimetype: 'video/mp4'})
+						client.sendMessage(from, buffer, video, {quoted: mek, caption: '>//<', mimetype: 'video/mpeg'})
 						fs.unlinkSync(ran)
 						})
 					break
