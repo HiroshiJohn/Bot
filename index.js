@@ -850,7 +850,6 @@ async function starts() {
 					encmedia = isQuotedSticker ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
 					media = await client.downloadAndSaveMediaMessage(encmedia)
 					ran = getRandom('.mp4')
-					reply('getrandom')
 					try {
 					var process = new ffmpeg2(media);
 					process.then(function (video) {
@@ -858,7 +857,7 @@ async function starts() {
 						video
 						.setVideoSize('640x?', true, true, '#fff')
 						.setVideoFormat('mp4')
-						.setVideoCodec('h.264')
+						.setVideoCodec('libx264')
 						.setAudioCodec('acc')
 						.setAudioChannels(2)
 						.save(ran, function (error, file) {
