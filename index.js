@@ -852,31 +852,27 @@ async function starts() {
 					ran = getRandom('.mp4')
 					reply('getrandom')
 					try {
-					reply('inicio')
 					var process = new ffmpeg2(media);
 					process.then(function (video) {
-						// Video metadata
-						console.log(video.metadata);
-						video.setDisableAudio ()
-						reply('disableaudio')
-						video.setVideoFormat ('mp4')
-						reply('videoformat')
-						video.setVideoCodec('mp4')
-						reply('videocodec')
-						video.setVideoSize('640x480', true, false)
-						reply('videosize')
-						video.save(ran, function (error, file) {
-						if (!error)
-						console.log('Video file: ' + file);
+
+						video
+						.setVideoSize('640x?', true, true, '#fff')
+						.setVideoFormat('mp4')
+						.setVideoCodec('h.264')
+						.setAudioCodec('acc')
+						.setAudioChannels(2)
+						.save(ran, function (error, file) {
+							if (!error)
+								console.log('Video file: ' + file);
 						});
-						console.log(video.info_configuration);
+
 					}, function (err) {
 						console.log('Error: ' + err);
 					});
-					} catch (e) {
+				} catch (e) {
 					console.log(e.code);
 					console.log(e.msg);
-					}
+				}
 					client.sendMessage(from, ran, video, {quoted: mek, mimetype: 'video/mp4',})
 					break
 				case 'simi':
