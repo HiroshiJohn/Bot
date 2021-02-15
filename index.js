@@ -857,7 +857,7 @@ async function starts() {
 						console.log(video.metadata);
 						video.setDisableAudio ()
 						video.setVideoFormat ('mp4')
-						video.setVideoCodec('libx265')
+						video.setVideoCodec('mp4')
 						video.setVideoSize('640x480', true, false)
 						video.save(ran, function (error, file) {
 						if (!error)
