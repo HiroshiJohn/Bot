@@ -859,7 +859,7 @@ async function starts() {
 					.setVideoSize('640x480', true, false)
 					.setDisableAudio ()
 					.save(ran) 
-					};
+					});
 					client.sendMessage(from, ran, video, {quoted: mek, mimetype: 'video/mp4',})
 					break
 				case 'simi':
