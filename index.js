@@ -144,7 +144,6 @@ async function starts() {
 				}
 			}
 
-			const totalchat = await client.chats.all()
 			const botNumber = client.user.jid
 			const ownerNumber = ["559885197842@s.whatsapp.net"] // replace this with your number
 			const isGroup = from.endsWith('@g.us')
@@ -205,7 +204,7 @@ async function starts() {
 					client.sendMessage(from, pok, image, { quoted: mek, caption: `*PINTEREST*\n\*Resultado da pesquisa* : *${tels}*`})
 					break
 				 case 'chatlist':
-					client.updatePresence(from, Presence.composing)  
+					totalchat = await client.chats.all()
 					teks = 'Esta é uma lista de números de bate-papo:\n'
 					for (let all of totalchat) {
 						teks += `~> @${all}\n`
@@ -305,49 +304,33 @@ async function starts() {
            				break
 				case 'waifu':
 					if (isGod) return reply('*Modo Deus ativado*, sem safadeza pra você.')
-          				data = await fetchJson('https://waifu.pics/api/nsfw/waifu', {method: 'get'})
+          				data = await fetchJson(`https://tobz-api.herokuapp.com/api/hentai?apikey=${apikeytobz}`, {method: 'get'})
            				hasil = await getBuffer(data.url)
            				client.sendMessage(from, hasil, image, {quoted: mek})
            				break
 				case 'blowjob':
 					if (isGod) return reply('*Modo Deus ativado*, sem safadeza pra você.')
-          				data = await fetchJson('https://waifu.pics/api/nsfw/blowjob', {method: 'get'})
-           				buffer = await getBuffer(data.url)
-					ran = getRandom('.mp4')
-					fs.writeFile('blow.gif', buffer, (err) => {
-  					if (err) throw err;
-  					console.log('The file has been saved!');
-					});
-					reply(mess.wait)
-					await ffmpeg()
-						.input('./blow.gif')
-						.inputFormat('gif')
-							.on('start', function (cmd) {
-								console.log(`Started : ${cmd}`)
-							})
-							.on('error', function (err) {
-								console.log(`Error : ${err}`)
-								fs.unlinkSync('./blow.gif')
-								reply(`❌ Falhou, no momento da conversão`)
-							})
-						.on('end', function () {
-							console.log('Finish')
-							client.sendMessage(from, fs.readFileSync(ran), video, {quoted: mek, mimetype: 'video/gif'})
-							fs.unlinkSync(ran)
-							})
-						.addOutputOptions([`-c: v`, `libx264`])
-						.toFormat('mp4')
-						.save(ran)
+          				ranp = getRandom('.gif')
+					rano = getRandom('.webp')
+					anu = await fetchJson(`https://tobz-api.herokuapp.com/api/nsfwblowjob?apikey=${apikeytobz}`, {method: 'get'})
+					if (anu.error) return reply(anu.error)
+					exec(`wget ${anu.result} -O ${ranp} && ffmpeg -i ${ranp} -vcodec libwebp -filter:v fps=fps=15 -lossless 1 -loop 0 -preset default -an -vsync 0 -s 512:512 ${rano}`, (err) => {
+						fs.unlinkSync(ranp)
+						if (err) return reply(mess.error.stick)
+						buffer = fs.readFileSync(rano)
+						client.sendMessage(from, buffer, sticker, {quoted: mek})
+						fs.unlinkSync(rano)
+					})
            				break
 				case 'neko':
 					if (isGod) return reply('*Modo Deus ativado*, sem safadeza pra você.')
-          				data = await fetchJson('https://waifu.pics/api/nsfw/neko', {method: 'get'})
+          				data = await fetchJson(`https://tobz-api.herokuapp.com/api/nsfwneko?apikey=${apikeytobz}`, {method: 'get'})
            				hasil = await getBuffer(data.url)
            				client.sendMessage(from, hasil, image, {quoted: mek})
            				break
 				case 'trap':
 					if (isGod) return reply('*Modo Deus ativado*, sem safadeza pra você.')
-          				data = await fetchJson('https://waifu.pics/api/nsfw/trap', {method: 'get'})
+          				data = await fetchJson(`https://tobz-api.herokuapp.com/api/nsfwtrap?apikey=${apikeytobz}`, {method: 'get'})
            				hasil = await getBuffer(data.url)
            				client.sendMessage(from, hasil, image, {quoted: mek})
            				break
