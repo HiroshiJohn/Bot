@@ -69,6 +69,13 @@ const help = (prefix) => {
 ➸ útil em : Bot fala o que você manda
 ➸ uso : ${prefix}say + texto\n
 
+➸ Comando : *${prefix}pinterest*
+➸ útil em : pesquisa de imagens no Pinterest
+➸ uso : ${prefix}pinterest + pesquisa\n
+➸ Comando : *${prefix}wiki*
+➸ útil em : Pesquisa na Wikipédia (Obs:*Tá em inglês*)
+➸ uso : ${prefix}wiki + pesquisa\n
+
        °═══════°═══════°
        *GRUPO* [^_^]
        °═══════°═══════°
