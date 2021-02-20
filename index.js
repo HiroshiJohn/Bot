@@ -180,7 +180,29 @@ async function starts() {
 					client.sendMessage(from, help(prefix), text)
 					break
 				case 'wiki':
-					reply('Em desenvolvimento')
+					if (args.length < 1) return reply('digite palavras-chave da pesquisa')
+					tels = body.slice(6)	
+					anu = await fetchJson(`https://tobz-api.herokuapp.com/api/wiki?q=${tels}&apikey=${apikeytobz}`, {method: 'get'})
+					reply(anu.result)
+					break
+				 case 'pinterest':
+                                        tels = body.slice(11)
+					client.updatePresence(from, Presence.composing) 
+					data = await fetchJson(`https://api.fdci.se/rep.php?gambar=${tels}`, {method: 'get'})
+					reply(mess.wait)
+					n = JSON.parse(JSON.stringify(data));
+					nimek =  n[Math.floor(Math.random() * n.length)];
+					pok = await getBuffer(nimek)
+					client.sendMessage(from, pok, image, { quoted: mek, caption: `*PINTEREST*\n\*Resultado da pesquisa* : *${tels}*`})
+					break
+				 case 'chatlist':
+					client.updatePresence(from, Presence.composing)  
+					teks = 'Esta é uma lista de números de bate-papo:\n'
+					for (let all of totalchat) {
+						teks += `~> @${all}\n`
+					}
+					teks += `Total : ${totalchat.length}`
+					client.sendMessage(from, teks.trim(), extendedText, {quoted: mek, contextInfo: {"mentionedJid": totalchat}})
 					break
 				case 'times':
 				case 'time':
@@ -266,20 +288,21 @@ async function starts() {
 					buffer = await getBuffer(anu)
 					client.sendMessage(from, buffer, audio, {mimetype: 'audio/mp4', quoted: mek})
 					break
+				
 				case 'nekonime':
-          				data = await fetchJson('https://waifu.pics/api/sfw/neko')
+          				data = await fetchJson('https://waifu.pics/api/sfw/neko', {method: 'get'})
            				hasil = await getBuffer(data.url)
            				client.sendMessage(from, hasil, image, {quoted: mek})
            				break
 				case 'waifu':
 					if (isGod) return reply('*Modo Deus ativado*, sem safadeza pra você.')
-          				data = await fetchJson('https://waifu.pics/api/nsfw/waifu')
+          				data = await fetchJson('https://waifu.pics/api/nsfw/waifu', {method: 'get'})
            				hasil = await getBuffer(data.url)
            				client.sendMessage(from, hasil, image, {quoted: mek})
            				break
 				case 'blowjob':
 					if (isGod) return reply('*Modo Deus ativado*, sem safadeza pra você.')
-          				data = await fetchJson('https://waifu.pics/api/nsfw/blowjob')
+          				data = await fetchJson('https://waifu.pics/api/nsfw/blowjob', {method: 'get'})
            				buffer = await getBuffer(data.url)
 					ran = getRandom('.mp4')
 					fs.writeFile('blow.gif', buffer, (err) => {
@@ -309,13 +332,13 @@ async function starts() {
            				break
 				case 'neko':
 					if (isGod) return reply('*Modo Deus ativado*, sem safadeza pra você.')
-          				data = await fetchJson('https://waifu.pics/api/nsfw/neko')
+          				data = await fetchJson('https://waifu.pics/api/nsfw/neko', {method: 'get'})
            				hasil = await getBuffer(data.url)
            				client.sendMessage(from, hasil, image, {quoted: mek})
            				break
 				case 'trap':
 					if (isGod) return reply('*Modo Deus ativado*, sem safadeza pra você.')
-          				data = await fetchJson('https://waifu.pics/api/nsfw/trap')
+          				data = await fetchJson('https://waifu.pics/api/nsfw/trap', {method: 'get'})
            				hasil = await getBuffer(data.url)
            				client.sendMessage(from, hasil, image, {quoted: mek})
            				break
@@ -550,8 +573,13 @@ async function starts() {
 					dtt.length > 600
 					? reply('Texto muito grande.')
 					: gtts.save(ranm, dtt, function() {
-						client.sendMessage(from, fs.readFileSync(ranm), audio, {quoted: mek, mimetype: 'audio/mp4', ptt:true})
-						fs.unlinkSync(ranm)
+						exec(`ffmpeg -i ${ranm} -ar 48000 -vn -c:a libopus ${rano}`, (err) => {
+							fs.unlinkSync(ranm)
+							buff = fs.readFileSync(rano)
+							if (err) return reply('Falha:(')
+							client.sendMessage(from, buff, audio, {quoted: mek, ptt:true})
+							fs.unlinkSync(rano)
+						})
 					})
 					break
 				/*case 'meme':
