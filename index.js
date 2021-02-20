@@ -136,6 +136,7 @@ async function starts() {
 				}
 			}
 
+			const totalchat = await client.chats.all()
 			const botNumber = client.user.jid
 			const ownerNumber = ["559885197842@s.whatsapp.net"] // replace this with your number
 			const isGroup = from.endsWith('@g.us')
