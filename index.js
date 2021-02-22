@@ -839,12 +839,12 @@ async function starts() {
 						const encmedia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
 						buff = await client.downloadMediaMessage(encmedia)
 						for (let _ of anu) {
-							client.sendMessage(_.jid, buff, image, {caption: `[ *Transmissão para Todos os Grupos* ]\n\n${body.slice(4)}\n\n[ Obs: *Mensagem enviada automaticamente* ]`})
+							client.sendMessage(_.jid, buff, image, {caption: `[ *Transmissão para Todos os Grupos* ]\n\n${body.slice(4)}`})
 						}
 						reply('Transmissão feita com sucesso')
 					} else {
 						for (let _ of anu) {
-							sendMess(_.jid, `[ *Transmissão para Todos os Grupos* ]\n\n${body.slice(4)}\n\n[ Obs: *Mensagem enviada automaticamente* ]`)
+							sendMess(_.jid, `[ *Transmissão para Todos os Grupos* ]\n\n${body.slice(4)}\n\n`)
 						}
 						reply('Transmissão feita com sucesso')
 					}
