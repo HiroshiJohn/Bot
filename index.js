@@ -206,12 +206,12 @@ async function starts() {
 					if (!isOwner) return reply('Este comando é apenas para o proprietário do bot!')
 					if (args.length == 0) return reply(`Para proibir alguém de usar comandos\n\n Como digitar: \n${prefix}ban add 628xx --ativar\n${prefix}ban del 628xx --desabilitar\n\ncomo agrupar rapidamente:\n${prefix}ban @tag @tag @tag`, id)
 					if (args[0] == 'add') {
-					    banned.push(args[1] + '@c.us')
+					    banned.push(args[1] + '@s.whatsapp.net')
 					    fs.writeFileSync('./src/banned.json', JSON.stringify(banned))
 					    reply('Alvo banido com sucesso!')
 					} else
 					    if (args[0] == 'del') {
-						let xnxx = banned.indexOf(args[1] + '@c.us')
+						let xnxx = banned.indexOf(args[1] + '@s.whatsapp.net')
 						banned.splice(xnxx, 1)
 						fs.writeFileSync('./src/banned.json', JSON.stringify(banned))
 						reply('Alvo desbanido com sucesso!')
