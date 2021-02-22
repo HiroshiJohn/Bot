@@ -234,9 +234,8 @@ async function starts() {
 				 case 'pinterest':
 					if (isBanneds) return reply('Você está banido!')
                                         tels = body.slice(11)
-					client.updatePresence(from, Presence.composing) 
-					data = await fetchJson(`https://api.fdci.se/rep.php?gambar=${tels}`, {method: 'get'})
 					reply(mess.wait)
+					data = await fetchJson(`https://api.fdci.se/rep.php?gambar=${tels}`, {method: 'get'})
 					n = JSON.parse(JSON.stringify(data));
 					nimek =  n[Math.floor(Math.random() * n.length)];
 					pok = await getBuffer(nimek)
@@ -277,6 +276,14 @@ async function starts() {
 					}
 					teks += `Total : ${blocked.length}`
 					client.sendMessage(from, teks.trim(), extendedText, {quoted: mek, contextInfo: {"mentionedJid": blocked}})
+					break
+				case 'banlist':
+					teks = 'Esta é a lista de números banidos :\n'
+					for (let ba of banned) {
+						teks += `~> @${ba.split('@')[0]}\n`
+					}
+					teks += `Total : ${banned.length}`
+					client.sendMessage(from, teks.trim(), extendedText, {quoted: mek, contextInfo: {"mentionedJid": banned}})
 					break
 				case 'tagme':
 					if (isBanneds) return reply('Você está banido!')
