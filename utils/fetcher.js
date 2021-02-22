@@ -4,13 +4,6 @@ const fs = require ('fs')
 const {fromBuffer} = requer ('tipo de arquivo')
 const resizeImage = require ('./ imageProcessing')
 
-/ **
- * Obter Json do Url
- *
- * @ param {String} url
- * @ param {Object} opções
- * /
-
 const fetchJson = (url, opções) =>
     nova promessa ((resolver, rejeitar) =>
         buscar (url, opções)
@@ -21,13 +14,6 @@ const fetchJson = (url, opções) =>
                 rejeitar (errar)
             })
     )
-
-/ **
- * Obter texto do URL
- *
- * @param {String} url
- * @param {Object} options
- * /
 
 const fetchText = (url, opções) => {
     retornar nova promessa ((resolver, rejeitar) => {
@@ -41,10 +27,6 @@ const fetchText = (url, opções) => {
     })
 }
 
-/ **
- * Buscar base64 do url
- * @param {String} url
- * /
 
 const fetchBase64 = (url, mimetype) => {
     retornar nova promessa ((resolver, rejeitar) => {
@@ -62,12 +44,7 @@ const fetchBase64 = (url, mimetype) => {
     })
 }
 
-/ **
- * Carregar imagem para Telegra.ph
- *
- * @param {String} buffer de imagem base64
- * @param {Boolean} resize
- * /
+
 
 const uploadImages = (buffData, type) => {
     // eslint-disable-next-line no-async-promessa-executor
