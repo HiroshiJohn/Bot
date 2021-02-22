@@ -208,18 +208,18 @@ async function starts() {
 					if (args.length == 0) return reply(`Para proibir alguém de usar comandos\n\n Como digitar: \n${prefix}ban add 628xx --ativar\n${prefix}ban del 628xx --desabilitar\n\ncomo agrupar rapidamente:\n${prefix}ban @tag @tag @tag`, id)
 					if (args[0] == 'add') {
 					    banned.push(args[1] + '@c.us')
-					    fs.writeFileSync('./scr/banned.json', JSON.stringify(banned))
+					    fs.writeFileSync('./src/banned.json', JSON.stringify(banned))
 					    reply('Alvo banido com sucesso!')
 					} else
 					    if (args[0] == 'del') {
 						let xnxx = banned.indexOf(args[1] + '@c.us')
 						banned.splice(xnxx, 1)
-						fs.writeFileSync('./scr/banned.json', JSON.stringify(banned))
+						fs.writeFileSync('./src/banned.json', JSON.stringify(banned))
 						client.reply(from, 'Alvo desbanido com sucesso!')
 					    } else {
 						for (let i = 0; i < mentionedJid; i++) {
 						    banned.push(mentionedJid[i])
-						    fs.writeFileSync('./scr/banned.json', JSON.stringify(banned))
+						    fs.writeFileSync('./src/banned.json', JSON.stringify(banned))
 						    client.reply(from, 'Alvo banido com sucesso!', id)
 						}
 					    }
