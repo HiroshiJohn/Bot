@@ -34,6 +34,7 @@ const welkom = JSON.parse(fs.readFileSync('./src/welkom.json'))
 const god = JSON.parse(fs.readFileSync('./src/god.json'))
 const nsfw = JSON.parse(fs.readFileSync('./src/nsfw.json'))
 const samih = JSON.parse(fs.readFileSync('./src/simi.json'))
+const banned = JSON.parse(createReadFileSync('./src/banned.json'))
 apikeyzeks = 'benbenz'
 apikeytobz = 'BotWeA'
 prefix = '.'
@@ -127,6 +128,7 @@ async function starts() {
 			const command = body.slice(1).trim().split(/ +/).shift().toLowerCase()
 			const args = body.trim().split(/ +/).slice(1)
 			const isCmd = body.startsWith(prefix)
+			const pengirim = sender.id
 
 			mess = {
 				wait: '⌛ Em processo ⌛',
@@ -160,6 +162,7 @@ async function starts() {
 			const isSimi = isGroup ? samih.includes(from) : false
 			const isGod = isGroup ? god.includes(from) : false
 			const isOwner = ownerNumber.includes(sender)
+			const isBanned = banned.includes(pengirim)
 			const isUrl = (url) => {
 			    return url.match(new RegExp(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&/=]*)/, 'gi'))
 			}
@@ -173,6 +176,9 @@ async function starts() {
 				(id == null || id == undefined || id == false) ? client.sendMessage(from, teks.trim(), extendedText, {contextInfo: {"mentionedJid": memberr}}) : client.sendMessage(from, teks.trim(), extendedText, {quoted: mek, contextInfo: {"mentionedJid": memberr}})
 			}
 			
+			if (isBanned) {
+				    return reply('Você está banido!') || console.log(color('[BAN]', 'red'), color(moment(t * 1000).format('DD/MM/YY HH:mm:ss'), 'yellow'), color(`${command} [${args.length}]`), 'from', color(pushname))
+				}
 			colors = ['red','white','black','blue','yellow','green']
 			const isMedia = (type === 'imageMessage' || type === 'videoMessage')
 			const isQuotedImage = type === 'extendedTextMessage' && content.includes('imageMessage')
@@ -186,6 +192,53 @@ async function starts() {
 				case 'help':
 				case 'menu':
 					client.sendMessage(from, help(prefix), text)
+					break
+				case 'leaveall':
+					if (!isOwner) return reply('Perintah ini hanya untuk Owner bot')
+					const allChatz = await client.getAllChatIds()
+					const allGroupz = await client.getAllGroups()
+					for (let gclist of allGroupz) {
+					    await client.sendText(gclist.contact.id, `Maaf bot sedang pembersihan, total chat aktif : ${allChatz.length}`)
+					    await client.leaveGroup(gclist.contact.id)
+					    await client.deleteChat(gclist.contact.id)
+					}
+					client.reply('Success leave all group!')
+					break
+				case 'ban':
+					if (!isOwner) return reply('Este comando é apenas para o proprietário do bot!')
+					if (args.length == 0) return reply(`Para proibir alguém de usar comandos\n\n Como digitar: \n${prefix}ban add 628xx --ativar\n${prefix}ban del 628xx --desabilitar\n\ncomo agrupar rapidamente:\n${prefix}ban @tag @tag @tag`, id)
+					if (args[0] == 'add') {
+					    banned.push(args[1] + '@c.us')
+					    fs.writeFileSync('./data/banned.json', JSON.stringify(banned))
+					    reply('Alvo banido com sucesso!')
+					} else
+					    if (args[0] == 'del') {
+						let xnxx = banned.indexOf(args[1] + '@c.us')
+						banned.splice(xnxx, 1)
+						fs.writeFileSync('./data/banned.json', JSON.stringify(banned))
+						client.reply(from, 'Alvo desbanido com sucesso!')
+					    } else {
+						for (let i = 0; i < mentionedJidList.length; i++) {
+						    banned.push(mentionedJidList[i])
+						    fs.writeFileSync('./data/banned.json', JSON.stringify(banned))
+						    client.reply(from, 'Alvo banido com sucesso!', id)
+						}
+					    }
+					break
+				case 'pin':
+				case 'image':
+				case 'images':
+					if (args.length == 0) return reply(from, `Untuk mencari gambar dari pinterest\nketik: ${prefix}images [search]\ncontoh: ${prefix}images naruto`, id)
+					const cariwall = body.substr(body.indexOf(' ') + 1)
+					var hasilwall = ''
+					do{
+					    hasilwall = await images.fdci(cariwall)
+					}while(hasilwall == undefined | hasilwall == null)
+
+					await client.sendFileFromUrl(from, hasilwall, '', '', id)
+					    .catch(() => {
+					reply(from, 'Ada yang Error!', id)
+					    })
 					break
 				case 'wiki':
 					if (args.length < 1) return reply('digite palavras-chave da pesquisa')
