@@ -162,10 +162,7 @@ async function starts() {
 			const isSimi = isGroup ? samih.includes(from) : false
 			const isGod = isGroup ? god.includes(from) : false
 			const isOwner = ownerNumber.includes(sender)
-			const isBanned = isGroup ? banned.includes(sender) : false
-			const isBannedg = isGroup ? banned.includes(from) : false
 			const isBanneds = banned.includes(sender)
-			const isBannedss = banned.includes(from)
 			const isUrl = (url) => {
 			    return url.match(new RegExp(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&/=]*)/, 'gi'))
 			}
@@ -188,13 +185,10 @@ async function starts() {
 			if (!isGroup && !isCmd) console.log('\x1b[1;31m~\x1b[1;37m>', '[\x1b[1;31mRECV\x1b[1;37m]', time, color('Message'), 'from', color(sender.split('@')[0]), 'args :', color(args.length))
 			if (isCmd && isGroup) console.log('\x1b[1;31m~\x1b[1;37m>', '[\x1b[1;32mEXEC\x1b[1;37m]', time, color(command), 'from', color(sender.split('@')[0]), 'in', color(groupName), 'args :', color(args.length))
 			if (!isCmd && isGroup) console.log('\x1b[1;31m~\x1b[1;37m>', '[\x1b[1;31mRECV\x1b[1;37m]', time, color('Message'), 'from', color(sender.split('@')[0]), 'in', color(groupName), 'args :', color(args.length))
-			if (isBanned) return reply('Você está banido! 1')
-			if (isBanneds) return reply('Você está banido! 2')
-			if (isBannedss) return reply('Você está banido! 3')
-			if (isBannedg) return reply('Você está banido! 4')
 			switch(command) {
 				case 'help':
 				case 'menu':
+					if (isBanneds) return reply('Você está banido!')
 					client.sendMessage(from, help(prefix), text)
 					break
 				case 'leaveall':
@@ -212,10 +206,7 @@ async function starts() {
 					if (!isOwner) return reply('Este comando é apenas para o proprietário do bot!')
 					if (args.length == 0) return reply(`Para proibir alguém de usar comandos\n\n Como digitar: \n${prefix}ban add 628xx --ativar\n${prefix}ban del 628xx --desabilitar\n\ncomo agrupar rapidamente:\n${prefix}ban @tag @tag @tag`, id)
 					if (args[0] == 'add') {
-					    if (isBanned) return reply('Já banido')
 					    if (isBanneds) return reply('Já banido')
-					    if (isBannedss) return reply('Já banido')
-					    if (isBannedg) return reply('Já banido')
 					    banned.push(args[1] + '@s.whatsapp.net')
 					    fs.writeFileSync('./src/banned.json', JSON.stringify(banned))
 					    reply('Alvo banido com sucesso!')
@@ -234,12 +225,14 @@ async function starts() {
 					    }
 					break
 				case 'wiki':
+					if (isBanneds) return reply('Você está banido!')
 					if (args.length < 1) return reply('digite palavras-chave da pesquisa')
 					tels = body.slice(6)	
 					anu = await fetchJson(`https://tobz-api.herokuapp.com/api/wiki?q=${tels}&apikey=${apikeytobz}`, {method: 'get'})
 					reply(anu.result)
 					break
 				 case 'pinterest':
+					if (isBanneds) return reply('Você está banido!')
                                         tels = body.slice(11)
 					client.updatePresence(from, Presence.composing) 
 					data = await fetchJson(`https://api.fdci.se/rep.php?gambar=${tels}`, {method: 'get'})
@@ -260,13 +253,16 @@ async function starts() {
 					break
 				case 'times':
 				case 'time':
+					if (isBanneds) return reply('Você está banido!')
 					client.sendMessage(from, times(prefix), text)
 					break
 				case 'idiomas':
 				case 'idioma':
+					if (isBanneds) return reply('Você está banido!')
 					client.sendMessage(from, idiomas(prefix), text)
 					break
 				case 'info':
+					if (isBanneds) return reply('Você está banido!')
 					me = client.user
 					uptime = process.uptime()
 					teks = `*Bot Nome* : ${me.name}\n*Bot Tag* : @${me.jid.split('@')[0]}\n*Prefix* : ${prefix}\n*Contatos Bloqueados* : ${blocked.length}\n*O bot foi ativado em* : ${kyun(uptime)}`
@@ -274,6 +270,7 @@ async function starts() {
 					client.sendMessage(from, buffer, image, {caption: teks, contextInfo:{mentionedJid: [me.jid]}})
 					break
 				case 'blocklist':
+					if (isBanneds) return reply('Você está banido!')
 					teks = 'Esta é a lista de números bloqueados :\n'
 					for (let block of blocked) {
 						teks += `~> @${block.split('@')[0]}\n`
@@ -282,6 +279,7 @@ async function starts() {
 					client.sendMessage(from, teks.trim(), extendedText, {quoted: mek, contextInfo: {"mentionedJid": blocked}})
 					break
 				case 'tagme':
+					if (isBanneds) return reply('Você está banido!')
 					var nom = mek.participant
 					const tag = {
 					text: `@${nom.split("@s.whatsapp.net")[0]} Vou marcar você ❤️🗿!`,
@@ -290,6 +288,7 @@ async function starts() {
 					client.sendMessage(from, tag, text, {quoted: mek})
 					break
 				case 'infogc':
+					if (isBanneds) return reply('Você está banido!')
 				client.updatePresence(from, Presence.composing)
 				if (!isGroup) return reply(mess.only.group)
 					try {
@@ -308,6 +307,7 @@ async function starts() {
 					client.sendMessage(from, buf, image, {quoted: mek, caption: teks})
 					break
 				case 'groupinfo':
+					if (isBanneds) return reply('Você está banido!')
               				client.updatePresence(from, Presence.composing)
                 			if (!isGroup) return reply(mess.only.group)
                 			ppUrl = await client.getProfilePicture(from) // leave empty to get your own
@@ -315,6 +315,7 @@ async function starts() {
 		       			client.sendMessage(from, buffer, image, {quoted: mek, caption: `*Nome* : ${groupName}\n*Membro* : ${groupMembers.length}\n*Admin* : ${groupAdmins.length}`})
                 			break
 				case 'bugreport':
+					if (isBanneds) return reply('Você está banido!')
 				client.updatePresence(from, Presence.composing) 
 				if (args.length < 1) return reply('Qual é o bug?')
 					tek = body.slice(10)
@@ -325,6 +326,7 @@ async function starts() {
 					client.sendMessage(from, 'Seu relatório foi enviado ao proprietário do BOT, relatórios falsos não serão respondidos.', text, {quoted: mek})
 					break
 				case 'request':
+					if (isBanneds) return reply('Você está banido!')
                    	  		const cfrr = body.slice(8)
                       			if (cfrr.length > 300) return client.sendMessage(from, 'Desculpe, o texto é muito longo, máximo de 300 textos', msgType.text, {quoted: mek})
                         		var nomor = mek.participant
@@ -338,23 +340,27 @@ async function starts() {
                     			reply('SUA SOLICITAÇÃO chegou ao proprietário do BOT, solicitações falsas / main2 não serão respondidas.')
                     			break
 				case 'hino':
+					if (isBanneds) return reply('Você está banido!')
 					anu = `https://raw.githubusercontent.com/HiroshiJohn/HinosFutebol/main/musics/${args[0]}.mp3`
 					buffer = await getBuffer(anu)
 					client.sendMessage(from, buffer, audio, {mimetype: 'audio/mp4', quoted: mek})
 					break
 				
 				case 'nekonime':
+					if (isBanneds) return reply('Você está banido!')
           				data = await fetchJson('https://waifu.pics/api/sfw/neko', {method: 'get'})
            				hasil = await getBuffer(data.url)
            				client.sendMessage(from, hasil, image, {quoted: mek})
            				break
 				case 'waifu':
+					if (isBanneds) return reply('Você está banido!')
 					if (isGod) return reply('*Modo Deus ativado*, sem safadeza pra você.')
           				data = await fetchJson(`https://tobz-api.herokuapp.com/api/hentai?apikey=${apikeytobz}`, {method: 'get'})
            				hasil = await getBuffer(data.result)
            				client.sendMessage(from, hasil, image, {quoted: mek})
            				break
 				case 'blowjob':
+					if (isBanneds) return reply('Você está banido!')
 					if (isGod) return reply('*Modo Deus ativado*, sem safadeza pra você.')
           				ranp = getRandom('.gif')
 					rano = getRandom('.webp')
@@ -369,18 +375,21 @@ async function starts() {
 					})
            				break
 				case 'neko':
+					if (isBanneds) return reply('Você está banido!')
 					if (isGod) return reply('*Modo Deus ativado*, sem safadeza pra você.')
           				data = await fetchJson(`https://tobz-api.herokuapp.com/api/nsfwneko?apikey=${apikeytobz}`, {method: 'get'})
            				hasil = await getBuffer(data.result)
            				client.sendMessage(from, hasil, image, {quoted: mek})
            				break
 				case 'trap':
+					if (isBanneds) return reply('Você está banido!')
 					if (isGod) return reply('*Modo Deus ativado*, sem safadeza pra você.')
           				data = await fetchJson(`https://tobz-api.herokuapp.com/api/nsfwtrap?apikey=${apikeytobz}`, {method: 'get'})
            				hasil = await getBuffer(data.result)
            				client.sendMessage(from, hasil, image, {quoted: mek})
            				break
 				case 'god':
+					if (isBanneds) return reply('Você está banido!')
 					if (!isOwner) return reply('Você não é meu dono, saia daqui.')
 					if (args.length < 1) return reply('Hmmmm')
 					if (Number(args[0]) === 1) {
@@ -397,6 +406,7 @@ async function starts() {
 					}
                                       break
 				case 'ocr':
+					if (isBanneds) return reply('Você está banido!')
 					if ((isMedia && !mek.message.videoMessage || isQuotedImage) && args.length == 0) {
 						const encmedia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
 						const media = await client.downloadAndSaveMediaMessage(encmedia)
@@ -416,6 +426,7 @@ async function starts() {
 					break
 				case 'stiker':
 				case 'sticker':
+					if (isBanneds) return reply('Você está banido!')
 					if ((isMedia && !mek.message.videoMessage || isQuotedImage) && args.length == 0) {
 						const encmedia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
 						const media = await client.downloadAndSaveMediaMessage(encmedia)
@@ -509,6 +520,7 @@ async function starts() {
 					}
 					break
 				case 'stickerauto':
+					if (isBanneds) return reply('Você está banido!')
 					if ((isMedia && !mek.message.videoMessage || isQuotedImage) && args.length == 0) {
 						const encmedia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
 						const media = await client.downloadAndSaveMediaMessage(encmedia)
@@ -602,6 +614,7 @@ async function starts() {
 					}
 					break
 				case 'gtts':
+					if (isBanneds) return reply('Você está banido!')
 					if (args.length < 1) return client.sendMessage(from, 'Onde está o código do idioma?', text, {quoted: mek})
 					const gtts = require('./lib/gtts')(args[0])
 					if (args.length < 2) return client.sendMessage(from, 'Cadê o texto?', text, {quoted: mek})
@@ -657,6 +670,7 @@ async function starts() {
 					reply(anu.result)
 					break*/
 				case 'ytmp3':
+					if (isBanneds) return reply('Você está banido!')
 					/*if (args.length < 1) return reply('Onde está o url?')
 					if(!isUrl(args[0]) && !args[0].includes('youtu')) return reply(mess.error.Iv)
 					anu = await fetchJson(`https://docs-jojo.herokuapp.com/api/ytmp3?url=${args[0]}`, {method: 'get'})
@@ -677,6 +691,7 @@ async function starts() {
 					client.sendMessage(from, buffer, audio, {mimetype: 'audio/mp4', filename: `${anu.result.title}.mp3`, quoted: mek})
 					break
 				 case 'ytmp4':
+					if (isBanneds) return reply('Você está banido!')
 					/*if (args.length < 1) return reply('Onde está o url?')
 					if(!isUrl(args[0]) && !args[0].includes('youtu')) return reply(mess.error.Iv)
 					anu = await fetchJson(`https://docs-jojo.herokuapp.com/api/ytmp4?url=${args[0]}`, {method: 'get'})
@@ -694,6 +709,7 @@ async function starts() {
 					client.sendMessage(from, buffer, video, {quoted: mek})
 					break
 				case 'ytsearch':
+					if (isBanneds) return reply('Você está banido!')
 					if (args.length < 1) return reply('O que você está procurando?')
 					anu = await fetchJson(`https://api.zeks.xyz/api/yts?q=${body.slice(10)}&apikey=${apikeyzeks}`, {method: 'get'})
 					if (anu.error) return reply(anu.error)
@@ -704,6 +720,7 @@ async function starts() {
 					reply(teks.trim())
 					break
 				case 'tiktok':
+					if (isBanneds) return reply('Você está banido!')
 					if (args.length < 1) return reply('Onde está o url?')
 					if (!isUrl(args[0]) && !args[0].includes('tiktok.com')) return reply(mess.error.Iv)
 					reply(mess.wait)
@@ -713,6 +730,7 @@ async function starts() {
 					client.sendMessage(from, buffer, audio, {mimetype: 'audio/mp4', quoted: mek})
 					break
 				case 'tiktokstalk':
+					if (isBanneds) return reply('Você está banido!')
 					try {
 						if (args.length < 1) return client.sendMessage(from, 'Onde está seu nome de usuário?', text, {quoted: mek})
 						let { user, stats } = await tiktod.getUserProfileInfo(args[0])
@@ -727,6 +745,7 @@ async function starts() {
 					break
 				case 'nulis':
 				case 'tulis':
+					if (isBanneds) return reply('Você está banido!')
 					if (args.length < 1) return reply('O que você quer escrever?')
 					teks = body.slice(7)
 					reply(mess.wait)
@@ -736,6 +755,7 @@ async function starts() {
 					client.sendMessage(from, buff, image, {quoted: mek, caption: mess.success})
 					break
 				case 'url2img':
+					if (isBanneds) return reply('Você está banido!')
 					tipelist = ['desktop','tablet','mobile']
 					if (args.length < 1) return reply('Qual é o tipo hum?')
 					if (!tipelist.includes(args[0])) return reply('Tipe desktop|tablet|mobile')
@@ -749,6 +769,7 @@ async function starts() {
 					break
 				case 'tstiker':
 				case 'tsticker':
+					if (isBanneds) return reply('Você está banido!')
 					if (args.length < 1) return reply('Onde está o texto?')
 					ranp = getRandom('.png')
 					rano = getRandom('.webp')
@@ -763,6 +784,7 @@ async function starts() {
 					})
 					break
 				case 'tagall':
+					if (isBanneds) return reply('Você está banido!')
 					if (!isGroup) return reply(mess.only.group)
 					if (!isGroupAdmins) return reply(mess.only.admin)
 					members_id = []
@@ -775,6 +797,7 @@ async function starts() {
 					mentions(teks, members_id, true)
 					break
                                 case 'tagall2':
+					if (isBanneds) return reply('Você está banido!')
 					if (!isGroup) return reply(mess.only.group)
 					if (!isGroupAdmins) return reply(mess.only.admin)
 					members_id = []
@@ -787,6 +810,7 @@ async function starts() {
 					reply(teks)
 					break
                                 case 'tagall3':
+					if (isBanneds) return reply('Você está banido!')
 					if (!isGroup) return reply(mess.only.group)
 					if (!isGroupAdmins) return reply(mess.only.admin)
 					members_id = []
@@ -826,6 +850,7 @@ async function starts() {
 					}
 					break
                                 case 'promote':
+					if (isBanneds) return reply('Você está banido!')
 					if (!isGroup) return reply(mess.only.group)
 					if (!isGroupAdmins) return reply(mess.only.admin)
 					if (!isBotGroupAdmins) return reply(mess.only.Badmin)
@@ -841,6 +866,7 @@ async function starts() {
 					break
 					break
 				case 'demote':
+					if (isBanneds) return reply('Você está banido!')
 					if (!isGroup) return reply(mess.only.group)
 					if (!isGroupAdmins) return reply(mess.only.admin)
 					if (!isBotGroupAdmins) return reply(mess.only.Badmin)
@@ -855,9 +881,11 @@ async function starts() {
 					}
 					break
 				case 'add':
+					if (isBanneds) return reply('Você está banido!')
 					reply('❌ COMANDO DESATIVADO POR MOTIVOS DE BAN ❌')
 					break
 				case 'kick':
+					if (isBanneds) return reply('Você está banido!')
 					if (!isGroup) return reply(mess.only.group)
 					if (!isGroupAdmins) return reply(mess.only.admin)
 					if (!isBotGroupAdmins) return reply(mess.only.Badmin)
@@ -872,6 +900,7 @@ async function starts() {
 					}
 					break
 				case 'listadmins':
+					if (isBanneds) return reply('Você está banido!')
 					if (!isGroup) return reply(mess.only.group)
 					teks = `Lista de Admins do Grupo *${groupMetadata.subject}*\nTotal : ${groupAdmins.length}\n\n`
 					no = 0
@@ -882,6 +911,7 @@ async function starts() {
 					mentions(teks, groupAdmins, true)
 					break
                                 case 'linkgroup':
+					if (isBanneds) return reply('Você está banido!')
                                         if (!isGroup) return reply(mess.only.group)
                                         if (!isGroupAdmins) return reply(mess.only.admin)
                                         if (!isBotGroupAdmins) return reply(mess.only.Badmin)
@@ -897,6 +927,7 @@ async function starts() {
                                         }
                                         break
 				case 'toimg':
+					if (isBanneds) return reply('Você está banido!')
 					if (!isQuotedSticker) return reply('❌ Marque o sticker ❌')
 					reply(mess.wait)
 					encmedia = JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo
@@ -957,6 +988,7 @@ async function starts() {
 					reply('❌ COMANDO DESATIVADO PARA MANUTENÇÃO ❌')
 					break
 				case 'welcome':
+					if (isBanneds) return reply('Você está banido!')
 					if (!isGroup) return reply(mess.only.group)
 					if (!isGroupAdmins) return reply(mess.only.admin)
 					if (args.length < 1) return reply('Hmmmm')
@@ -974,12 +1006,14 @@ async function starts() {
 					}
                                       break
                                 case 'say':
+					if (isBanneds) return reply('Você está banido!')
 					if (args.length < 1) return reply('Onde está o texto?')
 					teks = body.slice(4)
                                         anu = teks
                                         reply(anu)
 					break
 				case 'clone':
+					if (isBanneds) return reply('Você está banido!')
 					if (!isGroup) return reply(mess.only.group)
 					if (!isGroupAdmins) return reply(mess.only.admin)
 					if (args.length < 1) return reply('A tag alvo que você deseja clonar')
@@ -996,6 +1030,7 @@ async function starts() {
 					}
 					break
 				case 'wait':
+					if (isBanneds) return reply('Você está banido!')
 					if ((isMedia && !mek.message.videoMessage || isQuotedImage) && args.length == 0) {
 						reply(mess.wait)
 						const encmedia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
