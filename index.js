@@ -184,9 +184,7 @@ async function starts() {
 			if (!isGroup && !isCmd) console.log('\x1b[1;31m~\x1b[1;37m>', '[\x1b[1;31mRECV\x1b[1;37m]', time, color('Message'), 'from', color(sender.split('@')[0]), 'args :', color(args.length))
 			if (isCmd && isGroup) console.log('\x1b[1;31m~\x1b[1;37m>', '[\x1b[1;32mEXEC\x1b[1;37m]', time, color(command), 'from', color(sender.split('@')[0]), 'in', color(groupName), 'args :', color(args.length))
 			if (!isCmd && isGroup) console.log('\x1b[1;31m~\x1b[1;37m>', '[\x1b[1;31mRECV\x1b[1;37m]', time, color('Message'), 'from', color(sender.split('@')[0]), 'in', color(groupName), 'args :', color(args.length))
-			if (isBanned) {
-				    return reply('Você está banido!')
-				}
+			if (isBanned) return reply('Você está banido!')
 			switch(command) {
 				case 'help':
 				case 'menu':
@@ -215,12 +213,12 @@ async function starts() {
 						let xnxx = banned.indexOf(args[1] + '@c.us')
 						banned.splice(xnxx, 1)
 						fs.writeFileSync('./src/banned.json', JSON.stringify(banned))
-						client.reply(from, 'Alvo desbanido com sucesso!')
+						reply('Alvo desbanido com sucesso!')
 					    } else {
 						for (let i = 0; i < mentionedJid; i++) {
 						    banned.push(mentionedJid[i])
 						    fs.writeFileSync('./src/banned.json', JSON.stringify(banned))
-						    client.reply(from, 'Alvo banido com sucesso!', id)
+						    reply('Alvo banido com sucesso!')
 						}
 					    }
 					break
