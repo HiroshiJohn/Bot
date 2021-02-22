@@ -207,7 +207,7 @@ async function starts() {
 					if (args.length == 0) return reply(`Para proibir alguém de usar comandos\n\n Como digitar: \n${prefix}ban add 628xx --ativar\n${prefix}ban del 628xx --desabilitar\n\ncomo agrupar rapidamente:\n${prefix}ban @tag @tag @tag`, id)
 					if (args[0] == 'add') {
 					    if (isBanned) return reply('Já ativo')
-					    banned.push(args[0] + '@s.whatsapp.net')
+					    banned.push(args[1] + '@s.whatsapp.net')
 					    fs.writeFileSync('./src/banned.json', JSON.stringify(banned))
 					    reply('Alvo banido com sucesso!')
 					} else
