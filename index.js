@@ -159,10 +159,13 @@ async function starts() {
 			const isGroupAdmins = groupAdmins.includes(sender) || false
 			const isWelkom = isGroup ? welkom.includes(from) : false
 			const isBanned = isGroup ? banned.includes(sender) : false
+			const isBannedg = isGroup ? banned.includes(from) : false
 			const isNsfw = isGroup ? nsfw.includes(from) : false
 			const isSimi = isGroup ? samih.includes(from) : false
 			const isGod = isGroup ? god.includes(from) : false
 			const isOwner = ownerNumber.includes(sender)
+			const isBanneds = banned.includes(sender)
+			const isBannedss = banned.includes(from)
 			const isUrl = (url) => {
 			    return url.match(new RegExp(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&/=]*)/, 'gi'))
 			}
@@ -186,6 +189,9 @@ async function starts() {
 			if (isCmd && isGroup) console.log('\x1b[1;31m~\x1b[1;37m>', '[\x1b[1;32mEXEC\x1b[1;37m]', time, color(command), 'from', color(sender.split('@')[0]), 'in', color(groupName), 'args :', color(args.length))
 			if (!isCmd && isGroup) console.log('\x1b[1;31m~\x1b[1;37m>', '[\x1b[1;31mRECV\x1b[1;37m]', time, color('Message'), 'from', color(sender.split('@')[0]), 'in', color(groupName), 'args :', color(args.length))
 			if (isBanned) return reply('Você está banido!')
+			if (isBanneds) return reply('Você está banido!')
+			if (isBannedss) return reply('Você está banido!')
+			if (isBannedg) return reply('Você está banido!')
 			switch(command) {
 				case 'help':
 				case 'menu':
@@ -206,7 +212,10 @@ async function starts() {
 					if (!isOwner) return reply('Este comando é apenas para o proprietário do bot!')
 					if (args.length == 0) return reply(`Para proibir alguém de usar comandos\n\n Como digitar: \n${prefix}ban add 628xx --ativar\n${prefix}ban del 628xx --desabilitar\n\ncomo agrupar rapidamente:\n${prefix}ban @tag @tag @tag`, id)
 					if (args[0] == 'add') {
-					    if (isBanned) return reply('Já ativo')
+					    if (isBanned) return reply('Você está banido!')
+					    if (isBanneds) return reply('Você está banido!')
+					    if (isBannedss) return reply('Você está banido!')
+					    if (isBannedg) return reply('Você está banido!')
 					    banned.push(args[1] + '@s.whatsapp.net')
 					    fs.writeFileSync('./src/banned.json', JSON.stringify(banned))
 					    reply('Alvo banido com sucesso!')
