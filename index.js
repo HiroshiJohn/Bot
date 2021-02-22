@@ -128,7 +128,6 @@ async function starts() {
 			const command = body.slice(1).trim().split(/ +/).shift().toLowerCase()
 			const args = body.trim().split(/ +/).slice(1)
 			const isCmd = body.startsWith(prefix)
-			const pengirim = sender.id
 
 			mess = {
 				wait: '⌛ Em processo ⌛',
@@ -162,7 +161,7 @@ async function starts() {
 			const isSimi = isGroup ? samih.includes(from) : false
 			const isGod = isGroup ? god.includes(from) : false
 			const isOwner = ownerNumber.includes(sender)
-			const isBanned = banned.includes(pengirim)
+			const isBanned = banned.includes(sender)
 			const isUrl = (url) => {
 			    return url.match(new RegExp(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&/=]*)/, 'gi'))
 			}
