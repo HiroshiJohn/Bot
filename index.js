@@ -175,9 +175,6 @@ async function starts() {
 				(id == null || id == undefined || id == false) ? client.sendMessage(from, teks.trim(), extendedText, {contextInfo: {"mentionedJid": memberr}}) : client.sendMessage(from, teks.trim(), extendedText, {quoted: mek, contextInfo: {"mentionedJid": memberr}})
 			}
 			
-			if (isBanned) {
-				    return reply('Você está banido!')
-				}
 			colors = ['red','white','black','blue','yellow','green']
 			const isMedia = (type === 'imageMessage' || type === 'videoMessage')
 			const isQuotedImage = type === 'extendedTextMessage' && content.includes('imageMessage')
@@ -188,6 +185,10 @@ async function starts() {
 			if (isCmd && isGroup) console.log('\x1b[1;31m~\x1b[1;37m>', '[\x1b[1;32mEXEC\x1b[1;37m]', time, color(command), 'from', color(sender.split('@')[0]), 'in', color(groupName), 'args :', color(args.length))
 			if (!isCmd && isGroup) console.log('\x1b[1;31m~\x1b[1;37m>', '[\x1b[1;31mRECV\x1b[1;37m]', time, color('Message'), 'from', color(sender.split('@')[0]), 'in', color(groupName), 'args :', color(args.length))
 			switch(command) {
+				if (isBanned) {
+				    return reply('Você está banido!')
+				}
+				break
 				case 'help':
 				case 'menu':
 					client.sendMessage(from, help(prefix), text)
@@ -342,7 +343,7 @@ async function starts() {
 				case 'waifu':
 					if (isGod) return reply('*Modo Deus ativado*, sem safadeza pra você.')
           				data = await fetchJson(`https://tobz-api.herokuapp.com/api/hentai?apikey=${apikeytobz}`, {method: 'get'})
-           				hasil = await getBuffer(data.url)
+           				hasil = await getBuffer(data.result)
            				client.sendMessage(from, hasil, image, {quoted: mek})
            				break
 				case 'blowjob':
@@ -362,13 +363,13 @@ async function starts() {
 				case 'neko':
 					if (isGod) return reply('*Modo Deus ativado*, sem safadeza pra você.')
           				data = await fetchJson(`https://tobz-api.herokuapp.com/api/nsfwneko?apikey=${apikeytobz}`, {method: 'get'})
-           				hasil = await getBuffer(data.url)
+           				hasil = await getBuffer(data.result)
            				client.sendMessage(from, hasil, image, {quoted: mek})
            				break
 				case 'trap':
 					if (isGod) return reply('*Modo Deus ativado*, sem safadeza pra você.')
           				data = await fetchJson(`https://tobz-api.herokuapp.com/api/nsfwtrap?apikey=${apikeytobz}`, {method: 'get'})
-           				hasil = await getBuffer(data.url)
+           				hasil = await getBuffer(data.result)
            				client.sendMessage(from, hasil, image, {quoted: mek})
            				break
 				case 'god':
