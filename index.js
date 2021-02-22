@@ -21,6 +21,7 @@ const { wait, simih, getBuffer, h2k, generateMessageID, getGroupAdmins, getRando
 const { fetchJson } = require('./lib/fetcher')
 const { recognize } = require('./lib/ocr')
 const fs = require('fs')
+const { createReadFileSync } = require('./utils/index')
 const moment = require('moment-timezone')
 const { exec } = require('child_process')
 const fetch = require('node-fetch')
@@ -34,7 +35,7 @@ const welkom = JSON.parse(fs.readFileSync('./src/welkom.json'))
 const god = JSON.parse(fs.readFileSync('./src/god.json'))
 const nsfw = JSON.parse(fs.readFileSync('./src/nsfw.json'))
 const samih = JSON.parse(fs.readFileSync('./src/simi.json'))
-const banned = JSON.parse(fs.readFileSync('./src/banned.json'))
+const banned = JSON.parse(createReadFileSync('./src/banned.json'))
 apikeyzeks = 'benbenz'
 apikeytobz = 'BotWeA'
 prefix = '.'
