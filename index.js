@@ -19,7 +19,6 @@ const { times } = require('./src/times')
 const { idiomas } = require('./src/idiomas')
 const { wait, simih, getBuffer, h2k, generateMessageID, getGroupAdmins, getRandom, banner, start, info, success, close } = require('./lib/functions')
 const { fetchJson } = require('./lib/fetcher')
-const { images } = require('./lib/images')
 const { recognize } = require('./lib/ocr')
 const fs = require('fs')
 const moment = require('moment-timezone')
@@ -177,7 +176,7 @@ async function starts() {
 			}
 			
 			if (isBanned) {
-				    return reply('Você está banido!') || console.log(color('[BAN]', 'red'), color(moment(t * 1000).format('DD/MM/YY HH:mm:ss'), 'yellow'), color(`${command} [${args.length}]`), 'from', color(pushname))
+				    return reply('Você está banido!')
 				}
 			colors = ['red','white','black','blue','yellow','green']
 			const isMedia = (type === 'imageMessage' || type === 'videoMessage')
@@ -224,21 +223,6 @@ async function starts() {
 						    client.reply(from, 'Alvo banido com sucesso!', id)
 						}
 					    }
-					break
-				case 'pin':
-				case 'image':
-				case 'images':
-					if (args.length == 0) return reply(from, `Untuk mencari gambar dari pinterest\nketik: ${prefix}images [search]\ncontoh: ${prefix}images naruto`, id)
-					const cariwall = body.substr(body.indexOf(' ') + 1)
-					var hasilwall = ''
-					do{
-					    hasilwall = await images.fdci(cariwall)
-					}while(hasilwall == undefined | hasilwall == null)
-
-					await client.sendFileFromUrl(from, hasilwall, '', '', id)
-					    .catch(() => {
-					reply(from, 'Ada yang Error!', id)
-					    })
 					break
 				case 'wiki':
 					if (args.length < 1) return reply('digite palavras-chave da pesquisa')
