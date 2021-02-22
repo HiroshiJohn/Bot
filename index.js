@@ -217,7 +217,7 @@ async function starts() {
 						fs.writeFileSync('./scr/banned.json', JSON.stringify(banned))
 						client.reply(from, 'Alvo desbanido com sucesso!')
 					    } else {
-						for (let i = 0; i < mentionedJid.length; i++) {
+						for (let i = 0; i < mentionedJid; i++) {
 						    banned.push(mentionedJid[i])
 						    fs.writeFileSync('./scr/banned.json', JSON.stringify(banned))
 						    client.reply(from, 'Alvo banido com sucesso!', id)
