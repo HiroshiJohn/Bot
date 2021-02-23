@@ -264,7 +264,7 @@ async function starts() {
 					if (isBanneds) return reply('Você está banido!')
 					me = client.user
 					uptime = process.uptime()
-					teks = `*Bot Nome* : ${me.name}\n*Bot Tag* : @${me.jid.split('@')[0]}\n*Prefix* : ${prefix}\n*Contatos Bloqueados* : ${blocked.length}\n*O bot foi ativado em* : ${kyun(uptime)}`
+					teks = `*Bot Nome* : ${me.name}\n*Bot Tag* : @${me.jid.split('@')[0]}\n*Prefix* : ${prefix}\n*Contatos Bloqueados* : ${blocked.length}\n*Usuários Banidos* : ${banned.length}\n*O bot foi ativado em* : ${kyun(uptime)}`
 					buffer = await getBuffer(me.imgUrl)
 					client.sendMessage(from, buffer, image, {caption: teks, contextInfo:{mentionedJid: [me.jid]}})
 					break
