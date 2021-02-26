@@ -241,6 +241,18 @@ async function starts() {
 					pok = await getBuffer(nimek)
 					client.sendMessage(from, pok, image, { quoted: mek, caption: `*PINTEREST*\n\*Resultado da pesquisa* : *${tels}*`})
 					break
+				case 'sorteio':
+					if (isBanneds) return reply('Você está banido!')
+                                        tels1 = body.slice(1)
+					tels2 = body.slice(2)
+					tels3 = body.slice(3)
+					tels4 = body.slice(4)
+					reply(mess.wait)
+					n = tels1 + tels2 + tels3 + tels4
+					nimek =  n[Math.floor(Math.random() * args.length)];
+					pok = nimek
+					client.sendMessage(from, pok, text, { quoted: mek })
+					break
 				 case 'chatlist':
 					totalchat = await client.chats.all()
 					teks = 'Esta é uma lista de números de bate-papo:\n'
