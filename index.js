@@ -243,10 +243,10 @@ async function starts() {
 					break
 				case 'sorteio':
 					if (isBanneds) return reply('Você está banido!')
-                                        tels1 = body.slice(1)
-					tels2 = body.slice(2)
-					tels3 = body.slice(3)
-					tels4 = body.slice(4)
+                                        tels1 = body.slice(2)
+					tels2 = body.slice(3)
+					tels3 = body.slice(4)
+					tels4 = body.slice(5)
 					reply(mess.wait)
 					n = tels1 + tels2 + tels3 + tels4
 					nimek =  n[Math.floor(Math.random() * args.length)];
