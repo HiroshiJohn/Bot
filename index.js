@@ -245,9 +245,8 @@ async function starts() {
 					if (isBanneds) return reply('Você está banido!')
                                         tels1 = body.slice(1)
 					reply(mess.wait)
-					capFirst = tels1
-					getRandomInt = Math.floor(Math.random() * (max - min)) + min;
-					var n = capFirst(tels1[getRandomInt(0, args.length + 1)])
+					nimek =  tels1[Math.floor(Math.random() * args.length)];
+					n = nimek
 					client.sendMessage(from, n, text, { quoted: mek })
 					break
 				 case 'chatlist':
