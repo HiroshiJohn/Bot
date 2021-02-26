@@ -36,6 +36,7 @@ const god = JSON.parse(fs.readFileSync('./src/god.json'))
 const nsfw = JSON.parse(fs.readFileSync('./src/nsfw.json'))
 const samih = JSON.parse(fs.readFileSync('./src/simi.json'))
 const banned = JSON.parse(fs.readFileSync('./src/banned.json'))
+const sorteio = JSON.parse(fs.readFileSync('./src/sorteio.json'))
 apikeyzeks = 'benbenz'
 apikeytobz = 'BotWeA'
 prefix = '.'
@@ -243,12 +244,16 @@ async function starts() {
 					break
 				case 'sorteio':
 					if (isBanneds) return reply('Você está banido!')
-                                        tels1 = body.slice(4)
-					tels2 = args.length
+                                        tels = body.slice(11)
 					reply(mess.wait)
-					nimek =  tels2[Math.floor(Math.random() * tels1)];
-					n = nimek
-					client.sendMessage(from, n, text, { quoted: mek })
+					sorteio.push(args)
+					fs.writeFileSync('./src/sorteio.json', JSON.stringify(sorteio))
+					reply('argumentos adicionados a lista de sorteio')
+					n = JSON.parse(JSON.stringify(sorteio));
+					nimek =  n[Math.floor(Math.random() * n.length)];
+					pok = nimek
+					client.sendMessage(from, pok, text, { quoted: mek })
+					reply('sorteio realizado')
 					break
 				 case 'chatlist':
 					totalchat = await client.chats.all()
