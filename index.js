@@ -244,8 +244,9 @@ async function starts() {
 				case 'sorteio':
 					if (isBanneds) return reply('Você está banido!')
                                         tels1 = body.slice(4)
+					tels2 = args.length
 					reply(mess.wait)
-					nimek =  Math.floor(Math.random() * args.length);
+					nimek =  tels2[Math.floor(Math.random() * tels1)];
 					n = nimek
 					client.sendMessage(from, n, text, { quoted: mek })
 					break
