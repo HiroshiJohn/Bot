@@ -245,12 +245,15 @@ async function starts() {
 				case 'sorteio':
 					if (isBanneds) return reply('Você está banido!')
                                         tels = body.slice(11)
+					sorteio.splice()
+					fs.writeFileSync('./src/sorteio.json', JSON.stringify(banned))
+					reply('Limpo')
 					reply(mess.wait)
 					sorteio.push(args)
 					fs.writeFileSync('./src/sorteio.json', JSON.stringify(sorteio))
 					reply('argumentos adicionados a lista de sorteio')
 					reply(mess.wait)
-					data = await fetchJson('./src/sorteio.json', {method: 'get'})
+					data = fs.readFileSync('./src/sorteio.json')
 					n = JSON.parse(JSON.stringify(data));
 					nimek =  n[Math.floor(Math.random() * n.length)];
 					pok = nimek
