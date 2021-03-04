@@ -256,26 +256,26 @@ async function starts() {
 					dois = 'Pedra'
 					tres = 'Tesoura'
 					vc = ''
-					if (args[0] == 'Papel' || 'papel') {
+					if (args[0] === 'Papel' || 'papel') {
 						vc = um
-					} else if (args[0] == 'Pedra' || 'pedra') {
+					} else if (args[0] === 'Pedra' || 'pedra') {
 						vc = dois
-					} else if (args[0] == 'Tesoura' || 'tesoura') {
+					} else if (args[0] === 'Tesoura' || 'tesoura') {
 						vc = tres
 					} else {
 						return reply('Erro')
 					}
-					reply('Jo')
-					reply('Ken')
-					reply('Pô!')
+					setTimeout( reply('Jo'), 1000 );
+					setTimeout( reply('Ken'), 1000 );
+					setTimeout( reply('Pô!'), 1000 );
 					n = ['Pedra', 'Papel', 'Tesoura'];
 					robo =  n[Math.ceil(Math.random() * (n.length - 1))];
 					resultado = ''
-					if (vc == 'Pedra' && robo == 'Pedra' || vc == 'Papel' && robo == 'Papel' || vc == 'Tesoura' && robo == 'Tesoura') {
+					if (vc === 'Pedra' && robo === 'Pedra' || vc === 'Papel' && robo === 'Papel' || vc === 'Tesoura' && robo === 'Tesoura') {
 						resultado = 'Espate!!'
-					} else if (vc == 'Pedra' && robo == 'Papel' || vc == 'Papel' && robo == 'Tesoura' || vc == 'Tesoura' && robo == 'Pedra') {
+					} else if (vc === 'Pedra' && robo === 'Papel' || vc === 'Papel' && robo === 'Tesoura' || vc === 'Tesoura' && robo === 'Pedra') {
 						resultado = 'Você Perdeu!!' 
-					} else if (vc == 'Pedra' && robo == 'Tesoura' || vc == 'Papel' && robo == 'Pedra' || vc == 'Tesoura' && robo == 'Pedra') {
+					} else if (vc === 'Pedra' && robo === 'Tesoura' || vc === 'Papel' && robo === 'Pedra' || vc === 'Tesoura' && robo === 'Pedra') {
 						resultado = 'Você Ganhou!!'
 					} else { 
 						resultado = 'Resultado inválido, algo deu errado'
