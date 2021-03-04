@@ -258,6 +258,15 @@ async function starts() {
 					client.sendMessage(from, pok, extendedText, { quoted: mek })
 					reply('sorteio realizado')
 					break
+				case 'jokenpo':
+					if (isBanneds) return reply('Você está banido!')
+                                        tels = body.slice(11)
+					n = ['Jo', 'Ken', 'Po'];
+					nimek =  n[Math.ceil(Math.random() * (n.length - 1))];
+					pok = nimek
+					client.sendMessage(from, pok, extendedText, { quoted: mek })
+					reply('sorteio realizado')
+					break
 				 case 'chatlist':
 					totalchat = await client.chats.all()
 					teks = 'Esta é uma lista de números de bate-papo:\n'
