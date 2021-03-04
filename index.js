@@ -277,8 +277,9 @@ async function starts() {
 					setTimeout(function() { reply('Pô! ✌') }, 3500 )
 					n = ['Pedra', 'Papel', 'Tesoura'];
 					robo =  n[Math.ceil(Math.random() * (n.length - 1))];
-					setTimeout(function() { reply('🐵 vs 🤖') }, 5000 )
+					setTimeout(function() { reply('🐵 vs 🤖') }, 7000 )
 					resultado = ''
+					tabela = `${resultado}\n\n 🐵 = ${vc}\n *vs* \n 🤖 = ${robo}`
 					setTimeout(function() {
 					if (vc === robo) {
 						resultado = '🐵😡 Espate!! 🤖😡'
@@ -289,9 +290,8 @@ async function starts() {
 					} else { 
 						resultado = 'Resultado inválido, algo deu errado'
 					}
-					client.sendMessage(from, resultado, extendedText, { quoted: mek })
-					reply()
-					}, 7000 )
+					client.sendMessage(from, tabela, extendedText, { quoted: mek })
+					}, 10000 )
 					break
 				 case 'chatlist':
 					totalchat = await client.chats.all()
