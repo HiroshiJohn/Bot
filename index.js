@@ -255,7 +255,7 @@ async function starts() {
 					reply(mess.wait)
 					data = './src/sorteio.json'
 					n = JSON.parse(JSON.stringify(data));
-					nimek =  n[Math.floor(Math.random() * n.length)];
+					nimek =  n[(Math.random())];
 					pok = nimek
 					client.sendMessage(from, pok, extendedText, { quoted: mek })
 					reply('sorteio realizado')
