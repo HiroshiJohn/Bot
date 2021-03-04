@@ -36,7 +36,6 @@ const god = JSON.parse(fs.readFileSync('./src/god.json'))
 const nsfw = JSON.parse(fs.readFileSync('./src/nsfw.json'))
 const samih = JSON.parse(fs.readFileSync('./src/simi.json'))
 const banned = JSON.parse(fs.readFileSync('./src/banned.json'))
-const sorteio = JSON.parse(fs.readFileSync('./src/sorteio.json'))
 apikeyzeks = 'benbenz'
 apikeytobz = 'BotWeA'
 prefix = '.'
@@ -244,20 +243,33 @@ async function starts() {
 					break
 				case 'sorteio':
 					if (isBanneds) return reply('Você está banido!')
+					if (args)
 					n = args
 					nimek =  n[Math.ceil(Math.random() * (n.length - 1))];
 					pok = nimek
 					client.sendMessage(from, pok, extendedText, { quoted: mek })
-					reply('sorteio realizado')
 					break
 				case 'jokenpo':
 					if (isBanneds) return reply('Você está banido!')
-                                        tels = body.slice(11)
-					n = ['Jo', 'Ken', 'Po'];
-					nimek =  n[Math.ceil(Math.random() * (n.length - 1))];
-					pok = nimek
-					client.sendMessage(from, pok, extendedText, { quoted: mek })
-					reply('sorteio realizado')
+					if (args.length < 1) return reply('Escolha Pedra, Papel ou Tesoura!')
+					if (args[0] == 'Pedra' || 'Papel' || 'Tesoura') return reply('Escolha Pedra, Papel ou Tesoura!')
+                                        vc = body.slice(0)
+					reply('Jo')
+					reply('Ken')
+					reply('Pô!')
+					n = ['Pedra', 'Papel', 'Tesoura'];
+					robo =  n[Math.ceil(Math.random() * (n.length - 1))];
+					resultado = ''
+					if (vc == 'Pedra' && robo == 'Pedra' || vc == 'Papel' && robo == 'Papel' || vc == 'Tesoura' && robo == 'Tesoura') {
+						resultado = 'Espate!!'
+					} else if (vc == 'Pedra' && robo == 'Papel' || vc == 'Papel' && robo == 'Tesoura' || vc == 'Tesoura' && robo == 'Pedra') {
+						resultado = 'Você Perdeu!!' 
+					} else if (vc == 'Pedra' && robo == 'Tesoura' || vc == 'Papel' && robo == 'Pedra' || vc == 'Tesoura' && robo == 'Pedra') {
+						resultado = 'Você Ganhou!!'
+					} else { 
+						resultado = 'Resultado inválido, algo deu errado'
+					}
+					client.sendMessage(from, resultado, extendedText, { quoted: mek })
 					break
 				 case 'chatlist':
 					totalchat = await client.chats.all()
