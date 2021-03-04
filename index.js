@@ -244,15 +244,7 @@ async function starts() {
 					break
 				case 'sorteio':
 					if (isBanneds) return reply('Você está banido!')
-                                        tels = body.slice(11)
-					sorteio.splice('', 1)
-					fs.writeFileSync('./src/sorteio.json', JSON.stringify(banned))
-					reply('Lista limpa')
-					sorteio.push(args)
-					fs.writeFileSync('./src/sorteio.json', JSON.stringify(sorteio))
-					reply('argumentos adicionados a lista de sorteio')
-					data = './src/sorteio.json'
-					n = JSON.parse(JSON.stringify(data));
+					n = args
 					nimek =  n[Math.ceil(Math.random() * (n.length - 1))];
 					pok = nimek
 					client.sendMessage(from, pok, extendedText, { quoted: mek })
