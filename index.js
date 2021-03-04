@@ -252,8 +252,19 @@ async function starts() {
 				case 'jokenpo':
 					if (isBanneds) return reply('Você está banido!')
 					if (args.length < 1) return reply('Escolha Pedra, Papel ou Tesoura!')
-					if (args[0] !== 'Pedra' || args[0] !== 'pedra' || args[0] !== 'Papel' || args[0] !== 'papel' || args[0] !== 'tesoura' || args[0] !== 'Tesoura') return reply('Escolha Pedra, Papel ou Tesoura!!')
-                                        vc = body.slice(0)
+					um = 'Papel'
+					dois = 'Pedra'
+					tres = 'Tesoura'
+					vc = ''
+					if (args[0] == 'Papel' || 'papel') {
+						vc = um
+					} else if (args[0] == 'Pedra' || 'pedra') {
+						vc = dois
+					} else if (args[0] == 'Tesoura' || 'tesoura') {
+						vc = tres
+					} else {
+						return reply('Erro')
+					}
 					reply('Jo')
 					reply('Ken')
 					reply('Pô!')
