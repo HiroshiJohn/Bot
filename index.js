@@ -278,11 +278,11 @@ async function starts() {
 					robo =  n[Math.ceil(Math.random() * (n.length - 1))];
 					resultado = ''
 					setTimeout(function() {
-					if (vc === 'Pedra' && robo === 'Pedra' || vc === 'Papel' && robo === 'Papel' || vc === 'Tesoura' && robo === 'Tesoura') {
+					if (vc === robo) {
 						resultado = 'Espate!!'
 					} else if (vc === 'Pedra' && robo === 'Papel' || vc === 'Papel' && robo === 'Tesoura' || vc === 'Tesoura' && robo === 'Pedra') {
 						resultado = 'Você Perdeu!!' 
-					} else if (vc === 'Pedra' && robo === 'Tesoura' || vc === 'Papel' && robo === 'Pedra' || vc === 'Tesoura' && robo === 'Pedra') {
+					} else if (vc === 'Pedra' && robo === 'Tesoura' || vc === 'Papel' && robo === 'Pedra' || vc === 'Tesoura' && robo === 'Papel') {
 						resultado = 'Você Ganhou!!'
 					} else { 
 						resultado = 'Resultado inválido, algo deu errado'
