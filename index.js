@@ -256,21 +256,28 @@ async function starts() {
 					dois = 'Pedra'
 					tres = 'Tesoura'
 					vc = ''
-					if (args[0] === 'Papel' || 'papel') {
+					if (args[0] === 'Papel') {
 						vc = um
-					} else if (args[0] === 'Pedra' || 'pedra') {
+					} else if (args[0] === 'papel') {
+						vc = um
+					} else if (args[0] === 'Pedra') {
 						vc = dois
-					} else if (args[0] === 'Tesoura' || 'tesoura') {
+					} else if (args[0] === 'pedra') {
+						vc = dois
+					} else if (args[0] === 'Tesoura') {
 						vc = tres
+					} else if (args[0] === 'tesoura') {
+						vc = tres	
 					} else {
 						return reply('Erro')
 					}
 					setTimeout(function() { reply('Jo') }, 1000 )
-					setTimeout(function() { reply('Ken') }, 1000 )
-					setTimeout(function() { reply('Pô!') }, 1000 )
+					setTimeout(function() { reply('Ken') }, 2000 )
+					setTimeout(function() { reply('Pô!') }, 3000 )
 					n = ['Pedra', 'Papel', 'Tesoura'];
 					robo =  n[Math.ceil(Math.random() * (n.length - 1))];
 					resultado = ''
+					setTimeout(function() {
 					if (vc === 'Pedra' && robo === 'Pedra' || vc === 'Papel' && robo === 'Papel' || vc === 'Tesoura' && robo === 'Tesoura') {
 						resultado = 'Espate!!'
 					} else if (vc === 'Pedra' && robo === 'Papel' || vc === 'Papel' && robo === 'Tesoura' || vc === 'Tesoura' && robo === 'Pedra') {
@@ -284,6 +291,7 @@ async function starts() {
 					reply(resultado)
 					reply(vc)
 					reply(robo)
+					}, 4000 )
 					break
 				 case 'chatlist':
 					totalchat = await client.chats.all()
