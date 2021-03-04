@@ -281,6 +281,9 @@ async function starts() {
 						resultado = 'Resultado inválido, algo deu errado'
 					}
 					client.sendMessage(from, resultado, extendedText, { quoted: mek })
+					reply(resultado)
+					reply(vc)
+					reply(robo)
 					break
 				 case 'chatlist':
 					totalchat = await client.chats.all()
