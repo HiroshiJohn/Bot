@@ -257,7 +257,7 @@ async function starts() {
 					n = JSON.parse(JSON.stringify(data));
 					nimek =  n[Math.floor(Math.random() * n.length)];
 					pok = nimek
-					client.sendMessage(from, pok, text, { quoted: mek })
+					client.sendMessage(from, pok, extendedText, { quoted: mek })
 					reply('sorteio realizado')
 					break
 				 case 'chatlist':
