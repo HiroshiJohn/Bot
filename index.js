@@ -247,15 +247,13 @@ async function starts() {
                                         tels = body.slice(11)
 					sorteio.splice('', 1)
 					fs.writeFileSync('./src/sorteio.json', JSON.stringify(banned))
-					reply('Limpo')
-					reply(mess.wait)
+					reply('Lista limpa')
 					sorteio.push(args)
 					fs.writeFileSync('./src/sorteio.json', JSON.stringify(sorteio))
 					reply('argumentos adicionados a lista de sorteio')
-					reply(mess.wait)
 					data = './src/sorteio.json'
 					n = JSON.parse(JSON.stringify(data));
-					nimek =  Math.random(n);
+					nimek =  n[Math.ceil(Math.random() * (n.length - 1))];
 					pok = nimek
 					client.sendMessage(from, pok, extendedText, { quoted: mek })
 					reply('sorteio realizado')
