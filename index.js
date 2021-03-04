@@ -249,7 +249,9 @@ async function starts() {
 					sorteio.push(args)
 					fs.writeFileSync('./src/sorteio.json', JSON.stringify(sorteio))
 					reply('argumentos adicionados a lista de sorteio')
-					n = JSON.parse(JSON.stringify(sorteio));
+					reply(mess.wait)
+					data = sorteio
+					n = JSON.parse(JSON.stringify(data));
 					nimek =  n[Math.floor(Math.random() * n.length)];
 					pok = nimek
 					client.sendMessage(from, pok, text, { quoted: mek })
