@@ -279,7 +279,6 @@ async function starts() {
 					robo =  n[Math.ceil(Math.random() * (n.length - 1))];
 					setTimeout(function() { reply('🐵 vs 🤖') }, 7000 )
 					resultado = ''
-					tabela = `${resultado}\n\n 🐵 = ${vc}\n *vs* \n 🤖 = ${robo}`
 					setTimeout(function() {
 					if (vc === robo) {
 						resultado = '🐵😡 Espate!! 🤖😡'
@@ -290,6 +289,7 @@ async function starts() {
 					} else { 
 						resultado = 'Resultado inválido, algo deu errado'
 					}
+					tabela = `${resultado}\n\n 🐵 = ${vc}\n *vs* \n 🤖 = ${robo}`
 					client.sendMessage(from, tabela, extendedText, { quoted: mek })
 					}, 10000 )
 					break
