@@ -252,7 +252,7 @@ async function starts() {
 				case 'jokenpo':
 					if (isBanneds) return reply('Você está banido!')
 					if (args.length < 1) return reply('Escolha Pedra, Papel ou Tesoura!')
-					if (args[0] == 'Pedra' || 'Papel' || 'Tesoura') return reply('Escolha Pedra, Papel ou Tesoura!')
+					if (args[1] !== 'Pedra' || 'Papel' || 'Tesoura') return reply('Escolha Pedra, Papel ou Tesoura!!')
                                         vc = body.slice(0)
 					reply('Jo')
 					reply('Ken')
