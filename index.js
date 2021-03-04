@@ -265,9 +265,9 @@ async function starts() {
 					} else {
 						return reply('Erro')
 					}
-					setTimeout( reply('Jo'), 1000 );
-					setTimeout( reply('Ken'), 1000 );
-					setTimeout( reply('Pô!'), 1000 );
+					setTimeout( reply('Jo'), 1000 )
+					setTimeout( reply('Ken'), 2000 )
+					setTimeout( reply('Pô!'), 3000 )
 					n = ['Pedra', 'Papel', 'Tesoura'];
 					robo =  n[Math.ceil(Math.random() * (n.length - 1))];
 					resultado = ''
