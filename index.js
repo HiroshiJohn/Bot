@@ -281,7 +281,7 @@ async function starts() {
 					resultado = ''
 					setTimeout(function() {
 					if (vc === robo) {
-						resultado = '🐵😡 Espate!! 🤖😡'
+						resultado = '🐵😡 Empate!! 🤖😡'
 					} else if (vc === 'Pedra' && robo === 'Papel' || vc === 'Papel' && robo === 'Tesoura' || vc === 'Tesoura' && robo === 'Pedra') {
 						resultado = '🐵😔 Você Perdeu!! 🤖🤣' 
 					} else if (vc === 'Pedra' && robo === 'Tesoura' || vc === 'Papel' && robo === 'Pedra' || vc === 'Tesoura' && robo === 'Papel') {
