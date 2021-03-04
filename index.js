@@ -271,27 +271,27 @@ async function starts() {
 					} else {
 						return reply('Erro')
 					}
-					setTimeout(function() { reply('Jo') }, 1000 )
-					setTimeout(function() { reply('Ken') }, 2000 )
-					setTimeout(function() { reply('Pô!') }, 3000 )
+					reply('Saisho wa gū 😳')
+					setTimeout(function() { reply('Jo 👊') }, 1000 )
+					setTimeout(function() { reply('Ken 🖐') }, 2500 )
+					setTimeout(function() { reply('Pô! ✌') }, 3500 )
 					n = ['Pedra', 'Papel', 'Tesoura'];
 					robo =  n[Math.ceil(Math.random() * (n.length - 1))];
+					setTimeout(function() { reply('🐵 vs 🤖') }, 5000 )
 					resultado = ''
 					setTimeout(function() {
 					if (vc === robo) {
-						resultado = 'Espate!!'
+						resultado = '🐵😡 Espate!! 🤖😡'
 					} else if (vc === 'Pedra' && robo === 'Papel' || vc === 'Papel' && robo === 'Tesoura' || vc === 'Tesoura' && robo === 'Pedra') {
-						resultado = 'Você Perdeu!!' 
+						resultado = '🐵😔 Você Perdeu!! 🤖🤣' 
 					} else if (vc === 'Pedra' && robo === 'Tesoura' || vc === 'Papel' && robo === 'Pedra' || vc === 'Tesoura' && robo === 'Papel') {
-						resultado = 'Você Ganhou!!'
+						resultado = '🐵😎 Você Ganhou!! 🤖😭'
 					} else { 
 						resultado = 'Resultado inválido, algo deu errado'
 					}
 					client.sendMessage(from, resultado, extendedText, { quoted: mek })
-					reply(resultado)
-					reply(vc)
-					reply(robo)
-					}, 4000 )
+					reply()
+					}, 7000 )
 					break
 				 case 'chatlist':
 					totalchat = await client.chats.all()
