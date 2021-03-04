@@ -250,7 +250,7 @@ async function starts() {
 					fs.writeFileSync('./src/sorteio.json', JSON.stringify(sorteio))
 					reply('argumentos adicionados a lista de sorteio')
 					reply(mess.wait)
-					data = sorteio
+					data = await fetchJson('./src/sorteio.json', {method: 'get'})
 					n = JSON.parse(JSON.stringify(data));
 					nimek =  n[Math.floor(Math.random() * n.length)];
 					pok = nimek
