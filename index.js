@@ -269,8 +269,6 @@ async function starts() {
 						reply('❌ Ganhou')
 					} else if (casa3 == '⭕' && casa6 == '⭕' && casa9 == '⭕') {
 						reply('⭕ Ganhou')
-					} else { 
-						reply('⭕ Empate! ❌')
 					}
 					
 					if (iscasa1X) {
