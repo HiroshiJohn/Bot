@@ -271,6 +271,7 @@ async function starts() {
 						reply('⭕ Ganhou')
 					} else { 
 						reply('⭕ Empate! ❌')
+					}
 					
 					if (iscasa1X) {
 					casa1 = '❌'
