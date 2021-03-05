@@ -230,6 +230,7 @@ async function starts() {
 						fs.writeFileSync('./src/velha.json', JSON.stringify(velha))
 						reply('Alvo limpo!')
 						}
+					
 					casa1 = '1'
 					casa2 = '2'
 					casa3 = '3'
@@ -239,6 +240,37 @@ async function starts() {
 					casa7 = '7'
 					casa8 = '8'
 					casa9 = '9'
+					
+					if (casa1 == '❌' && casa2 == '❌' && casa3 == '❌') {
+						reply('❌ Ganhou')
+					} else if (casa1 == '⭕' && casa2 == '⭕' && casa3 == '⭕') {
+						reply('⭕ Ganhou')
+					} else if (casa1 == '⭕' && casa4 == '⭕' && casa7 == '⭕') {
+						reply('⭕ Ganhou')
+					} else if (casa1 == '❌' && casa4 == '❌' && casa7 == '❌') {
+						reply('❌ Ganhou')
+					} else if (casa1 == '❌' && casa5 == '❌' && casa9 == '❌') {
+						reply('❌ Ganhou')
+					} else if (casa1 == '⭕' && casa5 == '⭕' && casa9 == '⭕') {
+						reply('⭕ Ganhou')
+					} else if (casa4 == '❌' && casa5 == '❌' && casa6 == '❌') {
+						reply('❌ Ganhou')
+					} else if (casa4 == '⭕' && casa5 == '⭕' && casa6 == '⭕') {
+						reply('⭕ Ganhou')
+					} else if (casa7 == '❌' && casa8 == '❌' && casa9 == '❌') {
+						reply('❌ Ganhou')
+					} else if (casa7 == '⭕' && casa8 == '⭕' && casa9 == '⭕') {
+						reply('⭕ Ganhou')
+					} else if (casa2 == '❌' && casa5 == '❌' && casa8 == '❌') {
+						reply('❌ Ganhou')
+					} else if (casa2 == '⭕' && casa5 == '⭕' && casa8 == '⭕') {
+						reply('⭕ Ganhou')
+					} else if (casa3 == '❌' && casa6 == '❌' && casa9 == '❌') {
+						reply('❌ Ganhou')
+					} else if (casa3 == '⭕' && casa6 == '⭕' && casa9 == '⭕') {
+						reply('⭕ Ganhou')
+					} else { 
+						reply('⭕ Empate! ❌')
 					
 					if (iscasa1X) {
 					casa1 = '❌'
