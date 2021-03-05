@@ -219,6 +219,7 @@ async function starts() {
 						velha.splice('', 1)
 						fs.writeFileSync('./src/velha.json', JSON.stringify(velha))
 						reply('Alvo limpo!')
+						}
 					break
 				case 'leaveall':
 					if (!isOwner) return reply('Perintah ini hanya untuk Owner bot')
