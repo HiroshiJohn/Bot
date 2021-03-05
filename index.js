@@ -166,6 +166,26 @@ async function starts() {
 			const isGod = isGroup ? god.includes(from) : false
 			const isOwner = ownerNumber.includes(sender)
 			const isBanneds = banned.includes(sender)
+			const iscasa1X = velha.includes('1X')
+			const iscasa1O = velha.includes('1O')
+			const iscasa2X = velha.includes('2X')
+			const iscasa2O = velha.includes('2O')
+			const iscasa3X = velha.includes('3X')
+			const iscasa3O = velha.includes('3O')
+			const iscasa4X = velha.includes('4X')
+			const iscasa4O = velha.includes('4O')
+			const iscasa5X = velha.includes('5X')
+			const iscasa5O = velha.includes('5O')
+			const iscasa6X = velha.includes('6X')
+			const iscasa6O = velha.includes('6O')
+			const iscasa7X = velha.includes('7X')
+			const iscasa7O = velha.includes('7O')
+			const iscasa8X = velha.includes('8X')
+			const iscasa8O = velha.includes('8O')
+			const iscasa9X = velha.includes('9X')
+			const iscasa9O = velha.includes('9O')
+			
+			
 			const isUrl = (url) => {
 			    return url.match(new RegExp(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&/=]*)/, 'gi'))
 			}
@@ -195,17 +215,6 @@ async function starts() {
 					client.sendMessage(from, help(prefix), text)
 					break
 				case 'velha':
-					casa1 = '1'
-					casa2 = '2'
-					casa3 = '3'
-					casa4 = '4'
-					casa5 = '5'
-					casa6 = '6'
-					casa7 = '7'
-					casa8 = '8'
-					casa9 = '9'
-					tabela = `_ ${casa1} _|_ ${casa2} _|_ ${casa3} _\n_ ${casa4} _|_ ${casa5} _|_ ${casa6} _\n_ ${casa7} _|_ ${casa8} _|_ ${casa9} _`
-					reply(tabela) 
 					if (args[0] == 'o') {
 					    velha.push(args[1] + 'O')
 					    fs.writeFileSync('./src/velha.json', JSON.stringify(velha))
@@ -221,6 +230,73 @@ async function starts() {
 						fs.writeFileSync('./src/velha.json', JSON.stringify(velha))
 						reply('Alvo limpo!')
 						}
+					casa1 = '1'
+					casa2 = '2'
+					casa3 = '3'
+					casa4 = '4'
+					casa5 = '5'
+					casa6 = '6'
+					casa7 = '7'
+					casa8 = '8'
+					casa9 = '9'
+					
+					if (iscasa1X) {
+					casa1 = '❌'
+					} else if (iscasa1O) {
+					casa1 = '⭕
+					}
+					
+					if (iscasa2X) {
+					casa2 = '❌'
+					} else if (iscasa2O) {
+					casa2 = '⭕
+					}
+					
+					if (iscasa3X) {
+					casa3 = '❌'
+					} else if (iscasa3O) {
+					casa3 = '⭕
+					}
+					
+					if (iscasa4X) {
+					casa4 = '❌'
+					} else if (iscasa4O) {
+					casa4 = '⭕
+					}
+					
+					if (iscasa5X) {
+					casa5 = '❌'
+					} else if (iscasa5O) {
+					casa5 = '⭕
+					}
+					
+					if (iscasa6X) {
+					casa6 = '❌'
+					} else if (iscasa6O) {
+					casa6 = '⭕
+					}
+					
+					if (iscasa7X) {
+					casa7 = '❌'
+					} else if (iscasa7O) {
+					casa7 = '⭕
+					}
+					
+					if (iscasa8X) {
+					casa8 = '❌'
+					} else if (iscasa8O) {
+					casa8 = '⭕
+					}
+					
+					if (iscasa9X) {
+					casa9 = '❌'
+					} else if (iscasa9O) {
+					casa9 = '⭕
+					}
+					
+					tabela = `_ ${casa1} _ | _ ${casa2} _ | _ ${casa3} _\n_ ${casa4} _ | _ ${casa5} _ | _ ${casa6} _\n_ ${casa7} _ | _ ${casa8} _ | _ ${casa9} _`
+					reply(tabela)  
+					
 					break
 				case 'leaveall':
 					if (!isOwner) return reply('Perintah ini hanya untuk Owner bot')
