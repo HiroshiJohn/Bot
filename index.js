@@ -146,6 +146,8 @@ async function starts() {
 				}
 			}
 
+			const casas = '1, 2, 3, 4, 5, 6, 7, 8, 9'
+			
 			const botNumber = client.user.jid
 			const ownerNumber = ["559885197842@s.whatsapp.net"] // replace this with your number
 			const isGroup = from.endsWith('@g.us')
@@ -190,6 +192,22 @@ async function starts() {
 				case 'menu':
 					if (isBanneds) return reply('Você está banido!')
 					client.sendMessage(from, help(prefix), text)
+					break
+				case 'velha':
+					casa1 = '1'
+					casa2 = '2'
+					casa3 = '3'
+					casa4 = '4'
+					casa5 = '5'
+					casa6 = '6'
+					casa7 = '7'
+					casa8 = '8'
+					casa9 = '9'
+					tabela = '____
+|_|_|_|
+|_|_|_|
+|_|_|_|'
+					reply(tabela)
 					break
 				case 'leaveall':
 					if (!isOwner) return reply('Perintah ini hanya untuk Owner bot')
