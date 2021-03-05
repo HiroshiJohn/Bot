@@ -35,6 +35,7 @@ const welkom = JSON.parse(fs.readFileSync('./src/welkom.json'))
 const god = JSON.parse(fs.readFileSync('./src/god.json'))
 const nsfw = JSON.parse(fs.readFileSync('./src/nsfw.json'))
 const samih = JSON.parse(fs.readFileSync('./src/simi.json'))
+const banned = JSON.parse(fs.readFileSync('./src/banned.json'))
 const velha = JSON.parse(fs.readFileSync('./src/velha.json'))
 apikeyzeks = 'benbenz'
 apikeytobz = 'BotWeA'
