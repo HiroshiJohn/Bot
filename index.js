@@ -147,7 +147,7 @@ async function starts() {
 				}
 			}
 
-			const casas = '1, 2, 3, 4, 5, 6, 7, 8, 9'
+			
 			
 			const botNumber = client.user.jid
 			const ownerNumber = ["559885197842@s.whatsapp.net"] // replace this with your number
@@ -204,8 +204,8 @@ async function starts() {
 					casa7 = '7'
 					casa8 = '8'
 					casa9 = '9'
-					tabela = `_${casa1}_|_${casa2}_|_${casa3}_\n_${casa4}_|_${casa5}_|_${casa6}_\n_${casa7}_|_${casa8}_|_${casa9}_`
-					reply(tabela)
+					tabela = `_ ${casa1} _|_ ${casa2} _|_ ${casa3} _\n_ ${casa4} _|_ ${casa5} _|_ ${casa6} _\n_ ${casa7} _|_ ${casa8} _|_ ${casa9} _`
+					reply(tabela) 
 					if (args[0] == 'o') {
 					    velha.push(args[1] + 'O')
 					    fs.writeFileSync('./src/velha.json', JSON.stringify(velha))
