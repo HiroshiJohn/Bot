@@ -203,10 +203,7 @@ async function starts() {
 					casa7 = '7'
 					casa8 = '8'
 					casa9 = '9'
-					tabela = '____
-|_|_|_|
-|_|_|_|
-|_|_|_|'
+					tabela = '_|_|_\n_|_|_\n_|_|_'
 					reply(tabela)
 					break
 				case 'leaveall':
