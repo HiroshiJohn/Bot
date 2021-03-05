@@ -243,55 +243,55 @@ async function starts() {
 					if (iscasa1X) {
 					casa1 = '❌'
 					} else if (iscasa1O) {
-					casa1 = '⭕
+					casa1 = '⭕'
 					}
 					
 					if (iscasa2X) {
 					casa2 = '❌'
 					} else if (iscasa2O) {
-					casa2 = '⭕
+					casa2 = '⭕'
 					}
 					
 					if (iscasa3X) {
 					casa3 = '❌'
 					} else if (iscasa3O) {
-					casa3 = '⭕
+					casa3 = '⭕'
 					}
 					
 					if (iscasa4X) {
 					casa4 = '❌'
 					} else if (iscasa4O) {
-					casa4 = '⭕
+					casa4 = '⭕'
 					}
 					
 					if (iscasa5X) {
 					casa5 = '❌'
 					} else if (iscasa5O) {
-					casa5 = '⭕
+					casa5 = '⭕'
 					}
 					
 					if (iscasa6X) {
 					casa6 = '❌'
 					} else if (iscasa6O) {
-					casa6 = '⭕
+					casa6 = '⭕'
 					}
 					
 					if (iscasa7X) {
 					casa7 = '❌'
 					} else if (iscasa7O) {
-					casa7 = '⭕
+					casa7 = '⭕'
 					}
 					
 					if (iscasa8X) {
 					casa8 = '❌'
 					} else if (iscasa8O) {
-					casa8 = '⭕
+					casa8 = '⭕'
 					}
 					
 					if (iscasa9X) {
 					casa9 = '❌'
 					} else if (iscasa9O) {
-					casa9 = '⭕
+					casa9 = '⭕'
 					}
 					
 					tabela = `_ ${casa1} _ | _ ${casa2} _ | _ ${casa3} _\n_ ${casa4} _ | _ ${casa5} _ | _ ${casa6} _\n_ ${casa7} _ | _ ${casa8} _ | _ ${casa9} _`
