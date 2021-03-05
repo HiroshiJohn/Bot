@@ -35,7 +35,7 @@ const welkom = JSON.parse(fs.readFileSync('./src/welkom.json'))
 const god = JSON.parse(fs.readFileSync('./src/god.json'))
 const nsfw = JSON.parse(fs.readFileSync('./src/nsfw.json'))
 const samih = JSON.parse(fs.readFileSync('./src/simi.json'))
-const banned = JSON.parse(fs.readFileSync('./src/banned.json'))
+const velha = JSON.parse(fs.readFileSync('./src/velha.json'))
 apikeyzeks = 'benbenz'
 apikeytobz = 'BotWeA'
 prefix = '.'
@@ -203,8 +203,22 @@ async function starts() {
 					casa7 = '7'
 					casa8 = '8'
 					casa9 = '9'
-					tabela = '___|___|___\n___|___|___\n___|___|___'
+					tabela = `_${casa1}_|_${casa2}_|_${casa3}_\n_${casa4}_|_${casa5}_|_${casa6}_\n_${casa7}_|_${casa8}_|_${casa9}_`
 					reply(tabela)
+					if (args[0] == 'o') {
+					    velha.push(args[1] + 'O')
+					    fs.writeFileSync('./src/velha.json', JSON.stringify(velha))
+					    reply('O marcado no alvo!')
+					} else
+					    if (args[0] == 'x') {
+						velha.push(args[1] + 'X')
+					    	fs.writeFileSync('./src/velha.json', JSON.stringify(velha))
+					    	reply('X marcado no alvo!')
+					    } else 
+						if (args[0] == 'limpar') {
+						velha.splice('', 1)
+						fs.writeFileSync('./src/velha.json', JSON.stringify(velha))
+						reply('Alvo limpo!')
 					break
 				case 'leaveall':
 					if (!isOwner) return reply('Perintah ini hanya untuk Owner bot')
