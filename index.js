@@ -217,7 +217,7 @@ async function starts() {
 					    	reply('X marcado no alvo!')
 					    } else 
 						if (args[0] == 'limpar') {
-						velha.splice('', 1)
+						velha.splice('')
 						fs.writeFileSync('./src/velha.json', JSON.stringify(velha))
 						reply('Alvo limpo!')
 						}
